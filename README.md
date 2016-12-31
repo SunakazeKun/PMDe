@@ -1,5 +1,5 @@
 # PMDe
-**PMDe** is an editor for modifying the data from Pokémon Mystery Dungeon: Red Rescue Team. It is written in Java and developed using the NetBeans IDE.
+**PMDe** is an editor for Pokémon Mystery Dungeon: Red Rescue Team. It is written in Java and developed using the NetBeans IDE.
 
 
 #Current features
