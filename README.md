@@ -1,23 +1,22 @@
 # PMDe
-**PMDe** is an editor for Pokémon Mystery Dungeon: Red Rescue Team. It is written in Java and developed using the NetBeans IDE.
+**PMDe** is an editor for **Pokémon Mystery Dungeon: Red Rescue Team**, that allows you to edit most aspects of the game; a full list of features can be found below. It is programmed in Java and developed using the Netbeans IDE.
+PMDe uses **ini4j** to store important offsets in the ROM. Additional icons were taken from various **Pretty Office Icons** sets. Also, huge thanks to **BRNMan** and **Crocodile91**! They have already documented a lot about the game's data and ROM structure.
 
-
-#Current features
-- edit Pokémon data (types, stats, evolutions, ...)
-- edit dungeon data (map positions, floors, Pokémon, traps, ...)
-- edit item data
+# Current features
+- edit dungeon data (map positions, floors, layouts, Pokémon, traps, ...)
+- edit general Pokémon data (types, stats, evolutions, ...)
+- edit general item data
+- view moves data
 - edit available starter and partner Pokémon
 - edit POKé money factors
-- extend ROM from 32MB to 64MB 
 
+# Supported ROMs
+| Game ID | Description | Checksum |
+| -- | ----------- | -------- |
+| B24E01 | Pokémon Mystery Dungeon: Red Rescue Team (US) | 2100cf6f17e12cd34f1513647dfa506b |
+| B24P01 | Pokémon Mystery Dungeon: Red Rescue Team (EU) | 9837da1fdfe900c52f2109d9718d4e85 |
+| B24J01 | Pokémon Fushigi no Dungeon: Aka no Kyuujoutai (JP) | f3647154d85d20f9c8ba66ed8f0a609e |
+| B9JE01 | Pokémon Mystery Dungeon: Red Rescue Team (Demo Version) | 779a2a4435e0093a7846798270705c76 |
 
-#Screenshots
-<dl><img width="400px" src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery-PokemonEditor.png"><br></dl>
-<dl><img width="400px" src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery-ItemEditor.png"><br></dl>
-<dl><img width="400px" src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery-DungeonEditor.png"><br></dl>
-<dl><img width="400px" src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery-DungeonFloorEditor.png"><br></dl>
-<dl><img width="400px" src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery-DungeonTrapsEditor.png"><br></dl>
-<dl><img width="400px" src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery-MapEditor.png"><br></dl>
-
-#Credits
-Huge thanks to **BRNMan** and **Crocodile91** who have documented a lot about the game's data and ROM structure. This project also uses some icons from **Pretty Office Icon Set Part 7**.
+# Screenshots
+TBA
