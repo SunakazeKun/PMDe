@@ -1,0 +1,413 @@
+なにもの？
+Iron Tail
+Ice Ball
+Yawn
+Lovely Kiss
+Nightmare
+Morning Sun
+Vital Throw
+Dig
+Thrash
+Sweet Scent
+Charm
+Rain Dance
+Confuse Ray
+Hail
+Aromatherapy
+Bubble
+Encore
+Cut
+Rage
+Super Fang
+Pain Split
+Torment
+String Shot
+Swagger
+Snore
+Heal Bell
+Screech
+Rock Throw
+Rock Smash
+Rock Slide
+Weather Ball
+Whirlpool
+Fake Tears
+Sing
+Spite
+Air Cutter
+Smokescreen
+Pursuit
+Doubleslap
+Mirror Move
+Overheat
+Aurora Beam
+Memento
+Octazooka
+Flatter
+Astonish
+Will-o-Wisp
+Return
+Grudge
+Strength
+Counter
+Flame Wheel
+Flamethrower
+Odor Sleuth
+Sharpen
+Double Team
+Gust
+Harden
+Disable
+Razor Wind
+Bide
+Crucnch
+Bite
+Thunder
+Thunderpunch
+Endeavor
+Facade
+Karate Chop
+Clamp
+Withdraw
+Constrict
+Brick Break
+Rock Tomb
+Focus Energy
+Focus Punch
+Giga Drain
+Reversal
+Smellingsalt
+Spore
+Leech Life
+Slash
+Silver Wind
+Metal Sound
+Grasswhistle
+Tickle
+Spider Web
+Crabhammer
+Haze
+Mean Look
+Cross Chop
+Outrage
+Low Kick
+Ancient Power
+Sythesis
+Agility
+Rapid Spin
+Icy Wind
+Mind Reader
+Cosmic Power
+Sky Attack
+Powder Snow
+Follow Me
+Meteor Smash
+Endure
+Rollout
+Scary Face
+Psybeam
+Psywave
+Psychic
+Psycho Boost
+Hypnosis
+Uproar
+Water Spout
+Signal Beam
+Psych Up
+Submission
+Recover
+Earthquake
+Nature Power
+Lick
+Flail
+Tail Whip
+Selfdestruct
+Stun Spore
+Bind
+Shadow Punch
+Shadow Ball
+Charge
+Thunderbolt
+Mist
+Fissure
+Extremespeed
+Extrasensory
+Safeguard
+Absorb
+Sky Uppercut
+Skill Swap
+Sketch
+Headbutt
+Double-Edge
+Sandstorm
+Sand-Attack
+Sand Tomb
+Spark
+Swift
+Kinesis
+Smog
+Growth
+Sacred Fire
+Sheer Cold
+Solarbeam
+Sonicboom
+Fly
+Tackle
+Explosion
+Dive
+Fire Blast
+Waterfall
+Muddy Water
+Stockpile
+Slam
+Twister
+Bullet Seed
+Twineedle
+Softboiled
+Egg Bomb
+Faint Attack
+Barrage
+Minimize
+Seismic Toss
+Supersonic
+Taunt
+Moonlight
+Peck
+Arm Thrust
+Horn Attack
+Horn Drill
+Wing Attack
+Aerial Ace
+Icicle Spear
+Swords Dance
+Vine Whip
+Conversion
+Conversion 2
+Helping Hand
+Iron Defense
+Teleport
+Thundershock
+Shock Wave
+Quick Attack
+Sweet Kiss
+Thunder Wave
+Zap Cannon
+Block
+Howl
+Poison Gas
+Toxic
+Poison Fang
+Poisonpowder
+Poison Sting
+Spike Cannon
+Acid Armor
+Take Down
+Jump Kick
+Bounce
+Hi Jump Kick
+Tri Attack
+Dragon Claw
+Trick
+Triple Kick
+Drill Peck
+Mud Sport
+Mud-Slap
+Theif
+Amnesia
+Night Shade
+Growl
+Slack Off
+Surf
+Role Play
+Needle Arm
+Double Kick
+Sunny Day
+Leer
+Wish
+Fake Out
+Sleep Talk
+Pay Day
+Assist
+Heat Wave
+Sleep Powder
+Rest
+Ingrain
+Confusion
+Body Slam
+Swallow
+Curse
+Frenzy Plant
+Hydro Cannon
+Hydro Pump
+Hyper Voice
+Hyper Beam
+Superpower
+Steel Wing
+Spit Up
+Dynamicpunch
+Guillotine
+Vicegrip
+Knock Off
+Pound
+Razor Leaf
+Baton Pass
+Petal Dance
+Splash
+Bubblebeam
+Doom Desire
+Belly Drum
+Barrier
+Light Screen
+Scratch
+Hyper Fang
+Ember
+Secret Power
+Dizzy Punch
+Bulk Up
+Imprison
+Featherdance
+Whirlwind
+Beat Up
+Blizzard
+Stomp
+Blast Burn
+Flash
+Teeter Dance
+Crush Claw
+Blaze Kick
+Present
+Eruption
+Sludge
+Sludge Bomb
+Glare
+Transform
+Poison Tail
+Roar
+Bone Rush
+Camouflage
+Covet
+Tail Glow
+Bone Club
+Bonemerang
+Fire Spin
+Fire Punch
+Perish Song
+Wrap
+Spikes
+Magnitude
+Magical Leaf
+Magic Coat
+Mud Shot
+Mach Punch
+Protect
+Defense Curl
+Rolling Kick
+Substitute
+Detect
+Pin Missile
+Water Sport
+Water Gun
+Mist Ball
+Water Pulse
+Fury Attack
+Fury Swipes
+Destiny Bond
+False Swipe
+Foresight
+Mirror Coat
+Future Sight
+Milk Drink
+Calm Mind
+Mega Drain
+Mega Kick
+Mega Punch
+Megahorn
+Hidden Power
+Metal Claw
+Attract
+Mimic
+Frustration
+Leech Seed
+Metronome
+Dream Eater
+Acid
+Meditate
+Snatch
+Luster Purge
+Leaf Blade
+Recycle
+Reflect
+Refesh
+Revenge
+Dragon Rage
+Dragonbreath
+Dragon Dance
+Ice Punch
+Ice Beam
+Fury Cutter
+Comet Punch
+Skull Bash
+Lock-On
+Rock Blast
+Cotton Spore
+Struggle
+Aeroblast
+Volt Tackle
+attack
+ようすをみる
+がまん
+-
+-
+Wide Slash
+Excavate
+Spin Slash
+See-Trap
+Takeaway
+Rebound
+Bloop Slash
+Switcher
+Blowback
+Warp
+Transfer
+Slow Down
+Speed Boost
+Searchlight
+Petrify
+Stay Away
+Pounce
+Trawl
+Cleanse
+Observer
+Decoy Maker
+Siesta
+Totter
+Two-Edge
+No-Move
+Escape
+Scan
+Power-Ears
+Drought
+Trap Buster
+Wild Call
+Invisify
+One-Shot
+HP Gauge
+Vacuum-Cut
+Reviver
+Shocker
+Echo
+Famish
+One-Room
+Fill-In
+Trapper
+Possess
+Itemize
+-
+-
+Hurl
+Mobile
+Item-Toss
+See Stairs
+Long Toss
+-
+Pierce

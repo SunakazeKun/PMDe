@@ -1,0 +1,98 @@
+Tiny Woods
+Thunderwave Cave
+Mt. Steel
+Sinister Woods
+Silent Chasm
+Mt. Thunder
+Mt. Thunder Peak
+Great Canyon
+Lapis Cave
+Mt. Blaze
+Mt. Blaze Peak
+Frosty Forest
+Frosty Grotto
+Mt. Freeze
+Mt. Freeze Peak
+Magma Cavern
+Magma Cavern Pit
+Sky Tower
+Sky Tower Summit
+Stormy Sea
+Silver Trench
+Meteor Cave
+Mt. Freeze Peak (unused)
+Western Cave
+Boss 3 (unused)
+Boss 4 (unused)
+Wish Cave
+Buried Relic
+Pitfall Valley
+Northern Range
+Boss 9 (unused)
+Desert Region
+Southern Cavern
+Wyvern Hill
+Fiery Field
+Northwind Field
+Solar Cave
+Lightning Field
+Darknight Relic
+Wondrous Sea (unused)
+Murky Cave
+Grand Sea
+Uproar Forest
+Oddity Cave
+Remains Island
+Marvelous Sea
+Fantasy Strait
+Rock Path
+Snow Path
+Autopilot (unused)
+D50 (unused)
+D51 (unused)
+Dojo Registration (unused)
+Howling Forest
+D54 (unused)
+Fantasy Strait (unused)
+Waterfall Pond
+Unown Relic
+Joyous Tower
+Far-off Sea
+Mt. Faraway
+D61 (unused)
+Purity Forest
+D63 (unused)
+??? (corrupted)
+Tiny Woods (corrupted)
+Unknown World (corrupted)
+Frosty Grotto (corrupted)
+Howling Forest (corrupted)
+Pokémon Square (corrupted)
+Pokémon Square (corrupted)
+Rescue Team Base (corrupted)
+Rescue Team Base (corrupted)
+agb-slot
+Client Pokémon
+Normal Maze
+Fire Maze
+Water Maze
+Grass Maze
+Electric Maze
+Ice Maze
+Fighting Maze
+Ground Maze
+Flying Maze
+Psychic Maze
+Poison Maze
+Bug Maze
+Rock Maze
+Ghost Maze
+Dragon Maze
+Dark Maze
+Steel Maze
+Team Shifty
+Team Constrictor
+Team Hydro
+Team Rumblerock
+Rescue Team 2 (unused)
+Rescue Team Maze
