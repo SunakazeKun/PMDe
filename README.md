@@ -11,7 +11,7 @@ PMDe uses **ini4j** to store important offsets in the ROM. Additional icons were
 - edit POKé money factors
 
 # Supported ROMs
-| Game ID | Description | Checksum |
+| Game ID | Description | MD5 Checksum |
 | -- | ----------- | -------- |
 | B24E01 | Pokémon Mystery Dungeon: Red Rescue Team (US) | 2100cf6f17e12cd34f1513647dfa506b |
 | B24P01 | Pokémon Mystery Dungeon: Red Rescue Team (EU) | 9837da1fdfe900c52f2109d9718d4e85 |
