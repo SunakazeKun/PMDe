@@ -1,17 +1,17 @@
 # PMDe
 **PMDe** is an editor for **Pokémon Mystery Dungeon: Red Rescue Team**, that allows you to edit most aspects of the game; a full list of features can be found below. It is programmed in Java and developed using the Netbeans IDE.
-PMDe uses **ini4j** to store important offsets in the ROM. Additional icons were taken from various **Pretty Office Icons** sets. Also, huge thanks to **BRNMan** and **Crocodile91**! They have already documented a lot about the game's data and ROM structure.
+PMDe uses **ini4j** to store important offsets in the ROM. Additional icons were taken from various **Pretty Office Icons** sets. Tileset previews were created by **SilverDeoxys563**. Also, huge thanks to **BRNMan** and **Crocodile91**! They have already documented a lot about the game's data and ROM structure.
 
 # Current features
 - edit dungeon data (map positions, floors, layouts, Pokémon, traps, ...)
 - edit general Pokémon data (types, stats, evolutions, ...)
 - edit general item data
-- view moves data
+- edit general moves data
 - edit available starter and partner Pokémon
 - edit POKé money factors
 
 # Supported ROMs
-| Game ID | Description | Checksum |
+| Game ID | Description | MD5 Checksum |
 | -- | ----------- | -------- |
 | B24E01 | Pokémon Mystery Dungeon: Red Rescue Team (US) | 2100cf6f17e12cd34f1513647dfa506b |
 | B24P01 | Pokémon Mystery Dungeon: Red Rescue Team (EU) | 9837da1fdfe900c52f2109d9718d4e85 |

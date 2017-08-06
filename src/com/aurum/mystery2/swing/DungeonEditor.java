@@ -52,14 +52,22 @@ public class DungeonEditor extends javax.swing.JFrame {
         
         cmoStairType.setSelectedIndex(selectedDungeon.stairDirection);
         spnTimerLimit.setValue(selectedDungeon.timer);
-        chkRecruitable.setSelected(selectedDungeon.recruitable);
-        chkCondLevel.setSelected(selectedDungeon.lvl1);
-        chkCondMoney.setSelected(!selectedDungeon.noMoney);
-        chkCondSave.setSelected(!selectedDungeon.saveGame);
+        chkRecruitable.setSelected(selectedDungeon.setRecruitable);
+        chkCondLevel.setSelected(selectedDungeon.setLvl1);
+        chkCondMoney.setSelected(selectedDungeon.setNoMoney);
+        chkCondSave.setSelected(selectedDungeon.setSaveGame);
         spnMaxItems.setValue(selectedDungeon.itemLimit);
         spnMaxParty.setValue(selectedDungeon.partyLimit);
-        
-        loadUnknownBytes();
+        chkHMFly.setSelected(selectedDungeon.condFly);
+        chkHMDive.setSelected(selectedDungeon.condDive);
+        chkHMWaterfall.setSelected(selectedDungeon.condWaterfall);
+        chkHMSurf.setSelected(selectedDungeon.condSurf);
+        chkWaterType.setSelected(selectedDungeon.condWater);
+        spnUnk1.setValue(selectedDungeon.unk1);
+        spnUnk3.setValue(selectedDungeon.unk3);
+        chkUnk8.setSelected(selectedDungeon.unk8);
+        chkUnk9.setSelected(selectedDungeon.unk9);
+        spnUnkE.setValue(selectedDungeon.unkE);
     }
     
     private void loadFloorData() {
@@ -68,31 +76,30 @@ public class DungeonEditor extends javax.swing.JFrame {
         spnFloorPokemon.setValue(selectedFloor.pokemonID);
         spnFloorItems.setValue(selectedFloor.itemsID);
         spnFloorTraps.setValue(selectedFloor.trapsID);
-        spnFloorUnknown1.setValue(selectedFloor.unk8);
-        spnFloorUnknown2.setValue(selectedFloor.unkA);
-        spnFloorUnknown3.setValue(selectedFloor.unkC);
-        spnFloorUnknown4.setValue(selectedFloor.unkE);
-    }
-    
-    private void loadUnknownBytes() {
-        switch(cmoUnknownOffset.getSelectedIndex()) {
-            case 0: txtUnknownValue.setText(String.valueOf(selectedDungeon.unk1)); break;
-            case 1: txtUnknownValue.setText(String.valueOf(selectedDungeon.unk3)); break;
-            case 2: txtUnknownValue.setText(String.valueOf(selectedDungeon.unk8)); break;
-            case 3: txtUnknownValue.setText(String.valueOf(selectedDungeon.unkB)); break;
-            case 4: txtUnknownValue.setText(String.valueOf(selectedDungeon.unkE)); break;
-        }
+        spnFloorItemsShop.setValue(selectedFloor.itemsShopID);
+        spnFloorItemsMonster.setValue(selectedFloor.itemsMonsterID);
+        spnFloorItemsBuried.setValue(selectedFloor.itemsBuriedID);
     }
     
     private void save() {
         selectedDungeon.stairDirection = (short) cmoStairType.getSelectedIndex();
         selectedDungeon.timer = (int) spnTimerLimit.getValue();
-        selectedDungeon.recruitable = chkRecruitable.isSelected();
-        selectedDungeon.lvl1 = chkCondLevel.isSelected();
-        selectedDungeon.noMoney = !chkCondMoney.isSelected();
-        selectedDungeon.saveGame = !chkCondSave.isSelected();
+        selectedDungeon.setRecruitable = chkRecruitable.isSelected();
+        selectedDungeon.setLvl1 = chkCondLevel.isSelected();
+        selectedDungeon.setNoMoney = chkCondMoney.isSelected();
+        selectedDungeon.setSaveGame = chkCondSave.isSelected();
         selectedDungeon.itemLimit = (short) spnMaxItems.getValue();
         selectedDungeon.partyLimit = (short) spnMaxParty.getValue();
+        selectedDungeon.condFly = chkHMFly.isSelected();
+        selectedDungeon.condDive = chkHMDive.isSelected();
+        selectedDungeon.condWaterfall = chkHMWaterfall.isSelected();
+        selectedDungeon.condSurf = chkHMSurf.isSelected();
+        selectedDungeon.condWater = chkWaterType.isSelected();
+        selectedDungeon.unk1 = (byte) spnUnk1.getValue();
+        selectedDungeon.unk3 = (short) spnUnk3.getValue();
+        selectedDungeon.unk8 = chkUnk8.isSelected();
+        selectedDungeon.unk9 = chkUnk9.isSelected();
+        selectedDungeon.unkE = (short) spnUnkE.getValue();
         
         RomFile.current.dungeons.set(listDungeons.getSelectedIndex(), selectedDungeon);
     }
@@ -102,10 +109,9 @@ public class DungeonEditor extends javax.swing.JFrame {
         selectedFloor.pokemonID = (int) spnFloorPokemon.getValue();
         selectedFloor.itemsID = (int) spnFloorItems.getValue();
         selectedFloor.trapsID = (int) spnFloorTraps.getValue();
-        selectedFloor.unk8 = (int) spnFloorUnknown1.getValue();
-        selectedFloor.unkA = (int) spnFloorUnknown2.getValue();
-        selectedFloor.unkC = (int) spnFloorUnknown3.getValue();
-        selectedFloor.unkE = (int) spnFloorUnknown4.getValue();
+        selectedFloor.itemsShopID = (int) spnFloorItemsShop.getValue();
+        selectedFloor.itemsMonsterID = (int) spnFloorItemsMonster.getValue();
+        selectedFloor.itemsBuriedID = (int) spnFloorItemsBuried.getValue();
         selectedDungeon.floors.set((int) spnFloorNo.getValue(), selectedFloor);
     }
 
@@ -127,10 +133,14 @@ public class DungeonEditor extends javax.swing.JFrame {
         chkCondSave = new javax.swing.JCheckBox();
         chkRecruitable = new javax.swing.JCheckBox();
         pnlUnknown = new javax.swing.JPanel();
-        lblOffset = new javax.swing.JLabel();
-        lblValue = new javax.swing.JLabel();
-        cmoUnknownOffset = new javax.swing.JComboBox<>();
-        txtUnknownValue = new javax.swing.JTextField();
+        lblUnk1 = new javax.swing.JLabel();
+        lblUnk3 = new javax.swing.JLabel();
+        lblUnkE = new javax.swing.JLabel();
+        spnUnk1 = new javax.swing.JSpinner();
+        spnUnk3 = new javax.swing.JSpinner();
+        spnUnkE = new javax.swing.JSpinner();
+        chkUnk8 = new javax.swing.JCheckBox();
+        chkUnk9 = new javax.swing.JCheckBox();
         pnlFloors = new javax.swing.JPanel();
         lblFloorNo = new javax.swing.JLabel();
         spnFloorNo = new javax.swing.JSpinner();
@@ -138,23 +148,30 @@ public class DungeonEditor extends javax.swing.JFrame {
         lblFloorPokemon = new javax.swing.JLabel();
         lblFloorItems = new javax.swing.JLabel();
         lblFloorTraps = new javax.swing.JLabel();
-        lblFloorUnknown1 = new javax.swing.JLabel();
-        lblFloorUnknown2 = new javax.swing.JLabel();
-        lblFloorUnknown3 = new javax.swing.JLabel();
-        lblFloorUnknown4 = new javax.swing.JLabel();
+        lblFloorItemsShop = new javax.swing.JLabel();
+        lblFloorItemsMonster = new javax.swing.JLabel();
+        lblFloorItemsBuried = new javax.swing.JLabel();
         spnFloorLayout = new javax.swing.JSpinner();
         spnFloorPokemon = new javax.swing.JSpinner();
         spnFloorItems = new javax.swing.JSpinner();
         spnFloorTraps = new javax.swing.JSpinner();
-        spnFloorUnknown1 = new javax.swing.JSpinner();
-        spnFloorUnknown2 = new javax.swing.JSpinner();
-        spnFloorUnknown3 = new javax.swing.JSpinner();
-        spnFloorUnknown4 = new javax.swing.JSpinner();
+        spnFloorItemsShop = new javax.swing.JSpinner();
+        spnFloorItemsMonster = new javax.swing.JSpinner();
+        spnFloorItemsBuried = new javax.swing.JSpinner();
         btnFloorLayout = new javax.swing.JButton();
         btnFloorPokemon = new javax.swing.JButton();
         btnFloorItems = new javax.swing.JButton();
         btnFloorTraps = new javax.swing.JButton();
         btnSaveFloor = new javax.swing.JButton();
+        btnFloorItemsShop = new javax.swing.JButton();
+        btnFloorItemsMonster = new javax.swing.JButton();
+        btnFloorItemsBuried = new javax.swing.JButton();
+        pnlEntrance = new javax.swing.JPanel();
+        chkHMFly = new javax.swing.JCheckBox();
+        chkHMDive = new javax.swing.JCheckBox();
+        chkHMSurf = new javax.swing.JCheckBox();
+        chkWaterType = new javax.swing.JCheckBox();
+        chkHMWaterfall = new javax.swing.JCheckBox();
         btnSave = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listDungeons = new javax.swing.JList<>();
@@ -198,29 +215,22 @@ public class DungeonEditor extends javax.swing.JFrame {
             .addGroup(pnlGeneralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlGeneralLayout.createSequentialGroup()
-                        .addComponent(chkRecruitable)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlGeneralLayout.createSequentialGroup()
-                        .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlGeneralLayout.createSequentialGroup()
-                                .addComponent(chkCondSave)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(pnlGeneralLayout.createSequentialGroup()
-                                .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblMaxParty)
-                                    .addComponent(lblMaxItems)
-                                    .addComponent(lblTimerLimit)
-                                    .addComponent(lblStairType)
-                                    .addComponent(chkCondMoney)
-                                    .addComponent(chkCondLevel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmoStairType, javax.swing.GroupLayout.Alignment.TRAILING, 0, 100, Short.MAX_VALUE)
-                                    .addComponent(spnTimerLimit, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(spnMaxItems, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(spnMaxParty, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addContainerGap())))
+                    .addComponent(lblMaxParty)
+                    .addComponent(lblMaxItems)
+                    .addComponent(lblTimerLimit)
+                    .addComponent(lblStairType)
+                    .addComponent(chkCondMoney)
+                    .addComponent(chkCondLevel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
+                .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkCondSave)
+                    .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cmoStairType, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(spnTimerLimit, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(spnMaxItems, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(spnMaxParty, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(chkRecruitable))
+                .addContainerGap())
         );
         pnlGeneralLayout.setVerticalGroup(
             pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,30 +251,34 @@ public class DungeonEditor extends javax.swing.JFrame {
                     .addComponent(lblMaxParty)
                     .addComponent(spnMaxParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(chkCondLevel)
+                .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkCondLevel)
+                    .addComponent(chkCondSave))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkCondMoney)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkCondSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkRecruitable))
+                .addGroup(pnlGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkCondMoney)
+                    .addComponent(chkRecruitable))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlUnknown.setBorder(javax.swing.BorderFactory.createTitledBorder("Unknown"));
 
-        lblOffset.setText("Offset");
+        lblUnk1.setText("byte (0x1)");
+        lblUnk1.setToolTipText("");
 
-        lblValue.setText("Value");
+        lblUnk3.setText("ubyte (0x3)");
 
-        cmoUnknownOffset.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0x1 (Byte)", "0x3 (Byte)", "0x8 (Short)", "0xB (Byte)", "0xE (Short)" }));
-        cmoUnknownOffset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmoUnknownOffsetActionPerformed(evt);
-            }
-        });
+        lblUnkE.setText("short (0xE)");
 
-        txtUnknownValue.setEditable(false);
-        txtUnknownValue.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        spnUnk1.setModel(new javax.swing.SpinnerNumberModel((byte)0, null, null, (byte)1));
+
+        spnUnk3.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
+
+        spnUnkE.setModel(new javax.swing.SpinnerNumberModel((short)0, null, null, (short)1));
+
+        chkUnk8.setText("bool (0x8) (seen in post-game dungeons)");
+
+        chkUnk9.setText("bool (0x9) (seen in story-game dungeons)");
 
         javax.swing.GroupLayout pnlUnknownLayout = new javax.swing.GroupLayout(pnlUnknown);
         pnlUnknown.setLayout(pnlUnknownLayout);
@@ -273,24 +287,42 @@ public class DungeonEditor extends javax.swing.JFrame {
             .addGroup(pnlUnknownLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblOffset)
-                    .addComponent(lblValue))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmoUnknownOffset, 0, 100, Short.MAX_VALUE)
-                    .addComponent(txtUnknownValue))
-                .addContainerGap())
+                    .addGroup(pnlUnknownLayout.createSequentialGroup()
+                        .addComponent(lblUnkE)
+                        .addGap(21, 21, 21)
+                        .addComponent(spnUnkE, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUnknownLayout.createSequentialGroup()
+                        .addGroup(pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlUnknownLayout.createSequentialGroup()
+                                .addComponent(lblUnk1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(spnUnk1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlUnknownLayout.createSequentialGroup()
+                                .addComponent(lblUnk3)
+                                .addGap(18, 18, 18)
+                                .addComponent(spnUnk3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkUnk8)
+                            .addComponent(chkUnk9))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlUnknownLayout.setVerticalGroup(
             pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlUnknownLayout.createSequentialGroup()
                 .addGroup(pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOffset)
-                    .addComponent(cmoUnknownOffset, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUnk1)
+                    .addComponent(spnUnk1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkUnk8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblValue)
-                    .addComponent(txtUnknownValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblUnk3)
+                    .addComponent(spnUnk3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkUnk9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlUnknownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUnkE)
+                    .addComponent(spnUnkE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pnlFloors.setBorder(javax.swing.BorderFactory.createTitledBorder("Floor data"));
@@ -311,13 +343,11 @@ public class DungeonEditor extends javax.swing.JFrame {
 
         lblFloorTraps.setText("Traps");
 
-        lblFloorUnknown1.setText("Unknown ID");
+        lblFloorItemsShop.setText("Kecleon Shop items");
 
-        lblFloorUnknown2.setText("Unknown ID");
+        lblFloorItemsMonster.setText("Monster Room items");
 
-        lblFloorUnknown3.setText("Unknown ID");
-
-        lblFloorUnknown4.setText("Unknown ID");
+        lblFloorItemsBuried.setText("Buried items");
 
         spnFloorLayout.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorLayout, "0"));
 
@@ -327,20 +357,19 @@ public class DungeonEditor extends javax.swing.JFrame {
 
         spnFloorTraps.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorTraps, "0"));
 
-        spnFloorUnknown1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 65535, 1));
-        spnFloorUnknown1.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorUnknown1, "0"));
+        spnFloorItemsShop.setModel(new javax.swing.SpinnerNumberModel(0, 0, 65535, 1));
+        spnFloorItemsShop.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorItemsShop, "0"));
 
-        spnFloorUnknown2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 65535, 1));
-        spnFloorUnknown2.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorUnknown2, "0"));
+        spnFloorItemsMonster.setModel(new javax.swing.SpinnerNumberModel(0, 0, 65535, 1));
+        spnFloorItemsMonster.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorItemsMonster, "0"));
 
-        spnFloorUnknown3.setModel(new javax.swing.SpinnerNumberModel(0, 0, 65535, 1));
-        spnFloorUnknown3.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorUnknown3, "0"));
-
-        spnFloorUnknown4.setModel(new javax.swing.SpinnerNumberModel(0, 0, 65535, 1));
-        spnFloorUnknown4.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorUnknown4, "0"));
+        spnFloorItemsBuried.setModel(new javax.swing.SpinnerNumberModel(0, 0, 65535, 1));
+        spnFloorItemsBuried.setEditor(new javax.swing.JSpinner.NumberEditor(spnFloorItemsBuried, "0"));
 
         btnFloorLayout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/to-editor.png"))); // NOI18N
-        btnFloorLayout.setText("Edit");
+        btnFloorLayout.setMaximumSize(new java.awt.Dimension(49, 20));
+        btnFloorLayout.setMinimumSize(new java.awt.Dimension(49, 20));
+        btnFloorLayout.setPreferredSize(new java.awt.Dimension(49, 20));
         btnFloorLayout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFloorLayoutActionPerformed(evt);
@@ -348,7 +377,9 @@ public class DungeonEditor extends javax.swing.JFrame {
         });
 
         btnFloorPokemon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/to-editor.png"))); // NOI18N
-        btnFloorPokemon.setText("Edit");
+        btnFloorPokemon.setMaximumSize(new java.awt.Dimension(49, 20));
+        btnFloorPokemon.setMinimumSize(new java.awt.Dimension(49, 20));
+        btnFloorPokemon.setPreferredSize(new java.awt.Dimension(49, 20));
         btnFloorPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFloorPokemonActionPerformed(evt);
@@ -356,7 +387,9 @@ public class DungeonEditor extends javax.swing.JFrame {
         });
 
         btnFloorItems.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/to-editor.png"))); // NOI18N
-        btnFloorItems.setText("Edit");
+        btnFloorItems.setMaximumSize(new java.awt.Dimension(49, 20));
+        btnFloorItems.setMinimumSize(new java.awt.Dimension(49, 20));
+        btnFloorItems.setPreferredSize(new java.awt.Dimension(49, 20));
         btnFloorItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFloorItemsActionPerformed(evt);
@@ -364,7 +397,9 @@ public class DungeonEditor extends javax.swing.JFrame {
         });
 
         btnFloorTraps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/to-editor.png"))); // NOI18N
-        btnFloorTraps.setText("Edit");
+        btnFloorTraps.setMaximumSize(new java.awt.Dimension(49, 20));
+        btnFloorTraps.setMinimumSize(new java.awt.Dimension(49, 20));
+        btnFloorTraps.setPreferredSize(new java.awt.Dimension(49, 20));
         btnFloorTraps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFloorTrapsActionPerformed(evt);
@@ -378,6 +413,36 @@ public class DungeonEditor extends javax.swing.JFrame {
             }
         });
 
+        btnFloorItemsShop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/to-editor.png"))); // NOI18N
+        btnFloorItemsShop.setMaximumSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsShop.setMinimumSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsShop.setPreferredSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsShop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFloorItemsActionPerformed(evt);
+            }
+        });
+
+        btnFloorItemsMonster.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/to-editor.png"))); // NOI18N
+        btnFloorItemsMonster.setMaximumSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsMonster.setMinimumSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsMonster.setPreferredSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsMonster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFloorItemsActionPerformed(evt);
+            }
+        });
+
+        btnFloorItemsBuried.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/to-editor.png"))); // NOI18N
+        btnFloorItemsBuried.setMaximumSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsBuried.setMinimumSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsBuried.setPreferredSize(new java.awt.Dimension(49, 20));
+        btnFloorItemsBuried.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFloorItemsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlFloorsLayout = new javax.swing.GroupLayout(pnlFloors);
         pnlFloors.setLayout(pnlFloorsLayout);
         pnlFloorsLayout.setHorizontalGroup(
@@ -386,42 +451,44 @@ public class DungeonEditor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFloorsLayout.createSequentialGroup()
-                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlFloorsLayout.createSequentialGroup()
-                                .addComponent(lblFloorNo)
-                                .addGap(18, 18, 18)
-                                .addComponent(spnFloorNo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlFloorsLayout.createSequentialGroup()
-                                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFloorTraps)
-                                    .addComponent(lblFloorLayout)
-                                    .addComponent(lblFloorPokemon)
-                                    .addComponent(lblFloorItems)
-                                    .addComponent(lblFloorUnknown1)
-                                    .addComponent(lblFloorUnknown2)
-                                    .addComponent(lblFloorUnknown3))
-                                .addGap(30, 30, 30)
-                                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(spnFloorUnknown3)
-                                    .addComponent(spnFloorUnknown2)
-                                    .addComponent(spnFloorUnknown1)
-                                    .addComponent(spnFloorLayout, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(spnFloorTraps, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(spnFloorItems)
-                                    .addComponent(spnFloorPokemon)
-                                    .addComponent(spnFloorUnknown4))))
-                        .addGap(10, 10, 10)
-                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnFloorPokemon)
-                            .addComponent(btnFloorLayout, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFloorItems)
-                            .addComponent(btnFloorTraps)))
+                        .addComponent(lblFloorPokemon)
+                        .addGap(67, 67, 67)
+                        .addComponent(spnFloorPokemon))
+                    .addGroup(pnlFloorsLayout.createSequentialGroup()
+                        .addComponent(lblFloorLayout)
+                        .addGap(77, 77, 77)
+                        .addComponent(spnFloorLayout))
+                    .addComponent(btnSaveFloor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlFloorsLayout.createSequentialGroup()
+                        .addComponent(lblFloorNo)
+                        .addGap(18, 18, 18)
+                        .addComponent(spnFloorNo))
                     .addGroup(pnlFloorsLayout.createSequentialGroup()
                         .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFloorUnknown4)
-                            .addComponent(btnSaveFloor, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(lblFloorTraps)
+                            .addComponent(lblFloorItems)
+                            .addComponent(lblFloorItemsMonster)
+                            .addComponent(lblFloorItemsBuried)
+                            .addComponent(lblFloorItemsShop))
+                        .addGap(13, 13, 13)
+                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spnFloorItemsBuried, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                            .addComponent(spnFloorItemsMonster, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spnFloorItemsShop, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spnFloorTraps, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spnFloorItems))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnFloorPokemon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFloorLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFloorItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFloorTraps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFloorItemsShop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnFloorItemsMonster, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnFloorItemsBuried, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         pnlFloorsLayout.setVerticalGroup(
             pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,45 +496,100 @@ public class DungeonEditor extends javax.swing.JFrame {
                 .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFloorNo)
                     .addComponent(spnFloorNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorLayout)
-                    .addComponent(spnFloorLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFloorLayout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorPokemon)
-                    .addComponent(spnFloorPokemon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFloorPokemon))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorItems)
-                    .addComponent(spnFloorItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFloorItems))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorTraps)
-                    .addComponent(spnFloorTraps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFloorTraps))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorUnknown1)
-                    .addComponent(spnFloorUnknown1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorUnknown2)
-                    .addComponent(spnFloorUnknown2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorUnknown3)
-                    .addComponent(spnFloorUnknown3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFloorUnknown4)
-                    .addComponent(spnFloorUnknown4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlFloorsLayout.createSequentialGroup()
+                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlFloorsLayout.createSequentialGroup()
+                                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pnlFloorsLayout.createSequentialGroup()
+                                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(lblFloorLayout)
+                                                .addComponent(spnFloorLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(btnFloorLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(lblFloorPokemon)
+                                                .addComponent(spnFloorPokemon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(btnFloorPokemon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(pnlFloorsLayout.createSequentialGroup()
+                                                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(spnFloorItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblFloorItems))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(spnFloorTraps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblFloorTraps)))
+                                            .addGroup(pnlFloorsLayout.createSequentialGroup()
+                                                .addComponent(btnFloorItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnFloorTraps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblFloorItemsShop)
+                                            .addComponent(spnFloorItemsShop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnFloorItemsShop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(spnFloorItemsMonster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFloorItemsMonster)))
+                            .addComponent(btnFloorItemsMonster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlFloorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spnFloorItemsBuried, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFloorItemsBuried)))
+                    .addComponent(btnFloorItemsBuried, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addComponent(btnSaveFloor)
                 .addContainerGap())
+        );
+
+        pnlEntrance.setBorder(javax.swing.BorderFactory.createTitledBorder("Entry conditions"));
+
+        chkHMFly.setText("HM Fly required");
+
+        chkHMDive.setText("HM Dive required");
+
+        chkHMSurf.setText("HM Surf required");
+
+        chkWaterType.setText("Water-type required");
+
+        chkHMWaterfall.setText("HM Waterfall required");
+
+        javax.swing.GroupLayout pnlEntranceLayout = new javax.swing.GroupLayout(pnlEntrance);
+        pnlEntrance.setLayout(pnlEntranceLayout);
+        pnlEntranceLayout.setHorizontalGroup(
+            pnlEntranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEntranceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlEntranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEntranceLayout.createSequentialGroup()
+                        .addComponent(chkHMSurf)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlEntranceLayout.createSequentialGroup()
+                        .addGroup(pnlEntranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkWaterType)
+                            .addComponent(chkHMWaterfall)
+                            .addComponent(chkHMFly)
+                            .addComponent(chkHMDive))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        pnlEntranceLayout.setVerticalGroup(
+            pnlEntranceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEntranceLayout.createSequentialGroup()
+                .addComponent(chkHMFly)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkHMWaterfall)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkHMDive)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkHMSurf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkWaterType))
         );
 
         btnSave.setText("Save");
@@ -493,32 +615,38 @@ public class DungeonEditor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pnlGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pnlEntrance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pnlFloors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnlUnknown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlUnknown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlFloors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pnlEntrance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnlFloors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlUnknown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnSave))
-                        .addComponent(pnlFloors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSave)
+                .addContainerGap())
         );
 
         pack();
@@ -528,10 +656,6 @@ public class DungeonEditor extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         save();
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void cmoUnknownOffsetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmoUnknownOffsetActionPerformed
-        loadUnknownBytes();
-    }//GEN-LAST:event_cmoUnknownOffsetActionPerformed
 
     private void spnFloorNoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnFloorNoStateChanged
         loadFloorData();
@@ -547,7 +671,7 @@ public class DungeonEditor extends javax.swing.JFrame {
 
     private void btnFloorItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloorItemsActionPerformed
         JOptionPane.showMessageDialog(this, "Item editing is not supported.", Main.name, JOptionPane.PLAIN_MESSAGE, null);
-        //new DungeonItemEditor((int) spnFloorItems.getValue()).setVisible(true);
+        //new DungeonItemEditor((int) ((JSpinner) evt.getSource()).getValue()).setVisible(true);
     }//GEN-LAST:event_btnFloorItemsActionPerformed
 
     private void btnFloorTrapsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloorTrapsActionPerformed
@@ -568,6 +692,9 @@ public class DungeonEditor extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFloorItems;
+    private javax.swing.JButton btnFloorItemsBuried;
+    private javax.swing.JButton btnFloorItemsMonster;
+    private javax.swing.JButton btnFloorItemsShop;
     private javax.swing.JButton btnFloorLayout;
     private javax.swing.JButton btnFloorPokemon;
     private javax.swing.JButton btnFloorTraps;
@@ -576,41 +703,49 @@ public class DungeonEditor extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkCondLevel;
     private javax.swing.JCheckBox chkCondMoney;
     private javax.swing.JCheckBox chkCondSave;
+    private javax.swing.JCheckBox chkHMDive;
+    private javax.swing.JCheckBox chkHMFly;
+    private javax.swing.JCheckBox chkHMSurf;
+    private javax.swing.JCheckBox chkHMWaterfall;
     private javax.swing.JCheckBox chkRecruitable;
+    private javax.swing.JCheckBox chkUnk8;
+    private javax.swing.JCheckBox chkUnk9;
+    private javax.swing.JCheckBox chkWaterType;
     private javax.swing.JComboBox<String> cmoStairType;
-    private javax.swing.JComboBox<String> cmoUnknownOffset;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFloorItems;
+    private javax.swing.JLabel lblFloorItemsBuried;
+    private javax.swing.JLabel lblFloorItemsMonster;
+    private javax.swing.JLabel lblFloorItemsShop;
     private javax.swing.JLabel lblFloorLayout;
     private javax.swing.JLabel lblFloorNo;
     private javax.swing.JLabel lblFloorPokemon;
     private javax.swing.JLabel lblFloorTraps;
-    private javax.swing.JLabel lblFloorUnknown1;
-    private javax.swing.JLabel lblFloorUnknown2;
-    private javax.swing.JLabel lblFloorUnknown3;
-    private javax.swing.JLabel lblFloorUnknown4;
     private javax.swing.JLabel lblMaxItems;
     private javax.swing.JLabel lblMaxParty;
-    private javax.swing.JLabel lblOffset;
     private javax.swing.JLabel lblStairType;
     private javax.swing.JLabel lblTimerLimit;
-    private javax.swing.JLabel lblValue;
+    private javax.swing.JLabel lblUnk1;
+    private javax.swing.JLabel lblUnk3;
+    private javax.swing.JLabel lblUnkE;
     private javax.swing.JList<String> listDungeons;
+    private javax.swing.JPanel pnlEntrance;
     private javax.swing.JPanel pnlFloors;
     private javax.swing.JPanel pnlGeneral;
     private javax.swing.JPanel pnlUnknown;
     private javax.swing.JSpinner spnFloorItems;
+    private javax.swing.JSpinner spnFloorItemsBuried;
+    private javax.swing.JSpinner spnFloorItemsMonster;
+    private javax.swing.JSpinner spnFloorItemsShop;
     private javax.swing.JSpinner spnFloorLayout;
     private javax.swing.JSpinner spnFloorNo;
     private javax.swing.JSpinner spnFloorPokemon;
     private javax.swing.JSpinner spnFloorTraps;
-    private javax.swing.JSpinner spnFloorUnknown1;
-    private javax.swing.JSpinner spnFloorUnknown2;
-    private javax.swing.JSpinner spnFloorUnknown3;
-    private javax.swing.JSpinner spnFloorUnknown4;
     private javax.swing.JSpinner spnMaxItems;
     private javax.swing.JSpinner spnMaxParty;
     private javax.swing.JSpinner spnTimerLimit;
-    private javax.swing.JTextField txtUnknownValue;
+    private javax.swing.JSpinner spnUnk1;
+    private javax.swing.JSpinner spnUnk3;
+    private javax.swing.JSpinner spnUnkE;
     // End of variables declaration//GEN-END:variables
 }

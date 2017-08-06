@@ -31,15 +31,17 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSave" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="pnlGeneral" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="pnlDungeon" max="32767" attributes="0"/>
-                  <Component id="pnlMisc" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pnlGeneral" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="pnlDungeon" max="32767" attributes="0"/>
+                          <Component id="pnlMisc" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="btnSave" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -50,20 +52,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="pnlGeneral" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="pnlDungeon" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlMisc" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlGeneral" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -341,20 +339,19 @@
                               <Component id="lblUnkThrowing1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblUnkThrowing2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="54" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="spnUnkThrowing2" max="32767" attributes="0"/>
                               <Component id="spnUnkThrowing1" pref="90" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="chkThrowingDamage" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="chkUnkFood2" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkThrowingDamage" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkUnkFood1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="chkUnkFood1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="chkUnkFood2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -375,11 +372,10 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="chkThrowingDamage" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkUnkFood1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkUnkFood2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkUnkFood1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkUnkFood2" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -387,12 +383,12 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblUnkThrowing1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unk. throwing factor"/>
+            <Property name="text" type="java.lang.String" value="Unk. throwing factor 1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUnkThrowing2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unk. throwing factor"/>
+            <Property name="text" type="java.lang.String" value="Unk. throwing factor 2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnUnkThrowing1">
@@ -422,12 +418,12 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="chkUnkFood1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unk. food bool"/>
+            <Property name="text" type="java.lang.String" value="Unk. food bool 1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="chkUnkFood2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unk. food bool"/>
+            <Property name="text" type="java.lang.String" value="Unk. food bool 2"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -447,17 +443,27 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblNamePointer" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPalette" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDescriptionPointer" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblIcon" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cmoIcon" pref="0" max="32767" attributes="0"/>
-                      <Component id="txtNamePointer" alignment="1" pref="116" max="32767" attributes="0"/>
-                      <Component id="spnPalette" max="32767" attributes="0"/>
-                      <Component id="txtDescriptionPointer" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblIcon" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cmoIcon" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblPalette" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="spnPalette" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblNamePointer" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDescriptionPointer" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtDescriptionPointer" pref="125" max="32767" attributes="0"/>
+                              <Component id="txtNamePointer" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -472,18 +478,18 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="spnPalette" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPalette" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnPalette" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtNamePointer" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblNamePointer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNamePointer" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtDescriptionPointer" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblDescriptionPointer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDescriptionPointer" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>

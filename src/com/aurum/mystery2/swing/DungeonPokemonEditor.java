@@ -19,7 +19,6 @@ package com.aurum.mystery2.swing;
 
 import javax.swing.DefaultListModel;
 import com.aurum.mystery2.Lists;
-import com.aurum.mystery2.Main;
 import com.aurum.mystery2.game.RomFile;
 import com.aurum.mystery2.game.DungeonPokemon;
 

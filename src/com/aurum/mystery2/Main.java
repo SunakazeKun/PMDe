@@ -38,7 +38,7 @@ import com.aurum.mystery2.swing.MapEditor;
 import com.aurum.mystery2.swing.MoveEditor;
 
 public class Main extends javax.swing.JFrame {
-    public static String name = "PMDe v1 (Beta)";
+    public static String name = "PMDe v1.01 (Beta)";
     public static Image icon = Toolkit.getDefaultToolkit().createImage(Main.class.getResource("/res/icon.png"));
     
     public static void main(String[] args) throws IOException {

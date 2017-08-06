@@ -31,16 +31,23 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
-                  <Component id="btnSave" min="-2" pref="125" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnlGeneral" max="32767" attributes="0"/>
+                                  <Component id="pnlEntrance" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlFloors" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="pnlUnknown" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="btnSave" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="pnlGeneral" max="32767" attributes="0"/>
-                  <Component id="pnlUnknown" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnlFloors" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -49,22 +56,24 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="pnlGeneral" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="pnlGeneral" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlEntrance" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="pnlFloors" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlUnknown" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="pnlFloors" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,37 +94,25 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="chkRecruitable" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="chkCondSave" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblMaxParty" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblMaxItems" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTimerLimit" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblStairType" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="chkCondMoney" min="-2" max="-2" attributes="0"/>
-                                      <Component id="chkCondLevel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="cmoStairType" alignment="1" pref="100" max="32767" attributes="0"/>
-                                      <Component id="spnTimerLimit" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="spnMaxItems" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="spnMaxParty" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblMaxParty" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMaxItems" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTimerLimit" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblStairType" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkCondMoney" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkCondLevel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace pref="4" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="chkCondSave" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cmoStairType" alignment="1" max="32767" attributes="0"/>
+                          <Component id="spnTimerLimit" alignment="1" max="32767" attributes="0"/>
+                          <Component id="spnMaxItems" alignment="1" max="32767" attributes="0"/>
+                          <Component id="spnMaxParty" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="chkRecruitable" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -142,13 +139,16 @@
                       <Component id="spnMaxParty" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="chkCondLevel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="chkCondLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkCondSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="chkCondMoney" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="chkCondSave" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="chkRecruitable" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="chkCondMoney" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkRecruitable" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -248,15 +248,32 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblOffset" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblValue" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblUnkE" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="spnUnkE" min="-2" pref="80" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblUnk1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="spnUnk1" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="lblUnk3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="spnUnk3" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="chkUnk8" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkUnk9" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="72" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="cmoUnknownOffset" pref="100" max="32767" attributes="0"/>
-                      <Component id="txtUnknownValue" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -264,52 +281,71 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblOffset" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmoUnknownOffset" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUnk1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnUnk1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkUnk8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtUnknownValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUnk3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnUnk3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkUnk9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblUnkE" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnUnkE" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblOffset">
+        <Component class="javax.swing.JLabel" name="lblUnk1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Offset"/>
+            <Property name="text" type="java.lang.String" value="byte (0x1)"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblValue">
+        <Component class="javax.swing.JLabel" name="lblUnk3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Value"/>
+            <Property name="text" type="java.lang.String" value="ubyte (0x3)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmoUnknownOffset">
+        <Component class="javax.swing.JLabel" name="lblUnkE">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="0x1 (Byte)"/>
-                <StringItem index="1" value="0x3 (Byte)"/>
-                <StringItem index="2" value="0x8 (Short)"/>
-                <StringItem index="3" value="0xB (Byte)"/>
-                <StringItem index="4" value="0xE (Short)"/>
-              </StringArray>
+            <Property name="text" type="java.lang.String" value="short (0xE)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnUnk1">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmoUnknownOffsetActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUnknownValue">
+        <Component class="javax.swing.JSpinner" name="spnUnk3">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnUnkE">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkUnk8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x8) (seen in post-game dungeons)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkUnk9">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x9) (seen in story-game dungeons)"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -330,52 +366,54 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lblFloorNo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="spnFloorNo" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblFloorTraps" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblFloorLayout" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblFloorPokemon" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblFloorItems" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblFloorUnknown1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblFloorUnknown2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblFloorUnknown3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="spnFloorUnknown3" max="32767" attributes="0"/>
-                                      <Component id="spnFloorUnknown2" max="32767" attributes="0"/>
-                                      <Component id="spnFloorUnknown1" max="32767" attributes="0"/>
-                                      <Component id="spnFloorLayout" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="spnFloorTraps" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="spnFloorItems" max="32767" attributes="0"/>
-                                      <Component id="spnFloorPokemon" max="32767" attributes="0"/>
-                                      <Component id="spnFloorUnknown4" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnFloorPokemon" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnFloorLayout" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnFloorItems" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnFloorTraps" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblFloorPokemon" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="spnFloorPokemon" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
+                          <Component id="lblFloorLayout" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          <Component id="spnFloorLayout" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="btnSaveFloor" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="lblFloorNo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="spnFloorNo" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblFloorUnknown4" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSaveFloor" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="lblFloorTraps" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFloorItems" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFloorItemsMonster" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFloorItemsBuried" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFloorItemsShop" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="spnFloorItemsBuried" alignment="1" pref="88" max="32767" attributes="0"/>
+                              <Component id="spnFloorItemsMonster" alignment="1" max="32767" attributes="0"/>
+                              <Component id="spnFloorItemsShop" alignment="1" max="32767" attributes="0"/>
+                              <Component id="spnFloorTraps" alignment="1" max="32767" attributes="0"/>
+                              <Component id="spnFloorItems" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnFloorPokemon" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnFloorLayout" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnFloorItems" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnFloorTraps" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnFloorItemsShop" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btnFloorItemsMonster" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="btnFloorItemsBuried" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -386,51 +424,72 @@
                       <Component id="lblFloorNo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="spnFloorNo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorLayout" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorLayout" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnFloorLayout" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                  <Component id="lblFloorLayout" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="spnFloorLayout" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="btnFloorLayout" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                  <Component id="lblFloorPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="spnFloorPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="btnFloorPokemon" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="spnFloorItems" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblFloorItems" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="spnFloorTraps" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblFloorTraps" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="btnFloorItems" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="btnFloorTraps" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="lblFloorItemsShop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="spnFloorItemsShop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="btnFloorItemsShop" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="spnFloorItemsMonster" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblFloorItemsMonster" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="btnFloorItemsMonster" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="spnFloorItemsBuried" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFloorItemsBuried" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="btnFloorItemsBuried" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnFloorPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorItems" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorItems" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnFloorItems" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorTraps" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorTraps" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnFloorTraps" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorUnknown1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorUnknown1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorUnknown2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorUnknown2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorUnknown3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorUnknown3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFloorUnknown4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnFloorUnknown4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="btnSaveFloor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -468,24 +527,19 @@
             <Property name="text" type="java.lang.String" value="Traps"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblFloorUnknown1">
+        <Component class="javax.swing.JLabel" name="lblFloorItemsShop">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unknown ID"/>
+            <Property name="text" type="java.lang.String" value="Kecleon Shop items"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblFloorUnknown2">
+        <Component class="javax.swing.JLabel" name="lblFloorItemsMonster">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unknown ID"/>
+            <Property name="text" type="java.lang.String" value="Monster Room items"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblFloorUnknown3">
+        <Component class="javax.swing.JLabel" name="lblFloorItemsBuried">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unknown ID"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblFloorUnknown4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Unknown ID"/>
+            <Property name="text" type="java.lang.String" value="Buried items"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnFloorLayout">
@@ -516,7 +570,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnFloorUnknown1">
+        <Component class="javax.swing.JSpinner" name="spnFloorItemsShop">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -526,7 +580,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnFloorUnknown2">
+        <Component class="javax.swing.JSpinner" name="spnFloorItemsMonster">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -536,17 +590,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnFloorUnknown3">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
-              <SpinnerEditor format="0" type="3"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnFloorUnknown4">
+        <Component class="javax.swing.JSpinner" name="spnFloorItemsBuried">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -561,7 +605,15 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/res/to-editor.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloorLayoutActionPerformed"/>
@@ -572,7 +624,15 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/res/to-editor.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloorPokemonActionPerformed"/>
@@ -583,7 +643,15 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/res/to-editor.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloorItemsActionPerformed"/>
@@ -594,7 +662,15 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/res/to-editor.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloorTrapsActionPerformed"/>
@@ -607,6 +683,139 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveFloorActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnFloorItemsShop">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/res/to-editor.png"/>
+            </Property>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloorItemsActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnFloorItemsMonster">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/res/to-editor.png"/>
+            </Property>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloorItemsActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnFloorItemsBuried">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/res/to-editor.png"/>
+            </Property>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[49, 20]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloorItemsActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pnlEntrance">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Entry conditions"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="chkHMSurf" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="chkWaterType" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkHMWaterfall" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkHMFly" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkHMDive" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="chkHMFly" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkHMWaterfall" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkHMDive" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkHMSurf" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkWaterType" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JCheckBox" name="chkHMFly">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="HM Fly required"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkHMDive">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="HM Dive required"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkHMSurf">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="HM Surf required"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkWaterType">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Water-type required"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkHMWaterfall">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="HM Waterfall required"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

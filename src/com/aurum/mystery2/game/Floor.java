@@ -22,7 +22,7 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Floor implements Cloneable {
     // Entry fields
-    public int layoutID, pokemonID, trapsID, itemsID, unk8, unkA, unkC, unkE;
+    public int layoutID, pokemonID, trapsID, itemsID, itemsShopID, itemsMonsterID, itemsBuriedID;
     
     // Static fields
     public static final int SIZE = 0x10;
@@ -44,10 +44,10 @@ public class Floor implements Cloneable {
         floor.pokemonID = buffer.readUShort();
         floor.trapsID = buffer.readUShort();
         floor.itemsID = buffer.readUShort();
-        floor.unk8 = buffer.readUShort();
-        floor.unkA = buffer.readUShort();
-        floor.unkC = buffer.readUShort();
-        floor.unkE = buffer.readUShort();
+        floor.itemsShopID = buffer.readUShort();
+        floor.itemsMonsterID = buffer.readUShort();
+        floor.itemsBuriedID = buffer.readUShort();
+        buffer.skip(0x2);
         
         return floor;
     }
@@ -59,10 +59,10 @@ public class Floor implements Cloneable {
         buffer.writeUShort(floor.pokemonID);
         buffer.writeUShort(floor.trapsID);
         buffer.writeUShort(floor.itemsID);
-        buffer.writeUShort(floor.unk8);
-        buffer.writeUShort(floor.unkA);
-        buffer.writeUShort(floor.unkC);
-        buffer.writeUShort(floor.unkE);
+        buffer.writeUShort(floor.itemsShopID);
+        buffer.writeUShort(floor.itemsMonsterID);
+        buffer.writeUShort(floor.itemsBuriedID);
+        buffer.writeShort((short) 0x0);
         
         return buffer.getContent();
     }

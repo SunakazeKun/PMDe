@@ -31,23 +31,23 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSave" min="-2" pref="90" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
+                  <Component id="btnSave" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="pnlLayout" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="pnlUnknown" max="32767" attributes="0"/>
-                          <Component id="pnlDensity" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="pnlTileset" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlGeneral" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlGeneral" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="pnlGenerator" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="pnlObject" max="32767" attributes="0"/>
+                          <Component id="pnlUnknown" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -58,24 +58,24 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlTileset" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlGeneral" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="pnlGeneral" min="-2" pref="154" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="pnlLayout" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="pnlDensity" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="pnlUnknown" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="pnlObject" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="pnlUnknown" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="331" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="pnlTileset" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlGenerator" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -86,6 +86,55 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlTileset">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Tileset"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="lblTileset" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Component id="spnTileset" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="lblTileset" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="spnTileset" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblTileset">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/res/tilesets/0.png"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnTileset">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="75" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="spnTilesetStateChanged"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JPanel" name="pnlGeneral">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -102,32 +151,23 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblNo" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFloorNo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="spnFloorNo" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMoney" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblVisibility" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="spnVisibility" pref="110" max="32767" attributes="0"/>
-                              <Component id="spnEvent" alignment="1" max="32767" attributes="0"/>
-                              <Component id="spnMoney" alignment="1" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMusic" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblWeather" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblVisibility" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEvent" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="96" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="cmoMusic" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="cmoEvent" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cmoVisibility" alignment="1" max="32767" attributes="0"/>
                               <Component id="cmoWeather" max="32767" attributes="0"/>
+                              <Component id="cmoMusic" pref="200" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -139,7 +179,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblFloorNo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="spnFloorNo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -154,18 +194,13 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="spnVisibility" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmoVisibility" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblVisibility" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="spnEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmoEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblEvent" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="spnMoney" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblMoney" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -173,9 +208,9 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblNo">
+        <Component class="javax.swing.JLabel" name="lblFloorNo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="No."/>
+            <Property name="text" type="java.lang.String" value="No. for debugging"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMusic">
@@ -198,9 +233,11 @@
             <Property name="text" type="java.lang.String" value="Event"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblMoney">
+        <Component class="javax.swing.JSpinner" name="spnFloorNo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Max. POK&#xe9; factor"/>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="1" maximum="99" minimum="1" numberType="java.lang.Byte" stepSize="1" type="number"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmoMusic">
@@ -280,8 +317,8 @@
                 <StringItem index="70" value="46: Tiny Woods"/>
                 <StringItem index="71" value="47: Tiny Woods"/>
                 <StringItem index="72" value="48: Tiny Woods"/>
-                <StringItem index="73" value="49: Tiny Woods"/>
-                <StringItem index="74" value="4A: Stormy Sea Boss"/>
+                <StringItem index="73" value="49: Silver Trench Ambience"/>
+                <StringItem index="74" value="4A: Stormy Sea Ambience"/>
               </StringArray>
             </Property>
           </Properties>
@@ -309,126 +346,101 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnVisibility">
+        <Component class="javax.swing.JComboBox" name="cmoVisibility">
           <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="00: Normal"/>
+                <StringItem index="1" value="01: 1 tile"/>
+                <StringItem index="2" value="02: 2 tiles"/>
+              </StringArray>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnFloorNo">
+        <Component class="javax.swing.JComboBox" name="cmoEvent">
           <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="1" maximum="99" minimum="1" numberType="java.lang.Byte" stepSize="1" type="number"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="67">
+                <StringItem index="0" value="00: Nothing"/>
+                <StringItem index="1" value="01: Boss: Mt. Steel"/>
+                <StringItem index="2" value="02: Boss: Sinister Forest"/>
+                <StringItem index="3" value="03: Boss: Mt. Thunder"/>
+                <StringItem index="4" value="04: Boss: Mt. Blaze"/>
+                <StringItem index="5" value="05: Boss: Frost Grotto"/>
+                <StringItem index="6" value="06: Boss: Mt. Freeze"/>
+                <StringItem index="7" value="07: Boss: Magma Cavern"/>
+                <StringItem index="8" value="08: Boss: Sky Tower"/>
+                <StringItem index="9" value="09: Boss: Meteor Cave"/>
+                <StringItem index="10" value="0A: Boss: Wish Cave"/>
+                <StringItem index="11" value="0B: Boss: Uproar Forest"/>
+                <StringItem index="12" value="0C: Boss: Fiery Field"/>
+                <StringItem index="13" value="0D: Boss: Lightning Field"/>
+                <StringItem index="14" value="0E: Boss: Northwind Field"/>
+                <StringItem index="15" value="0F: Boss: Mt. Faraway"/>
+                <StringItem index="16" value="10: Boss: Northern Range"/>
+                <StringItem index="17" value="11: Boss: Buried Relic 1"/>
+                <StringItem index="18" value="12: Boss: Buried Relic 2"/>
+                <StringItem index="19" value="13: Boss: Buried Relic 3"/>
+                <StringItem index="20" value="14: Special: Magma Cavern Pit"/>
+                <StringItem index="21" value="15: Boss: Silver Trench"/>
+                <StringItem index="22" value="16: Boss: Stormy Sea"/>
+                <StringItem index="23" value="17: Boss: Meteor Cave"/>
+                <StringItem index="24" value="18: Special: Howling Forest"/>
+                <StringItem index="25" value="19: Special: Purity Forest"/>
+                <StringItem index="26" value="1A: Special: Wish Cave"/>
+                <StringItem index="27" value="1B: Boss: Normal Maze"/>
+                <StringItem index="28" value="1C: Boss: Fire Maze"/>
+                <StringItem index="29" value="1D: Boss: Water Maze"/>
+                <StringItem index="30" value="1E: Boss: Grass Maze"/>
+                <StringItem index="31" value="1F: Boss: Electric Maze"/>
+                <StringItem index="32" value="20: Boss: Ice Maze"/>
+                <StringItem index="33" value="21: Boss: Fighting Maze"/>
+                <StringItem index="34" value="22: Boss: Ground Maze"/>
+                <StringItem index="35" value="23: Boss: Flying Maze"/>
+                <StringItem index="36" value="24: Boss: Psychic Maze"/>
+                <StringItem index="37" value="25: Boss: Poison Maze"/>
+                <StringItem index="38" value="26: Boss: Bug Maze"/>
+                <StringItem index="39" value="27: Boss: Rock Maze"/>
+                <StringItem index="40" value="28: Boss: Ghost Maze"/>
+                <StringItem index="41" value="29: Boss: Dragon Maze"/>
+                <StringItem index="42" value="2A: Boss: Dark Maze"/>
+                <StringItem index="43" value="2B: Boss: Steel Maze"/>
+                <StringItem index="44" value="2C: Boss: Team Shifty"/>
+                <StringItem index="45" value="2D: Boss: Team Constrictor"/>
+                <StringItem index="46" value="2E: Boss: Team Hydro"/>
+                <StringItem index="47" value="2F: Boss: Team Rublerock"/>
+                <StringItem index="48" value="30: Boss: Rescue Team 2"/>
+                <StringItem index="49" value="31: Boss: Rescue Team Maze"/>
+                <StringItem index="50" value="32: Item: HM Fly"/>
+                <StringItem index="51" value="33: Item: HM Dive"/>
+                <StringItem index="52" value="34: Item: HM Waterfall"/>
+                <StringItem index="53" value="35: Item: HM Surf"/>
+                <StringItem index="54" value="36: Item: TM Wide Slash"/>
+                <StringItem index="55" value="37: Item: TM Vacuum-Cut"/>
+                <StringItem index="56" value="38: Item: Friend Bow"/>
+                <StringItem index="57" value="39: Item: Sun Ribbon"/>
+                <StringItem index="58" value="3A: Item: Lunar Ribbon"/>
+                <StringItem index="59" value="3B: Item: Beauty Scarf"/>
+                <StringItem index="60" value="3C: Item: HM Cut"/>
+                <StringItem index="61" value="3D: Item: HM Strength"/>
+                <StringItem index="62" value="3E: Item: HM Flash"/>
+                <StringItem index="63" value="3F: Item: HM Rock Smash"/>
+                <StringItem index="64" value="40: Item: Deepseatooth"/>
+                <StringItem index="65" value="41: Item: Wish Stone"/>
+                <StringItem index="66" value="42: Item: Deepseascale"/>
+              </StringArray>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnEvent">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnMoney">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlDensity">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Density"/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblPokemon" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblItems" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTraps" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="spnPokemon" alignment="1" pref="64" max="32767" attributes="0"/>
-                      <Component id="spnItems" max="32767" attributes="0"/>
-                      <Component id="spnTraps" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblItems" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnItems" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblTraps" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnTraps" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblPokemon">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Pok&#xe9;mon"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblItems">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Items"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblTraps">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Traps"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnPokemon">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnItems">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnTraps">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="pnlLayout">
+    <Container class="javax.swing.JPanel" name="pnlGenerator">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -454,23 +466,19 @@
                           <Component id="spnLayout2" min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblKecleonShops" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="spnKecleonShops" min="-2" pref="80" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblMonsterRooms" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="spnMonsterRooms" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="lblDensityTerrain" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <Component id="spnDensityTerrain" min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="chkTerrainTile" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="chkTerrainUnknownE" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkTerrainPond" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkTerrainTile" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkTerrainUnknownB" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkTerrainUnknown9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblTerrainTileDensity" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
-                          <Component id="spnTerrainTileDensity" min="-2" pref="80" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -491,21 +499,19 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblKecleonShops" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnKecleonShops" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnDensityTerrain" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDensityTerrain" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblMonsterRooms" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnMonsterRooms" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="chkTerrainUnknown9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblTerrainTileDensity" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnTerrainTileDensity" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="chkTerrainUnknownB" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="chkTerrainTile" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkTerrainPond" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkTerrainUnknownE" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -521,30 +527,15 @@
             <Property name="text" type="java.lang.String" value="Crossings"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblKecleonShops">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Kecleon Shops"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblMonsterRooms">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Monster Rooms"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblTerrainTileDensity">
+        <Component class="javax.swing.JLabel" name="lblDensityTerrain">
           <Properties>
             <Property name="text" type="java.lang.String" value="Terrain tile density"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkTerrainTile">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Use terrain tiles"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnLayout1">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="0" maximum="8191" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
             <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
               <SpinnerEditor format="0" type="3"/>
@@ -554,28 +545,185 @@
         <Component class="javax.swing.JSpinner" name="spnLayout2">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="0" maximum="2047" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
             <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
               <SpinnerEditor format="0" type="3"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnKecleonShops">
+        <Component class="javax.swing.JSpinner" name="spnDensityTerrain">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnMonsterRooms">
+        <Component class="javax.swing.JCheckBox" name="chkTerrainUnknown9">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x9)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkTerrainUnknownB">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0xB)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkTerrainTile">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Has terrain tiles"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkTerrainPond">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Has terrain pond"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkTerrainUnknownE">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0xE)"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pnlObject">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Object factors"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblPokemon" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblItems" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTraps" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDensityShops" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDensityMonsters" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMoney" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="spnMoney" pref="95" max="32767" attributes="0"/>
+                      <Component id="spnDensityShops" alignment="1" pref="95" max="32767" attributes="0"/>
+                      <Component id="spnTraps" alignment="1" max="32767" attributes="0"/>
+                      <Component id="spnItems" alignment="1" max="32767" attributes="0"/>
+                      <Component id="spnPokemon" alignment="1" max="32767" attributes="0"/>
+                      <Component id="spnDensityMonsters" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnPokemon" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblItems" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnItems" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblTraps" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnTraps" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDensityShops" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnDensityShops" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDensityMonsters" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnDensityMonsters" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblMoney" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnMoney" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblPokemon">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pok&#xe9;mon"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblItems">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Items"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTraps">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Traps"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDensityShops">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kecleon Shops"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDensityMonsters">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Monster Rooms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblMoney">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Max. POK&#xe9; factor"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnPokemon">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnTerrainTileDensity">
+        <Component class="javax.swing.JSpinner" name="spnItems">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnTraps">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnDensityShops">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnDensityMonsters">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnMoney">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
@@ -599,13 +747,22 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblOffset" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblValue" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="cmoUnknownOffset" pref="85" max="32767" attributes="0"/>
-                      <Component id="txtUnknownValue" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblUnk5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="57" max="32767" attributes="0"/>
+                          <Component id="spnUnk5" min="-2" pref="90" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblUnkA" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUnk18" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="spnUnk18" pref="90" max="32767" attributes="0"/>
+                              <Component id="spnUnkA" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -615,57 +772,58 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblOffset" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmoUnknownOffset" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUnk5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnUnk5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtUnknownValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUnkA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnUnkA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblUnk18" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnUnk18" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblOffset">
+        <Component class="javax.swing.JLabel" name="lblUnk5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Offset"/>
+            <Property name="text" type="java.lang.String" value="byte (0x5)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblValue">
+        <Component class="javax.swing.JLabel" name="lblUnkA">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Value"/>
+            <Property name="text" type="java.lang.String" value="byte (0xA)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmoUnknownOffset">
+        <Component class="javax.swing.JLabel" name="lblUnk18">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="10">
-                <StringItem index="0" value="0x5"/>
-                <StringItem index="1" value="0x9"/>
-                <StringItem index="2" value="0xA"/>
-                <StringItem index="3" value="0xB"/>
-                <StringItem index="4" value="0xC"/>
-                <StringItem index="5" value="0xE"/>
-                <StringItem index="6" value="0x18"/>
-                <StringItem index="7" value="0x19"/>
-                <StringItem index="8" value="0x1A"/>
-                <StringItem index="9" value="0x1B"/>
-              </StringArray>
+            <Property name="text" type="java.lang.String" value="int (0x18)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnUnk5">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmoUnknownOffsetActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUnknownValue">
+        <Component class="javax.swing.JSpinner" name="spnUnkA">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnUnk18">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -678,55 +836,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JPanel" name="pnlTileset">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Tileset"/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Component id="lblTileset" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Component id="spnTileset" alignment="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="lblTileset" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="spnTileset" min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblTileset">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/res/tilesets/0.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnTileset">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="75" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="spnTilesetStateChanged"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>

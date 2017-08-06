@@ -37,20 +37,18 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="pneMisc" max="32767" attributes="0"/>
                           <Component id="pneMain" max="32767" attributes="0"/>
+                          <Component id="pneUnknown" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel1" max="32767" attributes="0"/>
+                          <Component id="pneBools" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pneFactors" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnSave" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblNoEdit" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnSave" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="pneFactors" max="32767" attributes="0"/>
-                  <Component id="pneUnknown" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,18 +63,20 @@
                           <Component id="pneFactors" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="pneMisc" max="32767" attributes="0"/>
-                          <Component id="pneUnknown" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pneMisc" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="pneBools" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pneUnknown" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblNoEdit" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -118,8 +118,8 @@
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="cmoRange" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cmoType" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cmoType" max="32767" attributes="0"/>
+                              <Component id="cmoRange" pref="180" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -149,12 +149,11 @@
                       <Component id="cmoType" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblType" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cmoRange" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblRange" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -178,6 +177,11 @@
         <Component class="javax.swing.JLabel" name="lblType">
           <Properties>
             <Property name="text" type="java.lang.String" value="Type"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblRange">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Range"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtName">
@@ -236,7 +240,7 @@
                 <StringItem index="24" value="18: Floor"/>
                 <StringItem index="25" value="19: Wall"/>
                 <StringItem index="26" value="1A: Pok&#xe9;mon within 1-tile range"/>
-                <StringItem index="27" value="1B: Pok&#xe9;mon within 2-tile range"/>
+                <StringItem index="27" value="1B: Pok&#xe9;mon within 2-tiles range"/>
                 <StringItem index="28" value="1C: User, cuts corners"/>
                 <StringItem index="29" value="1D: Floor"/>
                 <StringItem index="30" value="1E: Pok&#xe9;mon in front"/>
@@ -247,9 +251,144 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblRange">
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pneFactors">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Factors"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblAP" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="spnAP" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblAccuracy1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="spnAccuracy1" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblAccuracy2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="spnAccuracy2" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblPower" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCriticalHit" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="85" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="spnCriticalHit" pref="100" max="32767" attributes="0"/>
+                              <Component id="spnPower" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblAP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnAP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblAccuracy1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnAccuracy1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblAccuracy2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnAccuracy2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblPower" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnPower" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblCriticalHit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnCriticalHit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblAP">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Range"/>
+            <Property name="text" type="java.lang.String" value="Attack points"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAccuracy1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Accuracy factor 1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAccuracy2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Accuracy factor 2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPower">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Power"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCriticalHit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Critical Hit chance"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnAP">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="255" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnAccuracy1">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnAccuracy2">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnPower">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnCriticalHit">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -341,15 +480,173 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnSave">
+    <Container class="javax.swing.JPanel" name="pneBools">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Save"/>
-        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Unknown bools"/>
+          </Border>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
-      </Events>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="chkUnk14" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="chkUnk15" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="chkUnk18" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="chkUnk16" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="chkUnk17" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="chkUnk14" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkUnk15" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="chkUnk16" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="chkUnk17" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkUnk18" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JCheckBox" name="chkUnk14">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x14)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkUnk15">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x15)"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkUnk16">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x16)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkUnk17">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x17)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkUnk18">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="bool (0x18)"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pneUnknown">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Unknown"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblOffset" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cmoUnknownOffset" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblValue" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtUnknownValue" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmoUnknownOffset" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblOffset" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtUnknownValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblOffset">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Offset"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblValue">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Value"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmoUnknownOffset">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="6">
+                <StringItem index="0" value="0x4 (Short)"/>
+                <StringItem index="1" value="0x8 (Short)"/>
+                <StringItem index="2" value="0xA (Short)"/>
+                <StringItem index="3" value="0xD (Byte)"/>
+                <StringItem index="4" value="0x10 (Byte)"/>
+                <StringItem index="5" value="0x11 (Byte)"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmoUnknownOffsetActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtUnknownValue">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -373,11 +670,19 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pneFactors">
+    <Component class="javax.swing.JButton" name="btnSave">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Factors"/>
+            <TitledBorder title="Japanese-only"/>
           </Border>
         </Property>
       </Properties>
@@ -389,29 +694,36 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblAP" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtAP" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="lblJapString1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="57" max="32767" attributes="0"/>
+                          <Component id="txtJapString1" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblAccuracy1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
-                          <Component id="txtAccuracy1" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblJapString2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblJapString3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="57" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtJapString3" pref="145" max="32767" attributes="0"/>
+                              <Component id="txtJapString2" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblJapPointer1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtJapPointer1" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblAccuracy2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtAccuracy2" min="-2" pref="125" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblCriticalHit" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtCriticalHit" min="-2" pref="125" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblPower" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtPower" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblJapPointer2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblJapPointer3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="75" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtJapPointer3" pref="145" max="32767" attributes="0"/>
+                              <Component id="txtJapPointer2" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -422,174 +734,97 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblAP" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblJapString1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtJapString1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtAccuracy1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAccuracy1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblJapString2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtJapString2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtAccuracy2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblAccuracy2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblJapString3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtJapString3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPower" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPower" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblJapPointer1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtJapPointer1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtCriticalHit" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCriticalHit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblJapPointer2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtJapPointer2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblJapPointer3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtJapPointer3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblAP">
+        <Component class="javax.swing.JLabel" name="lblJapString1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Attack points"/>
+            <Property name="text" type="java.lang.String" value="Unk. string 1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAP">
+        <Component class="javax.swing.JLabel" name="lblJapString2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Unk. string 2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblJapString3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Unk. string 3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblJapPointer1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pointer 1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblJapPointer2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pointer 2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblJapPointer3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pointer 3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtJapString1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtJapString2">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtJapString3">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtJapPointer1">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="4"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAccuracy1">
+        <Component class="javax.swing.JTextField" name="txtJapPointer2">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="4"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAccuracy2">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtPower">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtCriticalHit">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblAccuracy1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Accuracy factor 1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblAccuracy2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Accuracy factor 2"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPower">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Power"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblCriticalHit">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Critical Hit chance"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="pneUnknown">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Unknown"/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblOffset" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblValue" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtUnknownValue" max="32767" attributes="0"/>
-                      <Component id="cmoUnknownOffset" pref="125" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblOffset" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmoUnknownOffset" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtUnknownValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblOffset">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Offset"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblValue">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Value"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmoUnknownOffset">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="11">
-                <StringItem index="0" value="0x4 (Short)"/>
-                <StringItem index="1" value="0x8 (Short)"/>
-                <StringItem index="2" value="0xA (Short)"/>
-                <StringItem index="3" value="0xD (Byte)"/>
-                <StringItem index="4" value="0x10 (Byte)"/>
-                <StringItem index="5" value="0x11 (Byte)"/>
-                <StringItem index="6" value="0x14 (Boolean)"/>
-                <StringItem index="7" value="0x15 (Boolean)"/>
-                <StringItem index="8" value="0x16 (Boolean)"/>
-                <StringItem index="9" value="0x17 (Boolean)"/>
-                <StringItem index="10" value="0x18 (Boolean)"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmoUnknownOffsetActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtUnknownValue">
+        <Component class="javax.swing.JTextField" name="txtJapPointer3">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="4"/>
@@ -597,13 +832,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblNoEdit">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Move editing is not available at the moment."/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>

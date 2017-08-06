@@ -23,15 +23,19 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Pokemon implements Cloneable {
     // Entry fields
-    public int speciesPointer, categoryPointer;
     public String species, category;
-    public int speed;
-    public short recruit, facesBitfield;
-    public byte[] unkA, unk1A, unk30;
-    public short type1, type2, ability1, ability2, area, palette, size, shadow, walkable, unk12;
-    public int evolveFrom, evolveType, evolveParam, evolveAddition;
+    public int speciesPointer, categoryPointer;
+    public short size, shadow, walkable, recruit, facesBitfield;
+    public short type1, type2, ability1, ability2, area, palette;
+    public int evolveFrom, evolveType, evolveParam, evolveAddition, speed;
     public int stat_hp, stat_attack, stat_spattack, stat_defense, stat_spdefense, stat_unknown, basexp;
     public int dexNo, internalNo, parentNo, alphabetNo, damageLowKick, damageSizeBust;
+    public boolean isNotMoving;
+    
+    // Unknown fields
+    public byte unk1A, unk1B, unk1D, unk30, unk31, unk32;
+    public short unk12;
+    public boolean unk33;
     
     // Static fields
     public static final int SIZE = 0x48;
@@ -39,14 +43,7 @@ public class Pokemon implements Cloneable {
     @Override
     public Object clone() {
         try {
-            Pokemon clone = (Pokemon) super.clone();
-            clone.unkA = new byte[0x2];
-            clone.unk1A = new byte[0x4];
-            clone.unk30 = new byte[0x4];
-            System.arraycopy(unkA, 0, clone.unkA, 0, 0x2);
-            System.arraycopy(unk1A, 0, clone.unk1A, 0, 0x4);
-            System.arraycopy(unk30, 0, clone.unk30, 0, 0x4);
-            return clone;
+            return super.clone();
         }
         catch (CloneNotSupportedException ex) {
             return null;
@@ -63,7 +60,7 @@ public class Pokemon implements Cloneable {
         pokemon.categoryPointer = buffer.readInt();
         pokemon.palette = buffer.readUByte();
         pokemon.size = buffer.readUByte();
-        pokemon.unkA = buffer.readBytes(0x2);
+        buffer.skip(0x2);
         pokemon.speed = buffer.readInt();
         pokemon.facesBitfield = buffer.readShort();
         pokemon.unk12 = buffer.readUByte();
@@ -74,7 +71,10 @@ public class Pokemon implements Cloneable {
         pokemon.ability1 = buffer.readUByte();
         pokemon.ability2 = buffer.readUByte();
         pokemon.shadow = buffer.readUByte();
-        pokemon.unk1A = buffer.readBytes(0x4);
+        pokemon.unk1A = buffer.readByte();
+        pokemon.unk1B = buffer.readByte();
+        pokemon.isNotMoving = !buffer.readBoolean();
+        pokemon.unk1D = buffer.readByte();
         pokemon.stat_hp = buffer.readUShort();
         pokemon.basexp = buffer.readUShort();
         pokemon.stat_unknown = buffer.readUShort();
@@ -84,7 +84,10 @@ public class Pokemon implements Cloneable {
         pokemon.stat_spdefense = buffer.readUShort();
         pokemon.damageLowKick = buffer.readUShort();
         pokemon.damageSizeBust = buffer.readUShort();
-        pokemon.unk30 = buffer.readBytes(0x4);
+        pokemon.unk30 = buffer.readByte();
+        pokemon.unk31 = buffer.readByte();
+        pokemon.unk32 = buffer.readByte();
+        pokemon.unk33 = buffer.readBoolean();
         pokemon.evolveFrom = buffer.readUShort();
         pokemon.evolveType = buffer.readUShort();
         pokemon.evolveParam = buffer.readUShort();
@@ -113,7 +116,7 @@ public class Pokemon implements Cloneable {
         buffer.writeInt(pokemon.categoryPointer);
         buffer.writeUByte(pokemon.palette);
         buffer.writeUByte(pokemon.size);
-        buffer.writeBytes(pokemon.unkA);
+        buffer.writeShort((short) 0);
         buffer.writeInt(pokemon.speed);
         buffer.writeShort(pokemon.facesBitfield);
         buffer.writeUByte(pokemon.unk12);
@@ -124,7 +127,10 @@ public class Pokemon implements Cloneable {
         buffer.writeUByte(pokemon.ability1);
         buffer.writeUByte(pokemon.ability2);
         buffer.writeUByte(pokemon.shadow);
-        buffer.writeBytes(pokemon.unk1A);
+        buffer.writeByte(pokemon.unk1A);
+        buffer.writeByte(pokemon.unk1B);
+        buffer.writeBoolean(!pokemon.isNotMoving);
+        buffer.writeByte(pokemon.unk1D);
         buffer.writeUShort(pokemon.stat_hp);
         buffer.writeUShort(pokemon.basexp);
         buffer.writeUShort(pokemon.stat_unknown);
@@ -134,7 +140,10 @@ public class Pokemon implements Cloneable {
         buffer.writeUShort(pokemon.stat_spdefense);
         buffer.writeUShort(pokemon.damageLowKick);
         buffer.writeUShort(pokemon.damageSizeBust);
-        buffer.writeBytes(pokemon.unk30);
+        buffer.writeByte(pokemon.unk30);
+        buffer.writeByte(pokemon.unk31);
+        buffer.writeByte(pokemon.unk32);
+        buffer.writeBoolean(pokemon.unk33);
         buffer.writeUShort(pokemon.evolveFrom);
         buffer.writeUShort(pokemon.evolveType);
         buffer.writeUShort(pokemon.evolveParam);

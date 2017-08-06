@@ -111,6 +111,7 @@ public class DungeonPokemon implements Cloneable {
         ByteBuffer buffer = new ByteBuffer(pokemon.entries.size() * 8 + 8, ByteOrder.LITTLE_ENDIAN);
         
         int sum = 0;
+        
         for (Entry entry : pokemon.entries) {
             buffer.writeUShort(entry.species + entry.level * 0x200);
             if (sum < 10000) {
@@ -124,6 +125,8 @@ public class DungeonPokemon implements Cloneable {
             }
             buffer.writeUShort(0);
         }
+        
+        buffer.writeBytes(NULL);
         
         return buffer.getContent();
     }

@@ -17,6 +17,7 @@
 
 package com.aurum.mystery2.game;
 
+import com.aurum.mystery2.BitConverter;
 import java.util.List;
 import com.aurum.mystery2.ByteBuffer;
 import com.aurum.mystery2.ByteOrder;

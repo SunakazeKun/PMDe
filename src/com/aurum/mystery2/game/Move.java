@@ -6,15 +6,20 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Move implements Cloneable {
     // Entry fields
-    public int namePointer, descriptionPointer, logPointer;
+    public String name, description, log, unk1, unk2, unk3;
+    public int namePointer, descriptionPointer, logPointer, unk1Pointer, unk2Pointer, unk3Pointer;
     public int type;
-    public String name, description, log;
-    public short unk4, unk8, unkA, ap, range;
-    public byte unkD, accuracy1, accuracy2, unk10, unk11, power, critical;
+    public short ap, range;
+    public byte accuracy1, accuracy2, power, critical;
+    
+    // Unknown fields
+    public byte unkD, unk10, unk11;
+    public short unk4, unk8, unkA;
     public boolean unk14, unk15, unk16, unk17, unk18;
     
     // Static fields
     public static final int SIZE = 0x24;
+    public static final int SIZE_JAP = 0x2C;
     
     @Override
     public Object clone() {
@@ -29,7 +34,8 @@ public class Move implements Cloneable {
     public static Move unpack(ByteBuffer buffer) {
         Move move = new Move();
         
-        int nextOffset = buffer.position() + SIZE;
+        boolean japanese = RomFile.current.isJapanese();
+        int nextOffset = buffer.position() + (japanese ? SIZE_JAP : SIZE);
         
         // Fields
         move.namePointer = buffer.readInt();
@@ -55,6 +61,21 @@ public class Move implements Cloneable {
         move.descriptionPointer = buffer.readInt();
         move.logPointer = buffer.readInt();
         
+        if (japanese) {
+            // Fields
+            move.unk1Pointer = buffer.readInt();
+            move.unk2Pointer = buffer.readInt();
+            move.unk3Pointer = buffer.readInt();
+            
+            // Strings
+            buffer.seek(BitConverter.pointerToOffset(move.unk1Pointer));
+            move.unk1 = buffer.readString();
+            buffer.seek(BitConverter.pointerToOffset(move.unk2Pointer));
+            move.unk2 = buffer.readString();
+            buffer.seek(BitConverter.pointerToOffset(move.unk3Pointer));
+            move.unk3 = buffer.readString();
+        }
+        
         // Strings
         buffer.seek(BitConverter.pointerToOffset(move.namePointer));
         move.name = buffer.readString();
@@ -68,8 +89,40 @@ public class Move implements Cloneable {
         return move;
     }
     
-    public static byte[] pack(Move pokemon) {
-        ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
+    public static byte[] pack(Move move) {
+        boolean japanese = RomFile.current.isJapanese();
+        
+        ByteBuffer buffer = new ByteBuffer(japanese ? SIZE_JAP : SIZE, ByteOrder.LITTLE_ENDIAN);
+        
+        buffer.writeInt(move.namePointer);
+        buffer.writeShort(move.unk4);
+        buffer.writeUShort(move.type);
+        buffer.writeShort(move.unk8);
+        buffer.writeShort(move.unkA);
+        buffer.writeUByte(move.ap);
+        buffer.writeByte(move.unkD);
+        buffer.writeByte(move.accuracy1);
+        buffer.writeByte(move.accuracy2);
+        buffer.writeByte(move.unk10);
+        buffer.writeByte(move.unk11);
+        buffer.writeByte(move.power);
+        buffer.writeByte(move.critical);
+        buffer.writeBoolean(move.unk14);
+        buffer.writeBoolean(move.unk15);
+        buffer.writeBoolean(move.unk16);
+        buffer.writeBoolean(move.unk17);
+        buffer.writeBoolean(move.unk18);
+        buffer.writeUByte(move.range);
+        buffer.writeShort((short) 0);
+        buffer.writeInt(move.descriptionPointer);
+        buffer.writeInt(move.logPointer);
+        
+        if (japanese) {
+            buffer.writeInt(move.unk1Pointer);
+            buffer.writeInt(move.unk2Pointer);
+            buffer.writeInt(move.unk3Pointer);
+        }
+        
         return buffer.getContent();
     }
 }

@@ -28,23 +28,25 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSave" min="-2" pref="100" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="pneMain" max="32767" attributes="0"/>
-                  <Component id="pneStats" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="pneFactors" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pneMisc" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pneEvolution" min="-2" pref="360" max="-2" attributes="0"/>
+                  <Component id="btnSave" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="pneMain" max="32767" attributes="0"/>
+                          <Component id="pneStats" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="pneFactors" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pneUnknown" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pneMisc" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pneEvolution" min="-2" pref="360" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -54,13 +56,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="512" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="pneMain" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pneStats" min="-2" max="-2" attributes="0"/>
@@ -70,11 +67,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pneFactors" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pneMisc" min="-2" pref="224" max="-2" attributes="0"/>
+                      <Component id="pneMisc" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="pneUnknown" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -93,56 +93,54 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblSize" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblShadow" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="spnSize" min="-2" pref="125" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Component id="cmoShadow" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCategory" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblType1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblType2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblAbility1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblAbility2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblArea" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblSpeed" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblWalkable" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblShadowSize" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmoAbility1" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cmoType2" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cmoType1" alignment="1" max="32767" attributes="0"/>
-                              <Component id="spnSpeed" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
-                              <Component id="cmoWalkable" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cmoShadowSize" alignment="1" pref="170" max="32767" attributes="0"/>
                               <Component id="cmoArea" alignment="1" max="32767" attributes="0"/>
                               <Component id="cmoAbility2" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cmoAbility1" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cmoType2" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cmoType1" max="32767" attributes="0"/>
+                              <Component id="txtName" max="32767" attributes="0"/>
+                              <Component id="txtCategory" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblWalkable" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="86" max="32767" attributes="0"/>
+                          <Component id="cmoWalkable" min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCategory" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSpriteSize" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSpeed" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="spnSpeed" pref="130" max="32767" attributes="0"/>
+                              <Component id="spnSpriteSize" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtCategory" max="32767" attributes="0"/>
-                              <Component id="txtName" max="32767" attributes="0"/>
+                              <Component id="chkUnk33" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkMove" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -156,30 +154,30 @@
                       <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblCategory" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCategory" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCategory" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblType1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmoType1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblType1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblType2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmoType2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblType2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblAbility1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmoAbility1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAbility1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblAbility2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmoAbility2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAbility2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -188,18 +186,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblSize" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnSize" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblShadow" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmoShadow" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmoShadowSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblShadowSize" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -207,11 +195,34 @@
                       <Component id="lblWalkable" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="spnSpriteSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblSpriteSize" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="spnSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkMove" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="chkUnk33" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCategory">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Category"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="lblType1">
           <Properties>
             <Property name="text" type="java.lang.String" value="First type"/>
@@ -237,19 +248,34 @@
             <Property name="text" type="java.lang.String" value="Friend area"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblSize">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Sprite size"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblShadow">
+        <Component class="javax.swing.JLabel" name="lblShadowSize">
           <Properties>
             <Property name="text" type="java.lang.String" value="Shadow size"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblWalkable">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Walkable tiles"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSpriteSize">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sprite size"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSpeed">
           <Properties>
             <Property name="text" type="java.lang.String" value="Speed"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtName">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCategory">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmoType1">
@@ -297,14 +323,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnSize">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="4" minimum="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmoShadow">
+        <Component class="javax.swing.JComboBox" name="cmoShadowSize">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
@@ -317,18 +336,6 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnSpeed">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="6" minimum="-6" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblWalkable">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Walkable tiles"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmoWalkable">
           <Properties>
@@ -347,388 +354,28 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblName">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Name"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblCategory">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Category"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtName">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtCategory">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="pneEvolution">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Evolution"/>
-          </Border>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[218, 122]"/>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblEvolveFrom" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="cmoEvolveFrom" min="-2" pref="165" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblEvolutionParam" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="spnEvolutionParam" min="-2" pref="125" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblEvolutionType" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEvolutionUnknown" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="116" pref="116" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmoEvolutionAddition" pref="165" max="32767" attributes="0"/>
-                              <Component id="cmoEvolutionType" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblEvolveFrom" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmoEvolveFrom" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblEvolutionType" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmoEvolutionType" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblEvolutionParam" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnEvolutionParam" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblEvolutionUnknown" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmoEvolutionAddition" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblEvolveFrom">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Evolve from"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEvolutionType">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Type"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEvolutionParam">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Parameter"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEvolutionUnknown">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Additional"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmoEvolveFrom">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmoEvolutionType">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="14">
-                <StringItem index="0" value="00: Nothing"/>
-                <StringItem index="1" value="01: Level"/>
-                <StringItem index="2" value="02: IQ"/>
-                <StringItem index="3" value="03: Item"/>
-                <StringItem index="4" value="04: Link Cable"/>
-                <StringItem index="5" value="05: Attack &gt; Defense"/>
-                <StringItem index="6" value="06: Attack &lt; Defense"/>
-                <StringItem index="7" value="07: Attack = Defense"/>
-                <StringItem index="8" value="08: Sun Ribbon"/>
-                <StringItem index="9" value="09: Lunar Ribbon"/>
-                <StringItem index="10" value="0A: Beauty Scarf"/>
-                <StringItem index="11" value="0B: 50% (Silcoon)"/>
-                <StringItem index="12" value="0C: 50% (Cascoon)"/>
-                <StringItem index="13" value="0D: Trade"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnEvolutionParam">
+        <Component class="javax.swing.JSpinner" name="spnSpriteSize">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="0" maximum="4" minimum="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmoEvolutionAddition">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="14">
-                <StringItem index="0" value="00: Nothing"/>
-                <StringItem index="1" value="01: Level"/>
-                <StringItem index="2" value="02: IQ"/>
-                <StringItem index="3" value="03: Item"/>
-                <StringItem index="4" value="04: Link Cable"/>
-                <StringItem index="5" value="05: Attack &gt; Defense"/>
-                <StringItem index="6" value="06: Attack &lt; Defense"/>
-                <StringItem index="7" value="07: Attack = Defense"/>
-                <StringItem index="8" value="08: Sun Ribbon"/>
-                <StringItem index="9" value="09: Lunar Ribbon"/>
-                <StringItem index="10" value="0A: Beauty Scarf"/>
-                <StringItem index="11" value="0B: 50% (Silcoon)"/>
-                <StringItem index="12" value="0C: 50% (Cascoon)"/>
-                <StringItem index="13" value="0D: Trade"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="pneMisc">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Misc."/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblNamePointer" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtNamePointer" min="-2" pref="125" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblInternalNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblParentNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblInternalNo3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="spnParentNo" pref="125" max="32767" attributes="0"/>
-                              <Component id="spnAlphabeticalNo" max="32767" attributes="0"/>
-                              <Component id="spnInternalNo" alignment="1" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblCategoryPointer" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblFacesBitfield" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDexNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPalette" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="spnPalette" max="32767" attributes="0"/>
-                              <Component id="spnDexNo" max="32767" attributes="0"/>
-                              <Component id="txtCategoryPointer" max="32767" attributes="0"/>
-                              <Component id="txtFacesBitfield" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblNamePointer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNamePointer" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblCategoryPointer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCategoryPointer" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblPalette" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnPalette" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFacesBitfield" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFacesBitfield" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblDexNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnDexNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblInternalNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnInternalNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="spnParentNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblParentNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblInternalNo3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnAlphabeticalNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblPalette">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Palette"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblFacesBitfield">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Faces bitfield"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblNamePointer">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Name pointer"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblCategoryPointer">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Category pointer"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblDexNo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Dex no."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblInternalNo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Internal no."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblParentNo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Parent no."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblInternalNo3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Alphabetical no."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNamePointer">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtCategoryPointer">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnPalette">
+        <Component class="javax.swing.JSpinner" name="spnSpeed">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="12" minimum="0" numberType="java.lang.Byte" stepSize="1" type="number"/>
+              <SpinnerModel initial="0" maximum="6" minimum="-6" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFacesBitfield">
+        <Component class="javax.swing.JCheckBox" name="chkMove">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Is not moving?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnDexNo">
+        <Component class="javax.swing.JCheckBox" name="chkUnk33">
           <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
-              <SpinnerEditor format="0" type="3"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnInternalNo">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
-              <SpinnerEditor format="0" type="3"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnParentNo">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
-              <SpinnerEditor format="0" type="3"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spnAlphabeticalNo">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-            </Property>
-            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
-              <SpinnerEditor format="0" type="3"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="bool (0x33)"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -768,12 +415,12 @@
                               <Component id="lblSpAttack" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblSpDefense" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="116" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="spnSpDefense" pref="125" max="32767" attributes="0"/>
                               <Component id="spnSpAttack" max="32767" attributes="0"/>
                               <Component id="spnDefense" max="32767" attributes="0"/>
-                              <Component id="spnAttack" max="32767" attributes="0"/>
+                              <Component id="spnAttack" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -853,6 +500,11 @@
             <Property name="text" type="java.lang.String" value="Unknown"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="lblEXP">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Base EXP"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JSpinner" name="spnAttack">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
@@ -913,11 +565,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblEXP">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Base EXP"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JSpinner" name="spnEXP">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
@@ -927,6 +574,162 @@
               <SpinnerEditor format="0" type="3"/>
             </Property>
           </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pneEvolution">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Evolution"/>
+          </Border>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[218, 122]"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblEvolveFrom" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cmoEvolveFrom" min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblEvolutionParam" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="spnEvolutionParam" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblEvolutionType" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEvolutionAdditional" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="111" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="cmoEvolutionAdditional" pref="170" max="32767" attributes="0"/>
+                              <Component id="cmoEvolutionType" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblEvolveFrom" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmoEvolveFrom" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblEvolutionType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmoEvolutionType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblEvolutionParam" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnEvolutionParam" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblEvolutionAdditional" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmoEvolutionAdditional" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblEvolveFrom">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Evolve from"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEvolutionType">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Type"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEvolutionParam">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Parameter"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEvolutionAdditional">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Additional"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmoEvolveFrom">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmoEvolutionType">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="14">
+                <StringItem index="0" value="00: Nothing"/>
+                <StringItem index="1" value="01: Level"/>
+                <StringItem index="2" value="02: IQ"/>
+                <StringItem index="3" value="03: Item"/>
+                <StringItem index="4" value="04: Link Cable"/>
+                <StringItem index="5" value="05: Attack &gt; Defense"/>
+                <StringItem index="6" value="06: Attack &lt; Defense"/>
+                <StringItem index="7" value="07: Attack = Defense"/>
+                <StringItem index="8" value="08: Sun Ribbon"/>
+                <StringItem index="9" value="09: Lunar Ribbon"/>
+                <StringItem index="10" value="0A: Beauty Scarf"/>
+                <StringItem index="11" value="0B: 50% (Silcoon)"/>
+                <StringItem index="12" value="0C: 50% (Cascoon)"/>
+                <StringItem index="13" value="0D: Trade"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnEvolutionParam">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmoEvolutionAdditional">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="14">
+                <StringItem index="0" value="00: Nothing"/>
+                <StringItem index="1" value="01: Level"/>
+                <StringItem index="2" value="02: IQ"/>
+                <StringItem index="3" value="03: Item"/>
+                <StringItem index="4" value="04: Link Cable"/>
+                <StringItem index="5" value="05: Attack &gt; Defense"/>
+                <StringItem index="6" value="06: Attack &lt; Defense"/>
+                <StringItem index="7" value="07: Attack = Defense"/>
+                <StringItem index="8" value="08: Sun Ribbon"/>
+                <StringItem index="9" value="09: Lunar Ribbon"/>
+                <StringItem index="10" value="0A: Beauty Scarf"/>
+                <StringItem index="11" value="0B: 50% (Silcoon)"/>
+                <StringItem index="12" value="0C: 50% (Cascoon)"/>
+                <StringItem index="13" value="0D: Trade"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -948,17 +751,17 @@
                       <Group type="102" attributes="0">
                           <Component id="lblRecruit" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="spnRecruit" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="spnRecruit" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblLowKick" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblSizeBust" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="spnSizeBust" pref="130" max="32767" attributes="0"/>
                               <Component id="spnLowKick" max="32767" attributes="0"/>
-                              <Component id="spnSizeBust" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -980,8 +783,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="spnSizeBust" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblSizeBust" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnSizeBust" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -990,7 +793,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblRecruit">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Recruit factor"/>
+            <Property name="text" type="java.lang.String" value="Recruitment"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblLowKick">
@@ -1035,7 +838,224 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="pneMisc">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Misc."/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblNamePointer" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtNamePointer" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblCategoryPointer" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtCategoryPointer" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblPalette" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="spnPalette" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblFacesBitfield" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDexNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="spnDexNo" pref="130" max="32767" attributes="0"/>
+                              <Component id="txtFacesBitfield" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblInternalNo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="spnInternalNo" min="-2" pref="130" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblParentNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblInternalNo3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="121" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="spnAlphabeticalNo" pref="130" max="32767" attributes="0"/>
+                              <Component id="spnParentNo" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblNamePointer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNamePointer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblCategoryPointer" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCategoryPointer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblPalette" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnPalette" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblFacesBitfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFacesBitfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="spnDexNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDexNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblInternalNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnInternalNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblParentNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnParentNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblInternalNo3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnAlphabeticalNo" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblNamePointer">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Name pointer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCategoryPointer">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Category pointer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPalette">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Palette"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblFacesBitfield">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Faces bitfield"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDexNo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dex no."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblInternalNo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Internal no."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblParentNo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Parent no."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblInternalNo3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Alphabetical no."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNamePointer">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCategoryPointer">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnPalette">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="12" minimum="0" numberType="java.lang.Short" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtFacesBitfield">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnDexNo">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
+              <SpinnerEditor format="0" type="3"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnInternalNo">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
+              <SpinnerEditor format="0" type="3"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnParentNo">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
+              <SpinnerEditor format="0" type="3"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnAlphabeticalNo">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" maximum="65535" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+            <Property name="editor" type="javax.swing.JComponent" editor="org.netbeans.modules.form.editors.SpinnerEditorEditor">
+              <SpinnerEditor format="0" type="3"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pneUnknown">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -1092,18 +1112,14 @@
         <Component class="javax.swing.JComboBox" name="cmoUnknown">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="11">
-                <StringItem index="0" value="0xA"/>
-                <StringItem index="1" value="0xB"/>
-                <StringItem index="2" value="0x12"/>
-                <StringItem index="3" value="0x1A"/>
-                <StringItem index="4" value="0x1B"/>
-                <StringItem index="5" value="0x1C"/>
-                <StringItem index="6" value="0x1D"/>
-                <StringItem index="7" value="0x30"/>
-                <StringItem index="8" value="0x31"/>
-                <StringItem index="9" value="0x32"/>
-                <StringItem index="10" value="0x33"/>
+              <StringArray count="7">
+                <StringItem index="0" value="byte (0x12)"/>
+                <StringItem index="1" value="byte (0x1A)"/>
+                <StringItem index="2" value="byte (0x1B)"/>
+                <StringItem index="3" value="byte (0x1D)"/>
+                <StringItem index="4" value="byte (0x30)"/>
+                <StringItem index="5" value="byte (0x31)"/>
+                <StringItem index="6" value="byte (0x32)"/>
               </StringArray>
             </Property>
           </Properties>

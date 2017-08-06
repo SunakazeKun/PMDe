@@ -23,13 +23,15 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Item implements Cloneable {
     // Entry fields
-    public int namePointer, descriptionPointer;
     public String name, description;
-    
+    public int namePointer, descriptionPointer;
     public long buyPrice, sellPrice;
-    public short icon, palette, type, subtype;
-    public short move, order, unkThrowing1B, unkThrowing1C;
-    public boolean unkFood1, unkFood2, throwingDamage;
+    public short icon, palette, type, subtype, move, order;
+    public boolean throwingDamage;
+    
+    // Unknown fields
+    public short unkThrowing1B, unkThrowing1C;
+    public boolean unkFood1, unkFood2;
     
     // Static fields
     public static final int SIZE = 0x20;

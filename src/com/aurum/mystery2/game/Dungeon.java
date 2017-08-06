@@ -24,11 +24,15 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Dungeon implements Cloneable {
     // Entry fields
-    public boolean lvl1, noMoney, saveGame, recruitable;
-    public short unk8, unkE;
-    public byte unk1, unk3, unkB;
+    public boolean setLvl1, setNoMoney, setSaveGame, setRecruitable;
     public int timer;
     public short stairDirection, itemLimit, partyLimit;
+    public boolean condFly, condDive, condWaterfall, condSurf, condWater;
+    
+    // Unknown fields
+    public byte unk1;
+    public short unk3, unkE;
+    public boolean unk8, unk9;
     
     // Other fields
     public int mapX, mapY;
@@ -58,15 +62,23 @@ public class Dungeon implements Cloneable {
         
         dungeon.stairDirection = buffer.readUByte();
         dungeon.unk1 = buffer.readByte();
-        dungeon.recruitable = buffer.readBoolean();
-        dungeon.unk3 = buffer.readByte();
+        dungeon.setRecruitable = buffer.readBoolean();
+        dungeon.unk3 = buffer.readUByte();
         dungeon.itemLimit = buffer.readUByte();
         dungeon.partyLimit = buffer.readUByte();
-        dungeon.lvl1 = buffer.readBoolean();
-        dungeon.noMoney = buffer.readBoolean();
-        dungeon.unk8 = buffer.readShort();
-        dungeon.saveGame = buffer.readBoolean();
-        dungeon.unkB = buffer.readByte();
+        dungeon.setLvl1 = buffer.readBoolean();
+        dungeon.setNoMoney = !buffer.readBoolean();
+        dungeon.unk8 = buffer.readBoolean();
+        dungeon.unk9 = buffer.readBoolean();
+        dungeon.setSaveGame = !buffer.readBoolean();
+        
+        int condmask = buffer.readUByte();
+        dungeon.condFly = (condmask & 1) != 0;
+        dungeon.condDive = (condmask & 2) != 0;
+        dungeon.condWaterfall = (condmask & 4) != 0;
+        dungeon.condSurf = (condmask & 8) != 0;
+        dungeon.condWater = (condmask & 16) != 0;
+        
         dungeon.timer = buffer.readUShort();
         dungeon.unkE = buffer.readShort();
         
@@ -78,15 +90,24 @@ public class Dungeon implements Cloneable {
         
         buffer.writeUByte(dungeon.stairDirection);
         buffer.writeByte(dungeon.unk1);
-        buffer.writeBoolean(dungeon.recruitable);
-        buffer.writeByte(dungeon.unk3);
+        buffer.writeBoolean(dungeon.setRecruitable);
+        buffer.writeUByte(dungeon.unk3);
         buffer.writeUByte(dungeon.itemLimit);
         buffer.writeUByte(dungeon.partyLimit);
-        buffer.writeBoolean(dungeon.lvl1);
-        buffer.writeBoolean(dungeon.noMoney);
-        buffer.writeShort(dungeon.unk8);
-        buffer.writeBoolean(dungeon.saveGame);
-        buffer.writeByte(dungeon.unkB);
+        buffer.writeBoolean(dungeon.setLvl1);
+        buffer.writeBoolean(!dungeon.setNoMoney);
+        buffer.writeBoolean(dungeon.unk8);
+        buffer.writeBoolean(dungeon.unk9);
+        buffer.writeBoolean(!dungeon.setSaveGame);
+        
+        int condmask = 0;
+        condmask ^= dungeon.condFly ? 1 : 0;
+        condmask ^= dungeon.condDive ? 2 : 0;
+        condmask ^= dungeon.condWaterfall ? 4 : 0;
+        condmask ^= dungeon.condSurf ? 8 : 0;
+        condmask ^= dungeon.condWater ? 16 : 0;
+        buffer.writeByte((byte) condmask);
+        
         buffer.writeUShort(dungeon.timer);
         buffer.writeShort(dungeon.unkE);
         

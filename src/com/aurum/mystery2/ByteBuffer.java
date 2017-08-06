@@ -17,8 +17,6 @@
 
 package com.aurum.mystery2;
 
-import com.aurum.mystery2.ByteOrder;
-import com.aurum.mystery2.BitConverter;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,6 +26,7 @@ public class ByteBuffer {
     protected int position;
     protected ByteOrder endianness;
     protected HashMap<String, Integer> marks;
+    private static final Charset CHARSET = Charset.forName("SJIS");
     
     public ByteBuffer() {
         buffer = new byte[0];
@@ -374,7 +373,7 @@ public class ByteBuffer {
      * @return the 64-bit value.
      */
     public long readLong() {
-        return (remaining() >= Long.BYTES) ? BitConverter.toUInt(readBytes(Long.BYTES), endianness, 0) : 0;
+        return (remaining() >= Long.BYTES) ? BitConverter.toLong(readBytes(Long.BYTES), endianness, 0) : 0;
     }
     
     /**
@@ -425,7 +424,7 @@ public class ByteBuffer {
      * @return the String.
      */
     public String readString(int len) {
-        return readString(Charset.forName("UTF-8"), len);
+        return readString(CHARSET, len);
     }
     
     /**
@@ -442,7 +441,7 @@ public class ByteBuffer {
      * @return A string.
      */
     public String readString() {
-        return readString(Charset.forName("UTF-8"));
+        return readString(CHARSET);
     }
     
     /**
@@ -573,7 +572,7 @@ public class ByteBuffer {
      * @return the offset to this String.
      */
     public int writeString(String val) {
-        return writeString(val, Charset.forName("UTF-8"));
+        return writeString(val, CHARSET);
     }
     
     public void writeOffsetAsPointer(int val) {

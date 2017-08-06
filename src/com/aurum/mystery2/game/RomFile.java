@@ -36,7 +36,7 @@ public class RomFile {
     private File file;
     private ByteBuffer buffer;
     private String romId, romName, romDescription;
-    private boolean loaded;
+    private boolean isLoaded, isJapanese;
     
     // Data
     public List<Pokemon> pokemon;
@@ -61,7 +61,6 @@ public class RomFile {
     
     public RomFile(File f) {
         file = f;
-        loaded = false;
     }
     
     public RomFile(String f) {
@@ -94,7 +93,11 @@ public class RomFile {
     }
     
     public boolean isLoaded() {
-        return loaded;
+        return isLoaded;
+    }
+    
+    public boolean isJapanese() {
+        return isJapanese;
     }
     
     public void load() throws IOException {
@@ -111,12 +114,14 @@ public class RomFile {
         
         if (!(inifile.isFile() && inifile.exists())) {
             romDescription = "Unknown game";
-            loaded = false;
+            isLoaded = false;
+            isJapanese = false;
             return;
         }
         
         Section game = new Ini(inifile).get(romId);
         romDescription = game.get("description");
+        isJapanese = Boolean.parseBoolean(game.get("isJapanese"));
         dungeonPointerOffset = Integer.decode(game.get("dungeonPointerOffset"));
         pokemonPointerOffset = Integer.decode(game.get("pokemonPointerOffset"));
         itemPointerOffset = Integer.decode(game.get("itemPointerOffset"));
@@ -128,19 +133,24 @@ public class RomFile {
         movesOffset = Integer.decode(game.get("movesOffset"));
         moneyOffset = Integer.decode(game.get("moneyOffset"));
         
-        loaded = true;
+        isLoaded = true;
     }
     
     public void save() throws IOException {
-        if (!loaded)
+        if (!isLoaded)
             return;
         
         storeStarters();
         storePokemon();
         storeItems();
         storeDungeons();
-        //storeMoves();
+        storeMoves();
         storeMoneyFactors();
+        
+        if (!(file.exists() && file.isFile())) {
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+        }
         
         try (FileOutputStream out = new FileOutputStream(file)) {
             out.write(buffer.getContent());
@@ -341,7 +351,7 @@ public class RomFile {
             }
             
             // Write floor entries if available
-            if (dungeon.floors != null) {
+            if (dungeon.floors.size() >= 0) {
                 buffer.seek(dungeon.floorsOffset);
                 for (Floor floor : dungeon.floors)
                     buffer.writeBytes(Floor.pack(floor));

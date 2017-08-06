@@ -19,7 +19,6 @@ package com.aurum.mystery2.swing;
 
 import javax.swing.DefaultListModel;
 import com.aurum.mystery2.Lists;
-import com.aurum.mystery2.Main;
 import com.aurum.mystery2.game.Item;
 import com.aurum.mystery2.game.RomFile;
 import com.aurum.mystery2.BitConverter;
@@ -37,7 +36,8 @@ public class ItemEditor extends javax.swing.JFrame {
         if (cmoMove.getItemCount() != Lists.moves.size())
             return;
         
-        selected = RomFile.current.items.get(listItems.getSelectedIndex());
+        selected = (Item) RomFile.current.items.get(listItems.getSelectedIndex()).clone();
+        
         txtName.setText(selected.name);
         txtName.setCaretPosition(0);
         txtDescription.setText(selected.description);
@@ -49,14 +49,14 @@ public class ItemEditor extends javax.swing.JFrame {
         cmoType.setSelectedIndex(selected.type);
         cmoSubtype.setSelectedIndex(selected.subtype);
         
-        cmoIcon.setSelectedIndex(selected.icon);
-        spnPalette.setValue(selected.palette);
-        
         spnUnkThrowing1.setValue(selected.unkThrowing1B);
         spnUnkThrowing2.setValue(selected.unkThrowing1C);
         chkThrowingDamage.setSelected(selected.throwingDamage);
         chkUnkFood1.setSelected(selected.unkFood1);
         chkUnkFood2.setSelected(selected.unkFood2);
+        
+        cmoIcon.setSelectedIndex(selected.icon);
+        spnPalette.setValue(selected.palette);
         
         txtNamePointer.setText(BitConverter.toHexIntString(selected.namePointer));
         txtDescriptionPointer.setText(BitConverter.toHexIntString(selected.descriptionPointer));
@@ -70,14 +70,16 @@ public class ItemEditor extends javax.swing.JFrame {
         selected.type = (short) cmoType.getSelectedIndex();
         selected.subtype = (short) cmoSubtype.getSelectedIndex();
         
-        selected.icon = (short) cmoIcon.getSelectedIndex();
-        selected.palette = (short) spnPalette.getValue();
-        
         selected.unkThrowing1B = (short) spnUnkThrowing1.getValue();
         selected.unkThrowing1C = (short) spnUnkThrowing2.getValue();
         selected.throwingDamage = chkThrowingDamage.isSelected();
         selected.unkFood1 = chkUnkFood1.isSelected();
         selected.unkFood2 = chkUnkFood2.isSelected();
+        
+        selected.icon = (short) cmoIcon.getSelectedIndex();
+        selected.palette = (short) spnPalette.getValue();
+        
+        RomFile.current.items.set(listItems.getSelectedIndex(), selected);
     }
     
     @SuppressWarnings("unchecked")
@@ -244,9 +246,9 @@ public class ItemEditor extends javax.swing.JFrame {
 
         pnlDungeon.setBorder(javax.swing.BorderFactory.createTitledBorder("Dungeon"));
 
-        lblUnkThrowing1.setText("Unk. throwing factor");
+        lblUnkThrowing1.setText("Unk. throwing factor 1");
 
-        lblUnkThrowing2.setText("Unk. throwing factor");
+        lblUnkThrowing2.setText("Unk. throwing factor 2");
 
         spnUnkThrowing1.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         spnUnkThrowing1.setEditor(new javax.swing.JSpinner.NumberEditor(spnUnkThrowing1, "0"));
@@ -256,9 +258,9 @@ public class ItemEditor extends javax.swing.JFrame {
 
         chkThrowingDamage.setText("Throwing damage");
 
-        chkUnkFood1.setText("Unk. food bool");
+        chkUnkFood1.setText("Unk. food bool 1");
 
-        chkUnkFood2.setText("Unk. food bool");
+        chkUnkFood2.setText("Unk. food bool 2");
 
         javax.swing.GroupLayout pnlDungeonLayout = new javax.swing.GroupLayout(pnlDungeon);
         pnlDungeon.setLayout(pnlDungeonLayout);
@@ -271,17 +273,16 @@ public class ItemEditor extends javax.swing.JFrame {
                         .addGroup(pnlDungeonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUnkThrowing1)
                             .addComponent(lblUnkThrowing2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(pnlDungeonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(spnUnkThrowing2)
                             .addComponent(spnUnkThrowing1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
                     .addGroup(pnlDungeonLayout.createSequentialGroup()
-                        .addComponent(chkThrowingDamage)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlDungeonLayout.createSequentialGroup()
-                        .addComponent(chkUnkFood1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chkUnkFood2)))
+                        .addGroup(pnlDungeonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkUnkFood2)
+                            .addComponent(chkThrowingDamage)
+                            .addComponent(chkUnkFood1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlDungeonLayout.setVerticalGroup(
@@ -296,10 +297,10 @@ public class ItemEditor extends javax.swing.JFrame {
                     .addComponent(spnUnkThrowing2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkThrowingDamage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlDungeonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkUnkFood1)
-                    .addComponent(chkUnkFood2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkUnkFood1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkUnkFood2))
         );
 
         pnlMisc.setBorder(javax.swing.BorderFactory.createTitledBorder("Misc."));
@@ -332,16 +333,22 @@ public class ItemEditor extends javax.swing.JFrame {
             .addGroup(pnlMiscLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNamePointer)
-                    .addComponent(lblPalette)
-                    .addComponent(lblDescriptionPointer)
-                    .addComponent(lblIcon))
-                .addGap(37, 37, 37)
-                .addGroup(pnlMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmoIcon, 0, 1, Short.MAX_VALUE)
-                    .addComponent(txtNamePointer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                    .addComponent(spnPalette)
-                    .addComponent(txtDescriptionPointer))
+                    .addGroup(pnlMiscLayout.createSequentialGroup()
+                        .addComponent(lblIcon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMiscLayout.createSequentialGroup()
+                        .addComponent(lblPalette)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(spnPalette, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMiscLayout.createSequentialGroup()
+                        .addGroup(pnlMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNamePointer)
+                            .addComponent(lblDescriptionPointer))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtDescriptionPointer, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(txtNamePointer))))
                 .addContainerGap())
         );
         pnlMiscLayout.setVerticalGroup(
@@ -352,16 +359,16 @@ public class ItemEditor extends javax.swing.JFrame {
                     .addComponent(cmoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spnPalette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPalette))
+                    .addComponent(lblPalette)
+                    .addComponent(spnPalette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNamePointer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNamePointer))
+                    .addComponent(lblNamePointer)
+                    .addComponent(txtNamePointer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMiscLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDescriptionPointer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDescriptionPointer)))
+                    .addComponent(lblDescriptionPointer)
+                    .addComponent(txtDescriptionPointer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         listItems.setModel(model = new DefaultListModel());
@@ -380,14 +387,15 @@ public class ItemEditor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlDungeon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMisc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlDungeon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlMisc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -395,16 +403,14 @@ public class ItemEditor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlDungeon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlMisc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSave)))
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSave)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

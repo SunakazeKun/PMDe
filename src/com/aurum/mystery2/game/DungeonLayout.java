@@ -23,13 +23,14 @@ import com.aurum.mystery2.ByteOrder;
 public class DungeonLayout implements Cloneable {
     // Entry fields
     public int layout1, layout2;
-    public byte unk5, unkE;
-    public byte[] unk9, unk18;
-    public boolean useTerrainTiles;
+    public boolean hasTerrainUnknown9, hasTerrainUnknownB, hasTerrainTiles, hasTerrainPond, hasTerrainUnknownE;
+    public short no, tileset, music, weather, visibility, event;
+    public short pokemonDensity, itemDensity, trapDensity, terrainDensity;
+    public short moneyFactor, shopsFactor, monstersFactor;
     
-    public short kecleonShopsFactor, monsterRoomsFactor;
-    public short tileset, music, weather, event;
-    public short no, visibility, money, pokemonDensity, itemDensity, trapDensity, terrainDensity;
+    // Unknown fields
+    public byte unk5, unkA;
+    public int unk18;
     
     // Static fields
     public static final int SIZE = 0x1C;
@@ -37,12 +38,7 @@ public class DungeonLayout implements Cloneable {
     @Override
     public Object clone() {
         try {
-            DungeonLayout clone = (DungeonLayout) super.clone();
-            clone.unk9 = new byte[0x4];
-            clone.unk18 = new byte[0x4];
-            System.arraycopy(unk9, 0, clone.unk9, 0, 0x4);
-            System.arraycopy(unk18, 0, clone.unk18, 0, 0x4);
-            return clone;
+            return super.clone();
         }
         catch (CloneNotSupportedException ex) {
             return null;
@@ -58,11 +54,14 @@ public class DungeonLayout implements Cloneable {
         layout.weather = buffer.readUByte();
         layout.unk5 = buffer.readByte();
         layout.pokemonDensity = buffer.readUByte();
-        layout.kecleonShopsFactor = buffer.readUByte();
-        layout.monsterRoomsFactor = buffer.readUByte();
-        layout.unk9 = buffer.readBytes(0x4);
-        layout.useTerrainTiles = buffer.readBoolean();
-        layout.unkE = buffer.readByte();
+        layout.shopsFactor = buffer.readUByte();
+        layout.monstersFactor = buffer.readUByte();
+        layout.hasTerrainUnknown9 = buffer.readBoolean();
+        layout.unkA = buffer.readByte();
+        layout.hasTerrainUnknownB = buffer.readBoolean();
+        layout.hasTerrainPond = buffer.readBoolean();
+        layout.hasTerrainTiles = buffer.readBoolean();
+        layout.hasTerrainUnknownE = buffer.readBoolean();
         layout.itemDensity = buffer.readUByte();
         layout.trapDensity = buffer.readUByte();
         layout.no = buffer.readUByte();
@@ -70,8 +69,8 @@ public class DungeonLayout implements Cloneable {
         layout.layout2 = buffer.readUShort();
         layout.terrainDensity = buffer.readUByte();
         layout.visibility = buffer.readUByte();
-        layout.money = buffer.readUByte();
-        layout.unk18 = buffer.readBytes(0x4);
+        layout.moneyFactor = buffer.readUByte();
+        layout.unk18 = buffer.readInt();
         
         return layout;
     }
@@ -85,11 +84,14 @@ public class DungeonLayout implements Cloneable {
         buffer.writeUByte(layout.weather);
         buffer.writeByte(layout.unk5);
         buffer.writeUByte(layout.pokemonDensity);
-        buffer.writeUByte(layout.kecleonShopsFactor);
-        buffer.writeUByte(layout.monsterRoomsFactor);
-        buffer.writeBytes(layout.unk9);
-        buffer.writeBoolean(layout.useTerrainTiles);
-        buffer.writeByte(layout.unkE);
+        buffer.writeUByte(layout.shopsFactor);
+        buffer.writeUByte(layout.monstersFactor);
+        buffer.writeBoolean(layout.hasTerrainUnknown9);
+        buffer.writeByte(layout.unkA);
+        buffer.writeBoolean(layout.hasTerrainUnknownB);
+        buffer.writeBoolean(layout.hasTerrainPond);
+        buffer.writeBoolean(layout.hasTerrainTiles);
+        buffer.writeBoolean(layout.hasTerrainUnknownE);
         buffer.writeUByte(layout.itemDensity);
         buffer.writeUByte(layout.trapDensity);
         buffer.writeUByte(layout.no);
@@ -97,8 +99,8 @@ public class DungeonLayout implements Cloneable {
         buffer.writeUShort(layout.layout2);
         buffer.writeUByte(layout.terrainDensity);
         buffer.writeUByte(layout.visibility);
-        buffer.writeUByte(layout.money);
-        buffer.writeBytes(layout.unk18);
+        buffer.writeUByte(layout.moneyFactor);
+        buffer.writeInt(layout.unk18);
         
         return buffer.getContent();
     }
