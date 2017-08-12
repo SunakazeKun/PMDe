@@ -17,6 +17,7 @@
 
 package com.aurum.mystery2.game;
 
+import com.aurum.mystery2.BitConverter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -42,6 +43,7 @@ public class RomFile {
     public List<Pokemon> pokemon;
     public List<Item> items;
     public List<Move> moves;
+    public List<Area> areas;
     public List<Dungeon> dungeons;
     public List<DungeonLayout> dungeonLayouts;
     public List<DungeonPokemon> dungeonPokemon;
@@ -55,6 +57,7 @@ public class RomFile {
     private int dungeonPointerOffset, pokemonPointerOffset, itemPointerOffset;
     private int dungeonMainOffset, dungeonFloorsPointerOffset, dungeonMapOffset;
     private int pokemonStartersOffset, pokemonPartnersOffset, movesOffset, moneyOffset;
+    private int areasTextOffset, areasMainOffset;
     
     private int dungeonDataFloorsOffset, dungeonDataLayoutsOffset, dungeonDataItemsOffset, dungeonDataPokemonOffset, dungeonDataTrapsOffset;
     private int pokemonDataOffset, itemDataOffset, dungeonFloorsOffset;
@@ -122,16 +125,18 @@ public class RomFile {
         Section game = new Ini(inifile).get(romId);
         romDescription = game.get("description");
         isJapanese = Boolean.parseBoolean(game.get("isJapanese"));
-        dungeonPointerOffset = Integer.decode(game.get("dungeonPointerOffset"));
-        pokemonPointerOffset = Integer.decode(game.get("pokemonPointerOffset"));
-        itemPointerOffset = Integer.decode(game.get("itemPointerOffset"));
-        dungeonMainOffset = Integer.decode(game.get("dungeonMainOffset"));
-        dungeonFloorsPointerOffset = Integer.decode(game.get("dungeonFloorsPointerOffset"));
-        dungeonMapOffset = Integer.decode(game.get("dungeonMapOffset"));
-        pokemonStartersOffset = Integer.decode(game.get("pokemonStartersOffset"));
-        pokemonPartnersOffset = Integer.decode(game.get("pokemonPartnersOffset"));
-        movesOffset = Integer.decode(game.get("movesOffset"));
-        moneyOffset = Integer.decode(game.get("moneyOffset"));
+        dungeonPointerOffset = BitConverter.stringToInt(game.get("dungeonPointerOffset"));
+        pokemonPointerOffset = BitConverter.stringToInt(game.get("pokemonPointerOffset"));
+        itemPointerOffset = BitConverter.stringToInt(game.get("itemPointerOffset"));
+        dungeonMainOffset = BitConverter.stringToInt(game.get("dungeonMainOffset"));
+        dungeonFloorsPointerOffset = BitConverter.stringToInt(game.get("dungeonFloorsPointerOffset"));
+        dungeonMapOffset = BitConverter.stringToInt(game.get("dungeonMapOffset"));
+        pokemonStartersOffset = BitConverter.stringToInt(game.get("pokemonStartersOffset"));
+        pokemonPartnersOffset = BitConverter.stringToInt(game.get("pokemonPartnersOffset"));
+        movesOffset = BitConverter.stringToInt(game.get("movesOffset"));
+        moneyOffset = BitConverter.stringToInt(game.get("moneyOffset"));
+        areasTextOffset = BitConverter.stringToInt(game.get("areasTextOffset"));
+        areasMainOffset = BitConverter.stringToInt(game.get("areasMainOffset"));
         
         isLoaded = true;
     }
@@ -140,11 +145,12 @@ public class RomFile {
         if (!isLoaded)
             return;
         
+        storeDungeons();
         storeStarters();
         storePokemon();
         storeItems();
-        storeDungeons();
         storeMoves();
+        storeAreas();
         storeMoneyFactors();
         
         if (!(file.exists() && file.isFile())) {
@@ -242,6 +248,35 @@ public class RomFile {
         buffer.seek(movesOffset);
         for (int i = 0 ; i < 413 ; i++)
             buffer.writeBytes(Move.pack(moves.get(i)));
+    }
+    
+    public void loadAreas() {
+        areas = new ArrayList();
+        
+        for (int i = 0 ; i < 58 ; i++) {
+            // General data
+            buffer.seek(areasMainOffset + i * Area.SIZE);
+            Area area = Area.unpack(buffer);
+            
+            // Text data
+            if (areasTextOffset != 0x00000000) {
+                buffer.seek(areasTextOffset + i * 0x4);
+                area.namePointer = buffer.readInt();
+                buffer.seek(BitConverter.pointerToOffset(area.namePointer));
+                area.name = buffer.readString();
+            }
+            
+            areas.add(area);
+        }
+    }
+    
+    public void storeAreas() {
+        if (areas == null)
+            return;
+        
+        buffer.seek(areasMainOffset);
+        for (int i = 0 ; i < 58 ; i++)
+            buffer.writeBytes(Area.pack(areas.get(i)));
     }
     
     public void loadMoneyFactors() {

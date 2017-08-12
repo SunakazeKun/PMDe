@@ -1,4 +1,6 @@
 /build/
 /dist/
+/doc/
+/test/
 /_SCREENS/
 /_TESTS/

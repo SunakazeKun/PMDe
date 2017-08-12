@@ -34,7 +34,6 @@ public class Pokemon implements Cloneable {
     
     // Unknown fields
     public byte unk1A, unk1B, unk1D, unk30, unk31, unk32;
-    public short unk12;
     public boolean unk33;
     
     // Static fields
@@ -63,7 +62,7 @@ public class Pokemon implements Cloneable {
         buffer.skip(0x2);
         pokemon.speed = buffer.readInt();
         pokemon.facesBitfield = buffer.readShort();
-        pokemon.unk12 = buffer.readUByte();
+        buffer.skip(0x1);
         pokemon.type1 = buffer.readUByte();
         pokemon.type2 = buffer.readUByte();
         pokemon.walkable = buffer.readUByte();
@@ -99,10 +98,14 @@ public class Pokemon implements Cloneable {
         pokemon.parentNo = buffer.readUShort();
         
         // Strings
-        buffer.seek(BitConverter.pointerToOffset(pokemon.speciesPointer));
-        pokemon.species = buffer.readString();
-        buffer.seek(BitConverter.pointerToOffset(pokemon.categoryPointer));
-        pokemon.category = buffer.readString();
+        if (pokemon.speciesPointer != 0x00000000) {
+            buffer.seek(BitConverter.pointerToOffset(pokemon.speciesPointer));
+            pokemon.species = buffer.readString();
+        }
+        if (pokemon.categoryPointer != 0x00000000) {
+            buffer.seek(BitConverter.pointerToOffset(pokemon.categoryPointer));
+            pokemon.category = buffer.readString();
+        }
         
         buffer.seek(nextOffset);
         
@@ -119,7 +122,7 @@ public class Pokemon implements Cloneable {
         buffer.writeShort((short) 0);
         buffer.writeInt(pokemon.speed);
         buffer.writeShort(pokemon.facesBitfield);
-        buffer.writeUByte(pokemon.unk12);
+        buffer.writeByte((byte) 0);
         buffer.writeUByte(pokemon.type1);
         buffer.writeUByte(pokemon.type2);
         buffer.writeUByte(pokemon.walkable);

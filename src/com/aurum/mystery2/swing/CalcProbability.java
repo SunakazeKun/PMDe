@@ -1,7 +1,5 @@
 package com.aurum.mystery2.swing;
 
-import com.aurum.mystery2.Main;
-
 public class CalcProbability extends javax.swing.JFrame {
     public CalcProbability() {
         initComponents();
@@ -28,7 +26,7 @@ public class CalcProbability extends javax.swing.JFrame {
 
         lblFactor.setText("Enemy factor");
 
-        spnLevel.setModel(new javax.swing.SpinnerNumberModel(1, 1, 99, 1));
+        spnLevel.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
         spnFactor.setModel(new javax.swing.SpinnerNumberModel((short)0, null, null, (short)1));
 
@@ -103,7 +101,7 @@ public class CalcProbability extends javax.swing.JFrame {
         else if (level >= 60 && level <= 69) levelfactor = 125;
         else if (level >= 70 && level <= 79) levelfactor = 150;
         else if (level >= 80 && level <= 89) levelfactor = 175;
-        else if (level >= 90 && level <= 99) levelfactor = 240;
+        else if (level >= 90 && level <= 100) levelfactor = 240;
         
         float sum = (levelfactor + (short) spnFactor.getValue() + (chkFriendBow.isSelected() ? 100F : 0F)) / 10F;
         txtResult.setText(Float.toString(sum) + '%');

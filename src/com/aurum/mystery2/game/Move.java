@@ -68,21 +68,33 @@ public class Move implements Cloneable {
             move.unk3Pointer = buffer.readInt();
             
             // Strings
-            buffer.seek(BitConverter.pointerToOffset(move.unk1Pointer));
-            move.unk1 = buffer.readString();
-            buffer.seek(BitConverter.pointerToOffset(move.unk2Pointer));
-            move.unk2 = buffer.readString();
-            buffer.seek(BitConverter.pointerToOffset(move.unk3Pointer));
-            move.unk3 = buffer.readString();
+            if (move.unk1Pointer != 0x00000000) {
+                buffer.seek(BitConverter.pointerToOffset(move.unk1Pointer));
+                move.unk1 = buffer.readString();
+            }
+            if (move.unk2Pointer != 0x00000000) {
+                buffer.seek(BitConverter.pointerToOffset(move.unk2Pointer));
+                move.unk2 = buffer.readString();
+            }
+            if (move.unk3Pointer != 0x00000000) {
+                buffer.seek(BitConverter.pointerToOffset(move.unk3Pointer));
+                move.unk3 = buffer.readString();
+            }
         }
         
         // Strings
-        buffer.seek(BitConverter.pointerToOffset(move.namePointer));
-        move.name = buffer.readString();
-        buffer.seek(BitConverter.pointerToOffset(move.descriptionPointer));
-        move.description = buffer.readString();
-        buffer.seek(BitConverter.pointerToOffset(move.logPointer));
-        move.log = buffer.readString();
+        if (move.namePointer != 0x00000000) {
+            buffer.seek(BitConverter.pointerToOffset(move.namePointer));
+            move.name = buffer.readString();
+        }
+        if (move.descriptionPointer != 0x00000000) {
+            buffer.seek(BitConverter.pointerToOffset(move.descriptionPointer));
+            move.description = buffer.readString();
+        }
+        if (move.logPointer != 0x00000000) {
+            buffer.seek(BitConverter.pointerToOffset(move.logPointer));
+            move.log = buffer.readString();
+        }
         
         buffer.seek(nextOffset);
             

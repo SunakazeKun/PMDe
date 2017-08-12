@@ -17,30 +17,20 @@
 
 package com.aurum.mystery2.game;
 
-import java.util.List;
 import com.aurum.mystery2.ByteBuffer;
 import com.aurum.mystery2.ByteOrder;
 
-public class DungeonItems implements Cloneable {
+public class Area implements Cloneable {
     // Entry fields
-    public List<Entry> entries;
+    public int count, condition;
+    public long price;
     
     // Other fields
-    public int offset;
+    public String name;
+    public int namePointer;
     
     // Static fields
-    
-    public static class Entry implements Cloneable {
-        @Override
-        public Object clone() {
-            try {
-                return super.clone();
-            }
-            catch (CloneNotSupportedException ex) {
-                return null;
-            }
-        }
-    }
+    public static final int SIZE = 0x8;
     
     @Override
     public Object clone() {
@@ -52,16 +42,23 @@ public class DungeonItems implements Cloneable {
         }
     }
     
-    public static DungeonItems unpack(ByteBuffer buffer) {
-        DungeonItems items = new DungeonItems();
+    public static Area unpack(ByteBuffer buffer) {
+        Area area = new Area();
         
-        items.offset = buffer.position();
+        area.count = buffer.readUShort();
+        area.condition = buffer.readUShort();
+        area.price = buffer.readUInt();
         
-        return items;
+        return area;
     }
     
-    public static byte[] pack(DungeonItems pokemon) {
-        ByteBuffer buffer = new ByteBuffer(-1, ByteOrder.LITTLE_ENDIAN);
+    public static byte[] pack(Area area) {
+        ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
+        
+        buffer.writeUShort(area.count);
+        buffer.writeUShort(area.condition);
+        buffer.writeUInt(area.price);
+        
         return buffer.getContent();
     }
 }

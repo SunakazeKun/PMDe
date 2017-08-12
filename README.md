@@ -4,9 +4,10 @@ PMDe uses **ini4j** to store important offsets in the ROM. Additional icons were
 
 # Current features
 - edit dungeon data (map positions, floors, layouts, Pokémon, traps, ...)
-- edit general Pokémon data (types, stats, evolutions, ...)
-- edit general item data
-- edit general moves data
+- edit Pokémon data (types, stats, evolutions, ...)
+- edit item data
+- edit moves data
+- edit friend area data (price, unlock conditions, ...)
 - edit available starter and partner Pokémon
 - edit POKé money factors
 

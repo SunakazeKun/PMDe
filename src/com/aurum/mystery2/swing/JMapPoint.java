@@ -45,8 +45,8 @@ public class JMapPoint extends JLabel {
         return x;
     }
     
-    public void setPointX(int x) {
-        this.x = x;
+    public void setPointX(int val) {
+        x = val;
         setBounds(x-5, y-5, 12, 12);
         repaint();
     }
@@ -55,8 +55,8 @@ public class JMapPoint extends JLabel {
         return y;
     }
     
-    public void setPointY(int y) {
-        this.y = y;
+    public void setPointY(int val) {
+        y = val;
         setBounds(x-5, y-5, 12, 12);
         repaint();
     }

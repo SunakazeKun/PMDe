@@ -72,10 +72,14 @@ public class Item implements Cloneable {
         buffer.skip(0x1);
         
         // Strings
-        buffer.seek(BitConverter.pointerToOffset(item.namePointer));
-        item.name = buffer.readString();
-        buffer.seek(BitConverter.pointerToOffset(item.descriptionPointer));
-        item.description = buffer.readString();
+        if (item.namePointer != 0x00000000) {
+            buffer.seek(BitConverter.pointerToOffset(item.namePointer));
+            item.name = buffer.readString();
+        }
+        if (item.descriptionPointer != 0x00000000) {
+            buffer.seek(BitConverter.pointerToOffset(item.descriptionPointer));
+            item.description = buffer.readString();
+        }
         
         buffer.seek(nextOffset);
         

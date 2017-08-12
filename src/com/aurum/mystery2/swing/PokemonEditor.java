@@ -86,13 +86,12 @@ public class PokemonEditor extends javax.swing.JFrame {
     
     private void loadUnknownBytes() {
         switch(cmoUnknown.getSelectedIndex()) {
-            case 0: txtUnknown.setText(String.valueOf(selected.unk12)); break;
-            case 1: txtUnknown.setText(String.valueOf(selected.unk1A)); break;
-            case 2: txtUnknown.setText(String.valueOf(selected.unk1B)); break;
-            case 3: txtUnknown.setText(String.valueOf(selected.unk1D)); break;
-            case 4: txtUnknown.setText(String.valueOf(selected.unk30)); break;
-            case 5: txtUnknown.setText(String.valueOf(selected.unk31)); break;
-            case 6: txtUnknown.setText(String.valueOf(selected.unk32)); break;
+            case 0: txtUnknown.setText(String.valueOf(selected.unk1A)); break;
+            case 1: txtUnknown.setText(String.valueOf(selected.unk1B)); break;
+            case 2: txtUnknown.setText(String.valueOf(selected.unk1D)); break;
+            case 3: txtUnknown.setText(String.valueOf(selected.unk30)); break;
+            case 4: txtUnknown.setText(String.valueOf(selected.unk31)); break;
+            case 5: txtUnknown.setText(String.valueOf(selected.unk32)); break;
         }
     }
     
@@ -706,7 +705,7 @@ public class PokemonEditor extends javax.swing.JFrame {
 
         lblUnknownValue.setText("Value");
 
-        cmoUnknown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "byte (0x12)", "byte (0x1A)", "byte (0x1B)", "byte (0x1D)", "byte (0x30)", "byte (0x31)", "byte (0x32)" }));
+        cmoUnknown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "byte (0x1A)", "byte (0x1B)", "byte (0x1D)", "byte (0x30)", "byte (0x31)", "byte (0x32)" }));
         cmoUnknown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmoUnknownActionPerformed(evt);

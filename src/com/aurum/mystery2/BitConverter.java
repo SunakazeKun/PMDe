@@ -18,6 +18,10 @@
 package com.aurum.mystery2;
 
 public class BitConverter {
+    public static int stringToInt(String value) {
+        return value != null ? Integer.decode(value) : 0;
+    }
+    
     public static String toHexByteString(byte value) {
         return String.format("%02X", value);
     }

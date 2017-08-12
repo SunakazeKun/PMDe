@@ -1112,14 +1112,13 @@
         <Component class="javax.swing.JComboBox" name="cmoUnknown">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
-                <StringItem index="0" value="byte (0x12)"/>
-                <StringItem index="1" value="byte (0x1A)"/>
-                <StringItem index="2" value="byte (0x1B)"/>
-                <StringItem index="3" value="byte (0x1D)"/>
-                <StringItem index="4" value="byte (0x30)"/>
-                <StringItem index="5" value="byte (0x31)"/>
-                <StringItem index="6" value="byte (0x32)"/>
+              <StringArray count="6">
+                <StringItem index="0" value="byte (0x1A)"/>
+                <StringItem index="1" value="byte (0x1B)"/>
+                <StringItem index="2" value="byte (0x1D)"/>
+                <StringItem index="3" value="byte (0x30)"/>
+                <StringItem index="4" value="byte (0x31)"/>
+                <StringItem index="5" value="byte (0x32)"/>
               </StringArray>
             </Property>
           </Properties>

@@ -17,10 +17,6 @@
 
 package com.aurum.mystery2;
 
-import com.aurum.mystery2.swing.MoneyEditor;
-import com.aurum.mystery2.swing.PokemonEditor;
-import com.aurum.mystery2.swing.ItemEditor;
-import com.aurum.mystery2.swing.StarterEditor;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
@@ -32,13 +28,10 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import com.aurum.mystery2.game.RomFile;
-import com.aurum.mystery2.swing.CalcProbability;
-import com.aurum.mystery2.swing.DungeonEditor;
-import com.aurum.mystery2.swing.MapEditor;
-import com.aurum.mystery2.swing.MoveEditor;
+import com.aurum.mystery2.swing.*;
 
 public class Main extends javax.swing.JFrame {
-    public static String name = "PMDe v1.01 (Beta)";
+    public static String name = "PMDe v1.02 (Beta)";
     public static Image icon = Toolkit.getDefaultToolkit().createImage(Main.class.getResource("/res/icon.png"));
     
     public static void main(String[] args) throws IOException {
@@ -70,6 +63,7 @@ public class Main extends javax.swing.JFrame {
         btnMoneyEditor = new javax.swing.JButton();
         btnItemEditor = new javax.swing.JButton();
         btnMoveEditor = new javax.swing.JButton();
+        btnAreaEditor = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
         mnuOpen = new javax.swing.JMenuItem();
@@ -174,6 +168,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btnAreaEditor.setText("Edit areas");
+        btnAreaEditor.setEnabled(false);
+        btnAreaEditor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAreaEditorActionPerformed(evt);
+            }
+        });
+
         mnuFile.setMnemonic('F');
         mnuFile.setText("File");
 
@@ -270,12 +272,13 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(btnMapEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnItemEditor, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnMoneyEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnMoveEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnAreaEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMoveEditor, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnStarterEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnStarterEditor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMoneyEditor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -296,7 +299,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnMoveEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStarterEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMoneyEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnMoneyEditor, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(btnAreaEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -333,6 +338,7 @@ public class Main extends javax.swing.JFrame {
             btnItemEditor.setEnabled(RomFile.current.isLoaded());
             btnMoveEditor.setEnabled(RomFile.current.isLoaded());
             btnMapEditor.setEnabled(RomFile.current.isLoaded());
+            btnAreaEditor.setEnabled(RomFile.current.isLoaded());
             btnMoneyEditor.setEnabled(RomFile.current.isLoaded());
             
             lblGameTitle.setText(RomFile.current.getRomDescription());
@@ -435,7 +441,14 @@ public class Main extends javax.swing.JFrame {
         new MoveEditor().setVisible(true);
     }//GEN-LAST:event_btnMoveEditorActionPerformed
 
+    private void btnAreaEditorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreaEditorActionPerformed
+        if (RomFile.current.areas == null)
+            RomFile.current.loadAreas();
+        new AreaEditor().setVisible(true);
+    }//GEN-LAST:event_btnAreaEditorActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAreaEditor;
     private javax.swing.JButton btnDungeonEditor;
     private javax.swing.JButton btnItemEditor;
     private javax.swing.JButton btnMapEditor;
