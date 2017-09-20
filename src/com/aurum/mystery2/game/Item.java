@@ -23,14 +23,14 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Item implements Cloneable {
     // Entry fields
-    public String name, description;
-    public int namePointer, descriptionPointer;
+    public String name, desc;
+    public int namePointer, descPointer;
     public long buyPrice, sellPrice;
     public short icon, palette, type, subtype, move, order;
-    public boolean throwingDamage;
+    public boolean throwDamage;
     
     // Unknown fields
-    public short unkThrowing1B, unkThrowing1C;
+    public short unkThrow1B, unkThrow1C;
     public boolean unkFood1, unkFood2;
     
     // Static fields
@@ -58,28 +58,22 @@ public class Item implements Cloneable {
         item.type = buffer.readUByte();
         item.icon = buffer.readUByte();
         buffer.skip(0x2);
-        item.descriptionPointer = buffer.readInt();
+        item.descPointer = buffer.readInt();
         item.unkFood1 = buffer.readBoolean();
         item.unkFood2 = buffer.readBoolean();
-        item.throwingDamage = buffer.readBoolean();
+        item.throwDamage = buffer.readBoolean();
         buffer.skip(0x1);
         item.move = buffer.readShort();
         item.order = buffer.readUByte();
-        item.unkThrowing1B = buffer.readUByte();
-        item.unkThrowing1C = buffer.readUByte();
+        item.unkThrow1B = buffer.readUByte();
+        item.unkThrow1C = buffer.readUByte();
         item.palette = buffer.readUByte();
         item.subtype = buffer.readUByte();
         buffer.skip(0x1);
         
         // Strings
-        if (item.namePointer != 0x00000000) {
-            buffer.seek(BitConverter.pointerToOffset(item.namePointer));
-            item.name = buffer.readString();
-        }
-        if (item.descriptionPointer != 0x00000000) {
-            buffer.seek(BitConverter.pointerToOffset(item.descriptionPointer));
-            item.description = buffer.readString();
-        }
+        if (item.namePointer != 0x00000000) item.name = buffer.readStringAt(BitConverter.pointerToOffset(item.namePointer));
+        if (item.descPointer != 0x00000000) item.desc = buffer.readStringAt(BitConverter.pointerToOffset(item.descPointer));
         
         buffer.seek(nextOffset);
         
@@ -95,15 +89,15 @@ public class Item implements Cloneable {
         buffer.writeUByte(item.type);
         buffer.writeUByte(item.icon);
         buffer.writeShort((short) 0);
-        buffer.writeInt(item.descriptionPointer);
+        buffer.writeInt(item.descPointer);
         buffer.writeBoolean(item.unkFood1);
         buffer.writeBoolean(item.unkFood2);
-        buffer.writeBoolean(item.throwingDamage);
+        buffer.writeBoolean(item.throwDamage);
         buffer.writeByte((byte) 0);
         buffer.writeShort(item.move);
         buffer.writeUByte(item.order);
-        buffer.writeUByte(item.unkThrowing1B);
-        buffer.writeUByte(item.unkThrowing1C);
+        buffer.writeUByte(item.unkThrow1B);
+        buffer.writeUByte(item.unkThrow1C);
         buffer.writeUByte(item.palette);
         buffer.writeUByte(item.subtype);
         buffer.writeByte((byte) 0);

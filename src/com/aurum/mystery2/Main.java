@@ -17,6 +17,7 @@
 
 package com.aurum.mystery2;
 
+import com.aurum.mystery2.exception.UncaughtExceptionHandler;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
@@ -31,16 +32,18 @@ import com.aurum.mystery2.game.RomFile;
 import com.aurum.mystery2.swing.*;
 
 public class Main extends javax.swing.JFrame {
-    public static String name = "PMDe v1.02 (Beta)";
+    public static String name = "PMDe v1.03 (Beta)";
     public static Image icon = Toolkit.getDefaultToolkit().createImage(Main.class.getResource("/res/icon.png"));
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         try {
             javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
         catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            System.out.println(ex);
+            System.err.print(ex);
         }
+        
+        Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler());
         
         new Main().setVisible(true);
     }
@@ -168,7 +171,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnAreaEditor.setText("Edit areas");
+        btnAreaEditor.setText("Edit friend areas");
         btnAreaEditor.setEnabled(false);
         btnAreaEditor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -344,7 +347,9 @@ public class Main extends javax.swing.JFrame {
             lblGameTitle.setText(RomFile.current.getRomDescription());
             lblGameInternal.setText(RomFile.current.toString());
         }
-        catch (IOException ex) { System.out.println(ex); }
+        catch (IOException ex) {
+            System.err.print(ex);
+        }
     }//GEN-LAST:event_mnuOpenActionPerformed
 
     private void mnuSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSaveActionPerformed
@@ -355,7 +360,7 @@ public class Main extends javax.swing.JFrame {
             RomFile.current.save();
         }
         catch (IOException ex) {
-            System.out.println(ex);
+            System.err.print(ex);
         }
     }//GEN-LAST:event_mnuSaveActionPerformed
 
@@ -383,7 +388,7 @@ public class Main extends javax.swing.JFrame {
             RomFile.current.save();
         }
         catch (IOException ex) {
-            System.out.println(ex);
+            System.err.print(ex);
         }
     }//GEN-LAST:event_mnuSaveAsActionPerformed
 

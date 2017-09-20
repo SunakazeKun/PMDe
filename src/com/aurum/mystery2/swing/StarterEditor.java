@@ -18,11 +18,9 @@
 package com.aurum.mystery2.swing;
 
 import com.aurum.mystery2.Lists;
-import com.aurum.mystery2.Main;
 import com.aurum.mystery2.game.RomFile;
 
 public class StarterEditor extends javax.swing.JFrame {
-
     public StarterEditor() {
         initComponents();
         

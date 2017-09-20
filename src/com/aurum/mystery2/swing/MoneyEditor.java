@@ -17,7 +17,6 @@
 
 package com.aurum.mystery2.swing;
 
-import com.aurum.mystery2.Main;
 import com.aurum.mystery2.game.RomFile;
 
 public class MoneyEditor extends javax.swing.JFrame {

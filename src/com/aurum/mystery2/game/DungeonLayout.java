@@ -23,7 +23,7 @@ import com.aurum.mystery2.ByteOrder;
 public class DungeonLayout implements Cloneable {
     // Entry fields
     public int layout1, layout2;
-    public boolean hasTerrainUnknown9, hasTerrainUnknownB, hasTerrainTiles, hasTerrainPond, hasTerrainUnknownE;
+    public boolean hasTerrainUnk9, hasTerrainUnkB, hasTerrainTiles, hasTerrainPond, hasTerrainUnkE;
     public short no, tileset, music, weather, visibility, event;
     public short pokemonDensity, itemDensity, trapDensity, terrainDensity;
     public short moneyFactor, shopsFactor, monstersFactor;
@@ -56,12 +56,12 @@ public class DungeonLayout implements Cloneable {
         layout.pokemonDensity = buffer.readUByte();
         layout.shopsFactor = buffer.readUByte();
         layout.monstersFactor = buffer.readUByte();
-        layout.hasTerrainUnknown9 = buffer.readBoolean();
+        layout.hasTerrainUnk9 = buffer.readBoolean();
         layout.unkA = buffer.readByte();
-        layout.hasTerrainUnknownB = buffer.readBoolean();
+        layout.hasTerrainUnkB = buffer.readBoolean();
         layout.hasTerrainPond = buffer.readBoolean();
         layout.hasTerrainTiles = buffer.readBoolean();
-        layout.hasTerrainUnknownE = buffer.readBoolean();
+        layout.hasTerrainUnkE = buffer.readBoolean();
         layout.itemDensity = buffer.readUByte();
         layout.trapDensity = buffer.readUByte();
         layout.no = buffer.readUByte();
@@ -86,12 +86,12 @@ public class DungeonLayout implements Cloneable {
         buffer.writeUByte(layout.pokemonDensity);
         buffer.writeUByte(layout.shopsFactor);
         buffer.writeUByte(layout.monstersFactor);
-        buffer.writeBoolean(layout.hasTerrainUnknown9);
+        buffer.writeBoolean(layout.hasTerrainUnk9);
         buffer.writeByte(layout.unkA);
-        buffer.writeBoolean(layout.hasTerrainUnknownB);
+        buffer.writeBoolean(layout.hasTerrainUnkB);
         buffer.writeBoolean(layout.hasTerrainPond);
         buffer.writeBoolean(layout.hasTerrainTiles);
-        buffer.writeBoolean(layout.hasTerrainUnknownE);
+        buffer.writeBoolean(layout.hasTerrainUnkE);
         buffer.writeUByte(layout.itemDensity);
         buffer.writeUByte(layout.trapDensity);
         buffer.writeUByte(layout.no);

@@ -22,7 +22,7 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Floor implements Cloneable {
     // Entry fields
-    public int layoutID, pokemonID, trapsID, itemsID, itemsShopID, itemsMonsterID, itemsBuriedID;
+    public int layout, pokemon, traps, items, itemsShop, itemsMonster, itemsBuried;
     
     // Static fields
     public static final int SIZE = 0x10;
@@ -40,13 +40,13 @@ public class Floor implements Cloneable {
     public static Floor unpack(ByteBuffer buffer) {
         Floor floor = new Floor();
         
-        floor.layoutID = buffer.readUShort();
-        floor.pokemonID = buffer.readUShort();
-        floor.trapsID = buffer.readUShort();
-        floor.itemsID = buffer.readUShort();
-        floor.itemsShopID = buffer.readUShort();
-        floor.itemsMonsterID = buffer.readUShort();
-        floor.itemsBuriedID = buffer.readUShort();
+        floor.layout = buffer.readUShort();
+        floor.pokemon = buffer.readUShort();
+        floor.traps = buffer.readUShort();
+        floor.items = buffer.readUShort();
+        floor.itemsShop = buffer.readUShort();
+        floor.itemsMonster = buffer.readUShort();
+        floor.itemsBuried = buffer.readUShort();
         buffer.skip(0x2);
         
         return floor;
@@ -55,13 +55,13 @@ public class Floor implements Cloneable {
     public static byte[] pack(Floor floor) {
         ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
         
-        buffer.writeUShort(floor.layoutID);
-        buffer.writeUShort(floor.pokemonID);
-        buffer.writeUShort(floor.trapsID);
-        buffer.writeUShort(floor.itemsID);
-        buffer.writeUShort(floor.itemsShopID);
-        buffer.writeUShort(floor.itemsMonsterID);
-        buffer.writeUShort(floor.itemsBuriedID);
+        buffer.writeUShort(floor.layout);
+        buffer.writeUShort(floor.pokemon);
+        buffer.writeUShort(floor.traps);
+        buffer.writeUShort(floor.items);
+        buffer.writeUShort(floor.itemsShop);
+        buffer.writeUShort(floor.itemsMonster);
+        buffer.writeUShort(floor.itemsBuried);
         buffer.writeShort((short) 0x0);
         
         return buffer.getContent();

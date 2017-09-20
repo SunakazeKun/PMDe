@@ -322,7 +322,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAreaEditor">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit areas"/>
+        <Property name="text" type="java.lang.String" value="Edit friend areas"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>

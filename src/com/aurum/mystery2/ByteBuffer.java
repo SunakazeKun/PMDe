@@ -26,6 +26,7 @@ public class ByteBuffer {
     protected int position;
     protected ByteOrder endianness;
     protected HashMap<String, Integer> marks;
+    
     private static final Charset CHARSET = Charset.forName("SJIS");
     
     public ByteBuffer() {
@@ -297,8 +298,8 @@ public class ByteBuffer {
     
     /**
      * Reads up to {@code len} bytes from this buffer.
-     * @param len
-     * @return An array of bytes.
+     * @param len the length of bytes to be read
+     * @return an array of bytes.
      */
     public byte[] readBytes(int len) {
         if (len < 0)
@@ -313,11 +314,32 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads up to {@code len} bytes from this buffer at the given position.
+     * @param pos the position
+     * @param len the length of bytes to be read
+     * @return an array of bytes.
+     */
+    public byte[] readBytesAt(int pos, int len) {
+        seek(pos);
+        return readBytes(len);
+    }
+    
+    /**
      * Reads up all remaining bytes.
      * @return an array of all remaining bytes.
      */
     public byte[] readRemaining() {
         return readBytes(remaining());
+    }
+    
+    /**
+     * Reads up all remaining bytes at the given position.
+     * @param pos the position
+     * @return an array of all remaining bytes.
+     */
+    public byte[] readRemainingAt(int pos) {
+        seek(pos);
+        return readRemaining();
     }
     
     /**
@@ -329,11 +351,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads the next byte from this buffer at the given position.
+     * @param pos the position
+     * @return the 8-bit value.
+     */
+    public byte readByteAt(int pos) {
+        seek(pos);
+        return readByte();
+    }
+    
+    /**
      * Reads the next unsigned byte from this buffer.
      * @return the unsigned 8-bit value.
      */
     public short readUByte() {
         return (short) (readByte() & 0xFF);
+    }
+    
+    /**
+     * Reads the next unsigned byte from this buffer at the given position.
+     * @param pos the position
+     * @return the unsigned 8-bit value.
+     */
+    public short readUByteAt(int pos) {
+        seek(pos);
+        return readUByte();
     }
     
     /**
@@ -345,11 +387,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads the next short value from this buffer at the given position.
+     * @param pos the position
+     * @return the 16-bit value.
+     */
+    public short readShortAt(int pos) {
+        seek(pos);
+        return readShort();
+    }
+    
+    /**
      * Reads the next unsigned short value from this buffer.
      * @return the unsigned 16-bit value.
      */
     public int readUShort() {
         return (remaining() >= Short.BYTES) ? BitConverter.toUShort(readBytes(Short.BYTES), endianness, 0) : 0;
+    }
+    
+    /**
+     * Reads the next unsigned short value from this buffer at the given position.
+     * @param pos the position
+     * @return the unsigned 16-bit value.
+     */
+    public int readUShortAt(int pos) {
+        seek(pos);
+        return readUShort();
     }
     
     /**
@@ -361,11 +423,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads the next int value from this buffer at the given position.
+     * @param pos the position
+     * @return the 32-bit value.
+     */
+    public int readIntAt(int pos) {
+        seek(pos);
+        return readInt();
+    }
+    
+    /**
      * Reads the next unsigned int value from this buffer.
      * @return the unsigned 32-bit value.
      */
     public long readUInt() {
         return (remaining() >= Integer.BYTES) ? BitConverter.toUInt(readBytes(Integer.BYTES), endianness, 0) : 0;
+    }
+    
+    /**
+     * Reads the next unsigned int value from this buffer at the given position.
+     * @param pos the position
+     * @return the unsigned 32-bit value.
+     */
+    public long readUIntAt(int pos) {
+        seek(pos);
+        return readUInt();
     }
     
     /**
@@ -377,11 +459,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads the next long value from the buffer at the given position.
+     * @param pos the position
+     * @return the 64-bit value.
+     */
+    public long readLongAt(int pos) {
+        seek(pos);
+        return readLong();
+    }
+    
+    /**
      * Reads the next float value from the buffer.
      * @return the float value.
      */
     public float readFloat() {
         return (remaining() >= Float.BYTES) ? BitConverter.toFloat(readBytes(Float.BYTES), endianness, 0) : 0;
+    }
+    
+    /**
+     * Reads the next float value from the buffer at the given position.
+     * @param pos the position
+     * @return the float value.
+     */
+    public float readFloatAt(int pos) {
+        seek(pos);
+        return readFloat();
     }
     
     /**
@@ -393,6 +495,16 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads the next double value from the buffer at the given position.
+     * @param pos the position
+     * @return the double value.
+     */
+    public double readDoubleAt(int pos) {
+        seek(pos);
+        return readDouble();
+    }
+    
+    /**
      * Reads the next Unicode char from the buffer.
      * @return the Unicode char.
      */
@@ -401,11 +513,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads the next Unicode char from the buffer. at the given position
+     * @param pos the position
+     * @return the Unicode char.
+     */
+    public char readCharacterAt(int pos) {
+        seek(pos);
+        return readCharacter();
+    }
+    
+    /**
      * Reads the next boolean value from the buffer.
      * @return the boolean value.
      */
     public boolean readBoolean() {
         return readByte() != 0;
+    }
+    
+    /**
+     * Reads the next boolean value from the buffer at the given position.
+     * @param pos the position
+     * @return the boolean value.
+     */
+    public boolean readBooleanAt(int pos) {
+        seek(pos);
+        return readBoolean();
     }
     
     /**
@@ -419,12 +551,35 @@ public class ByteBuffer {
     }
     
     /**
+     * Reads the next String from the buffer at the given position.
+     * @param pos the position
+     * @param charset the charset
+     * @param len the length of the String
+     * @return the String.
+     */
+    public String readStringAt(int pos, Charset charset, int len) {
+        seek(pos);
+        return readString(charset, len);
+    }
+    
+    /**
      * Reads the next String from the buffer.
      * @param len the length of the String
      * @return the String.
      */
     public String readString(int len) {
         return readString(CHARSET, len);
+    }
+    
+    /**
+     * Reads the next String from the buffer at the given position.
+     * @param pos the position
+     * @param len the length of the String
+     * @return the String.
+     */
+    public String readStringAt(int pos, int len) {
+        seek(pos);
+        return readString(len);
     }
     
     /**
@@ -437,6 +592,17 @@ public class ByteBuffer {
     }
     
     /**
+     * Decodes and returns the next null-terminated String from the buffer at the given position.
+     * @param pos the position
+     * @param charset
+     * @return A string.
+     */
+    public String readStringAt(int pos, Charset charset) {
+        seek(pos);
+        return readString(charset);
+    }
+    
+    /**
      * Decodes and returns the next null-terminated String from the buffer.
      * @return A string.
      */
@@ -445,11 +611,31 @@ public class ByteBuffer {
     }
     
     /**
-     * Returns the next pointer as an offset
+     * Decodes and returns the next null-terminated String from the buffer at the given position.
+     * @param pos the position
+     * @return A string.
+     */
+    public String readStringAt(int pos) {
+        seek(pos);
+        return readString();
+    }
+    
+    /**
+     * Returns the next pointer as an offset.
      * @return an offset
      */
     public int readPointerAsOffset() {
         return BitConverter.pointerToOffset(readInt());
+    }
+    
+    /**
+     * Returns the next pointer as an offset at the given position.
+     * @param pos the position
+     * @return an offset
+     */
+    public int readPointerAsOffsetAt(int pos) {
+        seek(pos);
+        return readPointerAsOffset();
     }
     
     /**
@@ -464,6 +650,16 @@ public class ByteBuffer {
     }
     
     /**
+     * Writes the content of the specified byte array to this buffer at the given position.
+     * @param pos the position
+     * @param val the byte array
+     */
+    public void writeBytesAt(int pos, byte[] val) {
+        seek(pos);
+        writeBytes(val);
+    }
+    
+    /**
      * Writes the specified byte to this buffer.
      * @param val the 8-bit integer value
      */
@@ -471,6 +667,16 @@ public class ByteBuffer {
         if (position + 1 > buffer.length)
             extend(1);
         buffer[position++] = val;
+    }
+    
+    /**
+     * Writes the specified byte to this buffer at the given position.
+     * @param pos the position
+     * @param val the 8-bit integer value
+     */
+    public void writeByteAt(int pos, byte val) {
+        seek(pos);
+        writeByte(val);
     }
     
     /**
@@ -482,11 +688,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Writes the specified unsigned byte to this buffer at the given position.
+     * @param pos the position
+     * @param val the unsigned 8-bit integer value
+     */
+    public void writeUByteAt(int pos, short val) {
+        seek(pos);
+        writeUByte(val);
+    }
+    
+    /**
      * Writes the specified short value to this buffer.
      * @param val the 16-bit integer value
      */
     public void writeShort(short val) {
         writeBytes(BitConverter.getBytes(val, endianness));
+    }
+    
+    /**
+     * Writes the specified short value to this buffer at the given position.
+     * @param pos the position
+     * @param val the 16-bit integer value
+     */
+    public void writeShortAt(int pos, short val) {
+        seek(pos);
+        writeShort(val);
     }
     
     /**
@@ -498,11 +724,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Writes the specified unsigned short value to this buffer at the given position.
+     * @param pos the position
+     * @param val the unsigned 16-bit integer value
+     */
+    public void writeUShortAt(int pos, int val) {
+        seek(pos);
+        writeUShort(val);
+    }
+    
+    /**
      * Writes the specified int value to this buffer.
      * @param val the 32-bit integer value
      */
     public void writeInt(int val) {
         writeBytes(BitConverter.getBytes(val, endianness));
+    }
+    
+    /**
+     * Writes the specified int value to this buffer at the given position.
+     * @param pos the position
+     * @param val the 32-bit integer value
+     */
+    public void writeIntAt(int pos, int val) {
+        seek(pos);
+        writeInt(val);
     }
     
     /**
@@ -514,11 +760,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Writes the specified unsigned int value to this buffer at the given position.
+     * @param pos the position
+     * @param val the unsigned 32-bit integer value
+     */
+    public void writeUIntAt(int pos, long val) {
+        seek(pos);
+        writeUInt(val);
+    }
+    
+    /**
      * Writes the specified long value to this buffer.
      * @param val the 64-bit integer value
      */
     public void writeLong(long val) {
         writeBytes(BitConverter.getBytes(val, endianness));
+    }
+    
+    /**
+     * Writes the specified long value to this buffer at the given position.
+     * @param pos the position
+     * @param val the 64-bit integer value
+     */
+    public void writeLongAt(int pos, long val) {
+        seek(pos);
+        writeLong(val);
     }
     
     /**
@@ -530,11 +796,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Writes the specified float value to this buffer at the given position.
+     * @param pos the position
+     * @param val the float value
+     */
+    public void writeFloatAt(int pos, float val) {
+        seek(pos);
+        writeFloat(val);
+    }
+    
+    /**
      * Writes the specified double value to this buffer.
      * @param val the double value
      */
     public void writeDouble(double val) {
         writeBytes(BitConverter.getBytes(val, endianness));
+    }
+    
+    /**
+     * Writes the specified double value to this buffer at the given position.
+     * @param pos the position
+     * @param val the double value
+     */
+    public void writeDoubleAt(int pos, double val) {
+        seek(pos);
+        writeDouble(val);
     }
     
     /**
@@ -546,11 +832,31 @@ public class ByteBuffer {
     }
     
     /**
+     * Writes a Unicode char to this buffer at the given position.
+     * @param pos the position
+     * @param val the Unicode char
+     */
+    public void writeCharacterAt(int pos, char val) {
+        seek(pos);
+        writeCharacter(val);
+    }
+    
+    /**
      * Writes a boolean value to this buffer.
      * @param val the boolean value
      */
     public void writeBoolean(boolean val) {
         writeByte((byte) (val ? 1 : 0));
+    }
+    
+    /**
+     * Writes a boolean value to this buffer at the given position.
+     * @param pos the position
+     * @param val the boolean value
+     */
+    public void writeBooleanAt(int pos, boolean val) {
+        seek(pos);
+        writeBoolean(val);
     }
     
     /**
@@ -567,6 +873,18 @@ public class ByteBuffer {
     }
     
     /**
+     * Writes a String to this buffer at the given position.
+     * @param pos the position
+     * @param val the String
+     * @param charset the charset
+     * @return the offset to this String.
+     */
+    public int writeStringAt(int pos, String val, Charset charset) {
+        seek(pos);
+        return writeString(val, charset);
+    }
+    
+    /**
      * Writes a String to this buffer.
      * @param val the String
      * @return the offset to this String.
@@ -575,7 +893,32 @@ public class ByteBuffer {
         return writeString(val, CHARSET);
     }
     
+    /**
+     * Writes a String to this buffer at the given position.
+     * @param pos the position
+     * @param val the String
+     * @return the offset to this String.
+     */
+    public int writeStringAt(int pos, String val) {
+        seek(pos);
+        return writeString(val);
+    }
+    
+    /**
+     * Writes an offset as a pointer to this buffer.
+     * @param val the offset
+     */
     public void writeOffsetAsPointer(int val) {
         writeInt(BitConverter.offsetToPointer(val));
+    }
+    
+    /**
+     * Writes an offset as a pointer to this buffer at the given position.
+     * @param pos the position
+     * @param val the offset
+     */
+    public void writeOffsetAsPointerAt(int pos, int val) {
+        seek(pos);
+        writeOffsetAsPointer(val);
     }
 }

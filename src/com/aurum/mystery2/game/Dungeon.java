@@ -26,8 +26,8 @@ public class Dungeon implements Cloneable {
     // Entry fields
     public boolean setLvl1, setNoMoney, setSaveGame, setRecruitable;
     public int timer;
-    public short stairDirection, itemLimit, partyLimit;
-    public boolean condFly, condDive, condWaterfall, condSurf, condWater;
+    public short stair, itemLimit, partyLimit;
+    public boolean hmFly, hmDive, hmWaterfall, hmSurf, typeWater;
     
     // Unknown fields
     public byte unk1;
@@ -60,7 +60,7 @@ public class Dungeon implements Cloneable {
     public static Dungeon unpack(ByteBuffer buffer) {
         Dungeon dungeon = new Dungeon();
         
-        dungeon.stairDirection = buffer.readUByte();
+        dungeon.stair = buffer.readUByte();
         dungeon.unk1 = buffer.readByte();
         dungeon.setRecruitable = buffer.readBoolean();
         dungeon.unk3 = buffer.readUByte();
@@ -73,11 +73,11 @@ public class Dungeon implements Cloneable {
         dungeon.setSaveGame = !buffer.readBoolean();
         
         int condmask = buffer.readUByte();
-        dungeon.condFly = (condmask & 1) != 0;
-        dungeon.condDive = (condmask & 2) != 0;
-        dungeon.condWaterfall = (condmask & 4) != 0;
-        dungeon.condSurf = (condmask & 8) != 0;
-        dungeon.condWater = (condmask & 16) != 0;
+        dungeon.hmFly = (condmask & 1) != 0;
+        dungeon.hmDive = (condmask & 2) != 0;
+        dungeon.hmWaterfall = (condmask & 4) != 0;
+        dungeon.hmSurf = (condmask & 8) != 0;
+        dungeon.typeWater = (condmask & 16) != 0;
         
         dungeon.timer = buffer.readUShort();
         dungeon.unkE = buffer.readShort();
@@ -88,7 +88,7 @@ public class Dungeon implements Cloneable {
     public static byte[] pack(Dungeon dungeon) {
         ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
         
-        buffer.writeUByte(dungeon.stairDirection);
+        buffer.writeUByte(dungeon.stair);
         buffer.writeByte(dungeon.unk1);
         buffer.writeBoolean(dungeon.setRecruitable);
         buffer.writeUByte(dungeon.unk3);
@@ -101,11 +101,11 @@ public class Dungeon implements Cloneable {
         buffer.writeBoolean(!dungeon.setSaveGame);
         
         int condmask = 0;
-        condmask ^= dungeon.condFly ? 1 : 0;
-        condmask ^= dungeon.condDive ? 2 : 0;
-        condmask ^= dungeon.condWaterfall ? 4 : 0;
-        condmask ^= dungeon.condSurf ? 8 : 0;
-        condmask ^= dungeon.condWater ? 16 : 0;
+        condmask ^= dungeon.hmFly ? 1 : 0;
+        condmask ^= dungeon.hmDive ? 2 : 0;
+        condmask ^= dungeon.hmWaterfall ? 4 : 0;
+        condmask ^= dungeon.hmSurf ? 8 : 0;
+        condmask ^= dungeon.typeWater ? 16 : 0;
         buffer.writeByte((byte) condmask);
         
         buffer.writeUShort(dungeon.timer);

@@ -260,10 +260,8 @@ public class RomFile {
             
             // Text data
             if (areasTextOffset != 0x00000000) {
-                buffer.seek(areasTextOffset + i * 0x4);
-                area.namePointer = buffer.readInt();
-                buffer.seek(BitConverter.pointerToOffset(area.namePointer));
-                area.name = buffer.readString();
+                area.namePointer = buffer.readIntAt(areasTextOffset + i * 0x4);
+                area.name = buffer.readStringAt(BitConverter.pointerToOffset(area.namePointer));
             }
             
             areas.add(area);
@@ -332,8 +330,7 @@ public class RomFile {
             dungeon.mapY = buffer.readUShort();
             
             // Find the number of floors first
-            buffer.seek(dungeonFloorsOffset + i);
-            dungeon.floorsCount = buffer.readUByte();
+            dungeon.floorsCount = buffer.readUByteAt(dungeonFloorsOffset + i);
             
             // Load the actual floors
             buffer.seek(dungeonDataFloorsOffset + i * 0x4);
@@ -356,11 +353,11 @@ public class RomFile {
         }
         
         // Dungeon items entries
-        /*for (int i = 0 ; i < 178 ; i++) {
+        for (int i = 0 ; i < 178 ; i++) {
             buffer.seek(dungeonDataItemsOffset + i * 0x4);
             buffer.seek(buffer.readPointerAsOffset());
             dungeonItems.add(DungeonItems.unpack(buffer));
-        }*/
+        }
         
         // Dungeon traps entries
         for (int i = 0 ; i < 148 ; i++) {
@@ -392,8 +389,7 @@ public class RomFile {
                     buffer.writeBytes(Floor.pack(floor));
             }
             
-            buffer.seek(dungeonMainOffset + i * Dungeon.SIZE);
-            buffer.writeBytes(Dungeon.pack(dungeon));
+            buffer.writeBytesAt(dungeonMainOffset + i * Dungeon.SIZE, Dungeon.pack(dungeon));
         }
         
         // Dungeon layout entries
@@ -406,22 +402,19 @@ public class RomFile {
         // Dungeon pokemon entries
         for (int i = 0 ; i < 839 ; i++) {
             DungeonPokemon dunmons = dungeonPokemon.get(i);
-            buffer.seek(dunmons.offset);
-            buffer.writeBytes(DungeonPokemon.pack(dunmons));
+            buffer.writeBytesAt(dunmons.offset, DungeonPokemon.pack(dunmons));
         }
         
         // Dungeon items entries
         /*for (int i = 0 ; i < 178 ; i++) {
             DungeonItems dunitems = dungeonItems.get(i);
-            buffer.seek(dunitems.offset);
-            buffer.writeBytes(DungeonItems.pack(dunitems));
+            buffer.writeBytesAt(dunitems.offset, DungeonItems.pack(dunitems));
         }*/
         
         // Dungeon traps entries
         for (int i = 0 ; i < 148 ; i++) {
             DungeonTraps traps = dungeonTraps.get(i);
-            buffer.seek(traps.offset);
-            buffer.writeBytes(DungeonTraps.pack(traps));
+            buffer.writeBytesAt(traps.offset, DungeonTraps.pack(traps));
         }
     }
 }

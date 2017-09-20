@@ -25,15 +25,16 @@ public class Pokemon implements Cloneable {
     // Entry fields
     public String species, category;
     public int speciesPointer, categoryPointer;
-    public short size, shadow, walkable, recruit, facesBitfield;
+    public short size, shadow, walkable, recruit, faces;
     public short type1, type2, ability1, ability2, area, palette;
     public int evolveFrom, evolveType, evolveParam, evolveAddition, speed;
-    public int stat_hp, stat_attack, stat_spattack, stat_defense, stat_spdefense, stat_unknown, basexp;
-    public int dexNo, internalNo, parentNo, alphabetNo, damageLowKick, damageSizeBust;
-    public boolean isNotMoving;
+    public int hp, atk, spatk, def, spdef, basexp;
+    public int dexNo, internalNo, parentNo, alphabetNo, lowKick, sizeBust;
+    public boolean isMoving;
     
     // Unknown fields
     public byte unk1A, unk1B, unk1D, unk30, unk31, unk32;
+    public int unk22;
     public boolean unk33;
     
     // Static fields
@@ -50,66 +51,60 @@ public class Pokemon implements Cloneable {
     }
     
     public static Pokemon unpack(ByteBuffer buffer) {
-        Pokemon pokemon = new Pokemon();
+        Pokemon mon = new Pokemon();
         
         int nextOffset = buffer.position() + SIZE;
         
         // Fields
-        pokemon.speciesPointer = buffer.readInt();
-        pokemon.categoryPointer = buffer.readInt();
-        pokemon.palette = buffer.readUByte();
-        pokemon.size = buffer.readUByte();
+        mon.speciesPointer = buffer.readInt();
+        mon.categoryPointer = buffer.readInt();
+        mon.palette = buffer.readUByte();
+        mon.size = buffer.readUByte();
         buffer.skip(0x2);
-        pokemon.speed = buffer.readInt();
-        pokemon.facesBitfield = buffer.readShort();
+        mon.speed = buffer.readInt();
+        mon.faces = buffer.readShort();
         buffer.skip(0x1);
-        pokemon.type1 = buffer.readUByte();
-        pokemon.type2 = buffer.readUByte();
-        pokemon.walkable = buffer.readUByte();
-        pokemon.area = buffer.readUByte();
-        pokemon.ability1 = buffer.readUByte();
-        pokemon.ability2 = buffer.readUByte();
-        pokemon.shadow = buffer.readUByte();
-        pokemon.unk1A = buffer.readByte();
-        pokemon.unk1B = buffer.readByte();
-        pokemon.isNotMoving = !buffer.readBoolean();
-        pokemon.unk1D = buffer.readByte();
-        pokemon.stat_hp = buffer.readUShort();
-        pokemon.basexp = buffer.readUShort();
-        pokemon.stat_unknown = buffer.readUShort();
-        pokemon.stat_attack = buffer.readUShort();
-        pokemon.stat_spattack = buffer.readUShort();
-        pokemon.stat_defense = buffer.readUShort();
-        pokemon.stat_spdefense = buffer.readUShort();
-        pokemon.damageLowKick = buffer.readUShort();
-        pokemon.damageSizeBust = buffer.readUShort();
-        pokemon.unk30 = buffer.readByte();
-        pokemon.unk31 = buffer.readByte();
-        pokemon.unk32 = buffer.readByte();
-        pokemon.unk33 = buffer.readBoolean();
-        pokemon.evolveFrom = buffer.readUShort();
-        pokemon.evolveType = buffer.readUShort();
-        pokemon.evolveParam = buffer.readUShort();
-        pokemon.evolveAddition = buffer.readUShort();
-        pokemon.dexNo = buffer.readUShort();
-        pokemon.internalNo = buffer.readUShort();
-        pokemon.recruit = buffer.readShort();
-        pokemon.alphabetNo = buffer.readUShort();
-        pokemon.parentNo = buffer.readUShort();
+        mon.type1 = buffer.readUByte();
+        mon.type2 = buffer.readUByte();
+        mon.walkable = buffer.readUByte();
+        mon.area = buffer.readUByte();
+        mon.ability1 = buffer.readUByte();
+        mon.ability2 = buffer.readUByte();
+        mon.shadow = buffer.readUByte();
+        mon.unk1A = buffer.readByte();
+        mon.unk1B = buffer.readByte();
+        mon.isMoving = buffer.readBoolean();
+        mon.unk1D = buffer.readByte();
+        mon.hp = buffer.readUShort();
+        mon.basexp = buffer.readUShort();
+        mon.unk22 = buffer.readUShort();
+        mon.atk = buffer.readUShort();
+        mon.spatk = buffer.readUShort();
+        mon.def = buffer.readUShort();
+        mon.spdef = buffer.readUShort();
+        mon.lowKick = buffer.readUShort();
+        mon.sizeBust = buffer.readUShort();
+        mon.unk30 = buffer.readByte();
+        mon.unk31 = buffer.readByte();
+        mon.unk32 = buffer.readByte();
+        mon.unk33 = buffer.readBoolean();
+        mon.evolveFrom = buffer.readUShort();
+        mon.evolveType = buffer.readUShort();
+        mon.evolveParam = buffer.readUShort();
+        mon.evolveAddition = buffer.readUShort();
+        mon.dexNo = buffer.readUShort();
+        mon.internalNo = buffer.readUShort();
+        mon.recruit = buffer.readShort();
+        mon.alphabetNo = buffer.readUShort();
+        mon.parentNo = buffer.readUShort();
         
         // Strings
-        if (pokemon.speciesPointer != 0x00000000) {
-            buffer.seek(BitConverter.pointerToOffset(pokemon.speciesPointer));
-            pokemon.species = buffer.readString();
-        }
-        if (pokemon.categoryPointer != 0x00000000) {
-            buffer.seek(BitConverter.pointerToOffset(pokemon.categoryPointer));
-            pokemon.category = buffer.readString();
-        }
+        if (mon.speciesPointer != 0x00000000) mon.species = buffer.readStringAt(BitConverter.pointerToOffset(mon.speciesPointer));
+        if (mon.categoryPointer != 0x00000000) mon.category = buffer.readStringAt(BitConverter.pointerToOffset(mon.categoryPointer));
         
         buffer.seek(nextOffset);
         
-        return pokemon;
+        return mon;
     }
     
     public static byte[] pack(Pokemon pokemon) {
@@ -121,7 +116,7 @@ public class Pokemon implements Cloneable {
         buffer.writeUByte(pokemon.size);
         buffer.writeShort((short) 0);
         buffer.writeInt(pokemon.speed);
-        buffer.writeShort(pokemon.facesBitfield);
+        buffer.writeShort(pokemon.faces);
         buffer.writeByte((byte) 0);
         buffer.writeUByte(pokemon.type1);
         buffer.writeUByte(pokemon.type2);
@@ -132,17 +127,17 @@ public class Pokemon implements Cloneable {
         buffer.writeUByte(pokemon.shadow);
         buffer.writeByte(pokemon.unk1A);
         buffer.writeByte(pokemon.unk1B);
-        buffer.writeBoolean(!pokemon.isNotMoving);
+        buffer.writeBoolean(pokemon.isMoving);
         buffer.writeByte(pokemon.unk1D);
-        buffer.writeUShort(pokemon.stat_hp);
+        buffer.writeUShort(pokemon.hp);
         buffer.writeUShort(pokemon.basexp);
-        buffer.writeUShort(pokemon.stat_unknown);
-        buffer.writeUShort(pokemon.stat_attack);
-        buffer.writeUShort(pokemon.stat_spattack);
-        buffer.writeUShort(pokemon.stat_defense);
-        buffer.writeUShort(pokemon.stat_spdefense);
-        buffer.writeUShort(pokemon.damageLowKick);
-        buffer.writeUShort(pokemon.damageSizeBust);
+        buffer.writeUShort(pokemon.unk22);
+        buffer.writeUShort(pokemon.atk);
+        buffer.writeUShort(pokemon.spatk);
+        buffer.writeUShort(pokemon.def);
+        buffer.writeUShort(pokemon.spdef);
+        buffer.writeUShort(pokemon.lowKick);
+        buffer.writeUShort(pokemon.sizeBust);
         buffer.writeByte(pokemon.unk30);
         buffer.writeByte(pokemon.unk31);
         buffer.writeByte(pokemon.unk32);
@@ -153,7 +148,7 @@ public class Pokemon implements Cloneable {
         buffer.writeUShort(pokemon.evolveAddition);
         buffer.writeUShort(pokemon.dexNo);
         buffer.writeUShort(pokemon.internalNo);
-        buffer.writeUShort(pokemon.recruit);
+        buffer.writeShort(pokemon.recruit);
         buffer.writeUShort(pokemon.alphabetNo);
         buffer.writeUShort(pokemon.parentNo);
         

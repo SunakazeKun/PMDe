@@ -6,14 +6,14 @@ import com.aurum.mystery2.ByteOrder;
 
 public class Move implements Cloneable {
     // Entry fields
-    public String name, description, log, unk1, unk2, unk3;
-    public int namePointer, descriptionPointer, logPointer, unk1Pointer, unk2Pointer, unk3Pointer;
+    public String name, desc, log, japUnk1, japUnk2, japNext;
+    public int namePointer, descPointer, logPointer, japUnk1Pointer, japUnk2Pointer, japNextPointer;
     public int type;
     public short ap, range;
-    public byte accuracy1, accuracy2, power, critical;
+    public byte accuracy1, accuracy2, critical;
     
     // Unknown fields
-    public byte unkD, unk10, unk11;
+    public byte unkD, unk10, unk11, unk12;
     public short unk4, unk8, unkA;
     public boolean unk14, unk15, unk16, unk17, unk18;
     
@@ -34,67 +34,68 @@ public class Move implements Cloneable {
     public static Move unpack(ByteBuffer buffer) {
         Move move = new Move();
         
-        boolean japanese = RomFile.current.isJapanese();
-        int nextOffset = buffer.position() + (japanese ? SIZE_JAP : SIZE);
+        int nextOffset = buffer.position() + (RomFile.current.isJapanese() ? SIZE_JAP : SIZE);
         
         // Fields
-        move.namePointer = buffer.readInt();
-        move.unk4 = buffer.readShort();
-        move.type = buffer.readUShort();
-        move.unk8 = buffer.readShort();
-        move.unkA = buffer.readShort();
-        move.ap = buffer.readUByte();
-        move.unkD = buffer.readByte();
-        move.accuracy1 = buffer.readByte();
-        move.accuracy2 = buffer.readByte();
-        move.unk10 = buffer.readByte();
-        move.unk11 = buffer.readByte();
-        move.power = buffer.readByte();
-        move.critical = buffer.readByte();
-        move.unk14 = buffer.readBoolean();
-        move.unk15 = buffer.readBoolean();
-        move.unk16 = buffer.readBoolean();
-        move.unk17 = buffer.readBoolean();
-        move.unk18 = buffer.readBoolean();
-        move.range = buffer.readUByte();
-        buffer.skip(0x2);
-        move.descriptionPointer = buffer.readInt();
-        move.logPointer = buffer.readInt();
-        
-        if (japanese) {
-            // Fields
-            move.unk1Pointer = buffer.readInt();
-            move.unk2Pointer = buffer.readInt();
-            move.unk3Pointer = buffer.readInt();
-            
-            // Strings
-            if (move.unk1Pointer != 0x00000000) {
-                buffer.seek(BitConverter.pointerToOffset(move.unk1Pointer));
-                move.unk1 = buffer.readString();
-            }
-            if (move.unk2Pointer != 0x00000000) {
-                buffer.seek(BitConverter.pointerToOffset(move.unk2Pointer));
-                move.unk2 = buffer.readString();
-            }
-            if (move.unk3Pointer != 0x00000000) {
-                buffer.seek(BitConverter.pointerToOffset(move.unk3Pointer));
-                move.unk3 = buffer.readString();
-            }
+        if (RomFile.current.isJapanese()) {
+            move.namePointer = buffer.readInt();
+            move.unk4 = buffer.readShort();
+            move.type = buffer.readUShort();
+            move.unk8 = buffer.readShort();
+            move.unkA = buffer.readShort();
+            move.ap = buffer.readUByte();
+            move.unkD = buffer.readByte();
+            move.accuracy1 = buffer.readByte();
+            move.accuracy2 = buffer.readByte();
+            move.unk10 = buffer.readByte();
+            move.unk11 = buffer.readByte();
+            move.unk12 = buffer.readByte();
+            move.critical = buffer.readByte();
+            move.unk14 = buffer.readBoolean();
+            move.unk15 = buffer.readBoolean();
+            move.unk16 = buffer.readBoolean();
+            move.unk17 = buffer.readBoolean();
+            move.unk18 = buffer.readBoolean();
+            move.range = buffer.readUByte();
+            buffer.skip(0x2);
+            move.descPointer = buffer.readInt();
+            move.japUnk1Pointer = buffer.readInt();
+            move.japUnk2Pointer = buffer.readInt();
+            move.logPointer = buffer.readInt();
+            move.japNextPointer = buffer.readInt();
+        }
+        else {
+            move.namePointer = buffer.readInt();
+            move.unk4 = buffer.readShort();
+            move.type = buffer.readUShort();
+            move.unk8 = buffer.readShort();
+            move.unkA = buffer.readShort();
+            move.ap = buffer.readUByte();
+            move.unkD = buffer.readByte();
+            move.accuracy1 = buffer.readByte();
+            move.accuracy2 = buffer.readByte();
+            move.unk10 = buffer.readByte();
+            move.unk11 = buffer.readByte();
+            move.unk12 = buffer.readByte();
+            move.critical = buffer.readByte();
+            move.unk14 = buffer.readBoolean();
+            move.unk15 = buffer.readBoolean();
+            move.unk16 = buffer.readBoolean();
+            move.unk17 = buffer.readBoolean();
+            move.unk18 = buffer.readBoolean();
+            move.range = buffer.readUByte();
+            buffer.skip(0x2);
+            move.descPointer = buffer.readInt();
+            move.logPointer = buffer.readInt();
         }
         
         // Strings
-        if (move.namePointer != 0x00000000) {
-            buffer.seek(BitConverter.pointerToOffset(move.namePointer));
-            move.name = buffer.readString();
-        }
-        if (move.descriptionPointer != 0x00000000) {
-            buffer.seek(BitConverter.pointerToOffset(move.descriptionPointer));
-            move.description = buffer.readString();
-        }
-        if (move.logPointer != 0x00000000) {
-            buffer.seek(BitConverter.pointerToOffset(move.logPointer));
-            move.log = buffer.readString();
-        }
+        if (move.namePointer != 0x00000000) move.name = buffer.readStringAt(BitConverter.pointerToOffset(move.namePointer));
+        if (move.descPointer != 0x00000000) move.desc = buffer.readStringAt(BitConverter.pointerToOffset(move.descPointer));
+        if (move.logPointer != 0x00000000) move.log = buffer.readStringAt(BitConverter.pointerToOffset(move.logPointer));
+        if (move.japUnk1Pointer != 0x00000000) move.japUnk1 = buffer.readStringAt(BitConverter.pointerToOffset(move.japUnk1Pointer));
+        if (move.japUnk2Pointer != 0x00000000) move.japUnk2 = buffer.readStringAt(BitConverter.pointerToOffset(move.japUnk2Pointer));
+        if (move.japNextPointer != 0x00000000) move.japNext = buffer.readStringAt(BitConverter.pointerToOffset(move.japNextPointer));
         
         buffer.seek(nextOffset);
             
@@ -102,37 +103,58 @@ public class Move implements Cloneable {
     }
     
     public static byte[] pack(Move move) {
-        boolean japanese = RomFile.current.isJapanese();
+        ByteBuffer buffer = new ByteBuffer(RomFile.current.isJapanese() ? SIZE_JAP : SIZE, ByteOrder.LITTLE_ENDIAN);
         
-        ByteBuffer buffer = new ByteBuffer(japanese ? SIZE_JAP : SIZE, ByteOrder.LITTLE_ENDIAN);
-        
-        buffer.writeInt(move.namePointer);
-        buffer.writeShort(move.unk4);
-        buffer.writeUShort(move.type);
-        buffer.writeShort(move.unk8);
-        buffer.writeShort(move.unkA);
-        buffer.writeUByte(move.ap);
-        buffer.writeByte(move.unkD);
-        buffer.writeByte(move.accuracy1);
-        buffer.writeByte(move.accuracy2);
-        buffer.writeByte(move.unk10);
-        buffer.writeByte(move.unk11);
-        buffer.writeByte(move.power);
-        buffer.writeByte(move.critical);
-        buffer.writeBoolean(move.unk14);
-        buffer.writeBoolean(move.unk15);
-        buffer.writeBoolean(move.unk16);
-        buffer.writeBoolean(move.unk17);
-        buffer.writeBoolean(move.unk18);
-        buffer.writeUByte(move.range);
-        buffer.writeShort((short) 0);
-        buffer.writeInt(move.descriptionPointer);
-        buffer.writeInt(move.logPointer);
-        
-        if (japanese) {
-            buffer.writeInt(move.unk1Pointer);
-            buffer.writeInt(move.unk2Pointer);
-            buffer.writeInt(move.unk3Pointer);
+        if (RomFile.current.isJapanese()) {
+            buffer.writeInt(move.namePointer);
+            buffer.writeShort(move.unk4);
+            buffer.writeUShort(move.type);
+            buffer.writeShort(move.unk8);
+            buffer.writeShort(move.unkA);
+            buffer.writeUByte(move.ap);
+            buffer.writeByte(move.unkD);
+            buffer.writeByte(move.accuracy1);
+            buffer.writeByte(move.accuracy2);
+            buffer.writeByte(move.unk10);
+            buffer.writeByte(move.unk11);
+            buffer.writeByte(move.unk12);
+            buffer.writeByte(move.critical);
+            buffer.writeBoolean(move.unk14);
+            buffer.writeBoolean(move.unk15);
+            buffer.writeBoolean(move.unk16);
+            buffer.writeBoolean(move.unk17);
+            buffer.writeBoolean(move.unk18);
+            buffer.writeUByte(move.range);
+            buffer.writeShort((short) 0);
+            buffer.writeInt(move.descPointer);
+            buffer.writeInt(move.japUnk1Pointer);
+            buffer.writeInt(move.japUnk2Pointer);
+            buffer.writeInt(move.logPointer);
+            buffer.writeInt(move.japNextPointer);
+        }
+        else {
+            buffer.writeInt(move.namePointer);
+            buffer.writeShort(move.unk4);
+            buffer.writeUShort(move.type);
+            buffer.writeShort(move.unk8);
+            buffer.writeShort(move.unkA);
+            buffer.writeUByte(move.ap);
+            buffer.writeByte(move.unkD);
+            buffer.writeByte(move.accuracy1);
+            buffer.writeByte(move.accuracy2);
+            buffer.writeByte(move.unk10);
+            buffer.writeByte(move.unk11);
+            buffer.writeByte(move.unk12);
+            buffer.writeByte(move.critical);
+            buffer.writeBoolean(move.unk14);
+            buffer.writeBoolean(move.unk15);
+            buffer.writeBoolean(move.unk16);
+            buffer.writeBoolean(move.unk17);
+            buffer.writeBoolean(move.unk18);
+            buffer.writeUByte(move.range);
+            buffer.writeShort((short) 0);
+            buffer.writeInt(move.descPointer);
+            buffer.writeInt(move.logPointer);
         }
         
         return buffer.getContent();
