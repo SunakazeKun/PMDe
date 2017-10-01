@@ -20,6 +20,6 @@ PMDe uses **ini4j** to store important offsets in the ROM. Additional icons were
 | B9JE01 | Pokémon Mystery Dungeon: Red Rescue Team (Demo Version) | 779a2a4435e0093a7846798270705c76 |
 
 # Screenshots
-<img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-DungeonLayoutEditor.png" width="400"/> <img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-DungeonPokemonEditor.png" width="400"/>
-<img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-MapEditor.png" width="400"/> <img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-DungeonTrapsEditor.png" width="400"/>
-<img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-PokemonEditor.png" width="400"/> <img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-ItemEditor.png" width="400"/>
+<img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-new-DungeonLayoutEditor.png" width="360"/> <img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-new-DungeonEditor.png" width="360"/>
+<img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-new-MapEditor.png" width="360"/> <img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-new-DungeonTrapsEditor.png" width="360"/>
+<img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-new-PokemonEditor.png" width="360"/> <img src="http://neomariogalaxy.bplaced.net/data/pictures/Mystery2-new-ItemEditor.png" width="360"/>
