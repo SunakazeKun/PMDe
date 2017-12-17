@@ -21,26 +21,26 @@ public enum ByteOrder {
     BIG_ENDIAN    (new byte[] { (byte) 0xFE, (byte) 0xFF }),  // Left to right
     LITTLE_ENDIAN (new byte[] { (byte) 0xFF, (byte) 0xFE });  // Right to left
     
-    private final byte[] identifier;
+    private final byte[] bom;
     private ByteOrder(byte[] identifier) {
-        this.identifier = identifier;
+        this.bom = identifier;
     }
     
     /**
-     * Returns the bytes identifier.
-     * @return the bytes identifier.
+     * Returns the BOM.
+     * @return the BOM.
      */
-    public byte[] getIdentifier() {
-        return identifier;
+    public byte[] getBOM() {
+        return bom;
     }
     
     /**
-     * Returns the byte order for the given identifier.
-     * @param i the identifier
-     * @return the byte order for the given identifier.
+     * Returns the byte order for the given BOM.
+     * @param bom the identifier
+     * @return the byte order for the given BOM.
      */
-    public static ByteOrder getByteOrder(byte[] i) {
-        return (i == BIG_ENDIAN.identifier) ? BIG_ENDIAN :
-                (i == LITTLE_ENDIAN.identifier) ? LITTLE_ENDIAN : null;
+    public static ByteOrder getByteOrder(byte[] bom) {
+        return (bom == BIG_ENDIAN.bom) ? BIG_ENDIAN :
+                (bom == LITTLE_ENDIAN.bom) ? LITTLE_ENDIAN : null;
     }
 }

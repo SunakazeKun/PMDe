@@ -17,6 +17,7 @@
 
 package com.aurum.mystery2.game;
 
+import com.aurum.mystery2.BitConverter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -88,10 +89,10 @@ public class DungeonPokemon implements Cloneable {
             buffer.seek(storedoffset);
             
             Entry entry = new Entry();
-            int mask = buffer.readUShort();
+            int mask = buffer.readUnsignedShort();
             entry.level = (mask ^ 0x1A8) / 0x200;
             entry.species = mask - 0x200 * entry.level;
-            entry.probability = buffer.readUShort();
+            entry.probability = buffer.readUnsignedShort();
             int val = entry.probability;
             if (val != 0) {
                 val -= diff;
@@ -113,21 +114,21 @@ public class DungeonPokemon implements Cloneable {
         int sum = 0;
         
         for (Entry entry : pokemon.entries) {
-            buffer.writeUShort(entry.species + entry.level * 0x200);
+            buffer.writeUnsignedShort(entry.species + entry.level * 0x200);
             if (sum < 10000) {
                 int val = (entry.probability != 0) ? sum += entry.probability : 0;
-                buffer.writeUShort(val);
-                buffer.writeUShort(val);
+                buffer.writeUnsignedShort(val);
+                buffer.writeUnsignedShort(val);
             }
             else {
-                buffer.writeUShort(0);
-                buffer.writeUShort(0);
+                buffer.writeUnsignedShort(0);
+                buffer.writeUnsignedShort(0);
             }
-            buffer.writeUShort(0);
+            buffer.writeUnsignedShort(0);
         }
         
         buffer.writeBytes(NULL);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

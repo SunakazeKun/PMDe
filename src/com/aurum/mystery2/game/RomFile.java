@@ -30,17 +30,20 @@ import org.ini4j.Ini;
 import org.ini4j.Profile.Section;
 
 public class RomFile {
-    // Static
+    // Static fields
     public static RomFile current;
     
-    // General
-    private File file;
-    private ByteBuffer buffer;
+    // Information about the game
     private String romId, romName, romDescription;
     private boolean isLoaded, isJapanese;
     
-    // Data
+    // IO stuff
+    private File file;
+    private ByteBuffer buffer;
+    
+    // Parsed data
     public List<Pokemon> pokemon;
+    public List<ExclusivePokemon> exclusivePokemon;
     public List<Item> items;
     public List<Move> moves;
     public List<Area> areas;
@@ -49,7 +52,6 @@ public class RomFile {
     public List<DungeonPokemon> dungeonPokemon;
     public List<DungeonItems> dungeonItems;
     public List<DungeonTraps> dungeonTraps;
-    
     public int[] starters, partners;
     public long[] moneyfactors;
     
@@ -57,7 +59,7 @@ public class RomFile {
     private int dungeonPointerOffset, pokemonPointerOffset, itemPointerOffset;
     private int dungeonMainOffset, dungeonFloorsPointerOffset, dungeonMapOffset;
     private int pokemonStartersOffset, pokemonPartnersOffset, movesOffset, moneyOffset;
-    private int areasTextOffset, areasMainOffset;
+    private int areasTextOffset, areasMainOffset, exclusivePokemonOffset;
     
     private int dungeonDataFloorsOffset, dungeonDataLayoutsOffset, dungeonDataItemsOffset, dungeonDataPokemonOffset, dungeonDataTrapsOffset;
     private int pokemonDataOffset, itemDataOffset, dungeonFloorsOffset;
@@ -104,62 +106,72 @@ public class RomFile {
     }
     
     public void load() throws IOException {
+        // load data into buffer
         buffer = new ByteBuffer((int) file.length(), ByteOrder.LITTLE_ENDIAN);
+        
         try (FileInputStream in = new FileInputStream(file)) {
-            in.read(buffer.getContent(), 0, in.available());
+            in.read(buffer.getBuffer(), 0, in.available());
         }
         
+        // find ROM ID and name
         buffer.seek(0xA0);
         romName = buffer.readString(0xC);
         romId = buffer.readString(0x6);
         
-        File inifile = new File("B24_offsets.ini");
+        // get offsets and additional information from INI file
+        File ini = new File("B24_offsets.ini");
         
-        if (!(inifile.isFile() && inifile.exists())) {
-            romDescription = "Unknown game";
-            isLoaded = false;
-            isJapanese = false;
-            return;
+        if (ini.isFile() && ini.exists()) {
+            Section s = new Ini(ini).get(romId);
+            
+            romDescription = s.get("description");
+            dungeonPointerOffset = BitConverter.stringToInt(s.get("dungeonPointerOffset"));
+            pokemonPointerOffset = BitConverter.stringToInt(s.get("pokemonPointerOffset"));
+            itemPointerOffset = BitConverter.stringToInt(s.get("itemPointerOffset"));
+            dungeonMainOffset = BitConverter.stringToInt(s.get("dungeonMainOffset"));
+            dungeonFloorsPointerOffset = BitConverter.stringToInt(s.get("dungeonFloorsPointerOffset"));
+            dungeonMapOffset = BitConverter.stringToInt(s.get("dungeonMapOffset"));
+            pokemonStartersOffset = BitConverter.stringToInt(s.get("pokemonStartersOffset"));
+            pokemonPartnersOffset = BitConverter.stringToInt(s.get("pokemonPartnersOffset"));
+            movesOffset = BitConverter.stringToInt(s.get("movesOffset"));
+            moneyOffset = BitConverter.stringToInt(s.get("moneyOffset"));
+            areasTextOffset = BitConverter.stringToInt(s.get("areasTextOffset"));
+            areasMainOffset = BitConverter.stringToInt(s.get("areasMainOffset"));
+            exclusivePokemonOffset = BitConverter.stringToInt(s.get("exclusivePokemonOffset"));
+            isJapanese = Boolean.parseBoolean(s.get("isJapanese"));
+            isLoaded = true;
         }
-        
-        Section game = new Ini(inifile).get(romId);
-        romDescription = game.get("description");
-        isJapanese = Boolean.parseBoolean(game.get("isJapanese"));
-        dungeonPointerOffset = BitConverter.stringToInt(game.get("dungeonPointerOffset"));
-        pokemonPointerOffset = BitConverter.stringToInt(game.get("pokemonPointerOffset"));
-        itemPointerOffset = BitConverter.stringToInt(game.get("itemPointerOffset"));
-        dungeonMainOffset = BitConverter.stringToInt(game.get("dungeonMainOffset"));
-        dungeonFloorsPointerOffset = BitConverter.stringToInt(game.get("dungeonFloorsPointerOffset"));
-        dungeonMapOffset = BitConverter.stringToInt(game.get("dungeonMapOffset"));
-        pokemonStartersOffset = BitConverter.stringToInt(game.get("pokemonStartersOffset"));
-        pokemonPartnersOffset = BitConverter.stringToInt(game.get("pokemonPartnersOffset"));
-        movesOffset = BitConverter.stringToInt(game.get("movesOffset"));
-        moneyOffset = BitConverter.stringToInt(game.get("moneyOffset"));
-        areasTextOffset = BitConverter.stringToInt(game.get("areasTextOffset"));
-        areasMainOffset = BitConverter.stringToInt(game.get("areasMainOffset"));
-        
-        isLoaded = true;
+        else {
+            romDescription = "Unknown game";
+            isJapanese = false;
+            isLoaded = false;
+        }
     }
     
     public void save() throws IOException {
+        // major check for potential null pointers
         if (!isLoaded)
             return;
         
+        // storage of data
         storeDungeons();
         storeStarters();
         storePokemon();
         storeItems();
         storeMoves();
         storeAreas();
+        storeExclusivePokemon();
         storeMoneyFactors();
         
+        // create file if it does not exist
         if (!(file.exists() && file.isFile())) {
             file.getParentFile().mkdirs();
             file.createNewFile();
         }
         
+        // finally, write bytes to file
         try (FileOutputStream out = new FileOutputStream(file)) {
-            out.write(buffer.getContent());
+            out.write(buffer.getBuffer());
             out.flush();
         }
     }
@@ -170,11 +182,11 @@ public class RomFile {
         
         buffer.seek(pokemonStartersOffset);
         for (int i = 0 ; i < 27 ; i++)
-            starters[i] = buffer.readUShort();
+            starters[i] = buffer.readUnsignedShort();
         
         buffer.seek(pokemonPartnersOffset);
         for (int i = 0 ; i < 11 ; i++)
-            partners[i] = buffer.readUShort();
+            partners[i] = buffer.readUnsignedShort();
     }
     
     public void storeStarters() {
@@ -183,11 +195,11 @@ public class RomFile {
         
         buffer.seek(pokemonStartersOffset);
         for (int starter : starters)
-            buffer.writeUShort(starter);
+            buffer.writeUnsignedShort(starter);
         
         buffer.seek(pokemonPartnersOffset);
         for (int partner : partners)
-            buffer.writeUShort(partner);
+            buffer.writeUnsignedShort(partner);
     }
     
     public void loadPokemon() {
@@ -236,7 +248,6 @@ public class RomFile {
         moves = new ArrayList();
         
         buffer.seek(movesOffset);
-        
         for (int i = 0 ; i < 413 ; i++)
             moves.add(Move.unpack(buffer));
     }
@@ -277,12 +288,29 @@ public class RomFile {
             buffer.writeBytes(Area.pack(areas.get(i)));
     }
     
+    public void loadExclusivePokemon() {
+        exclusivePokemon = new ArrayList();
+        
+        buffer.seek(exclusivePokemonOffset);
+        for (int i = 0 ; i < 12 ; i++)
+            exclusivePokemon.add(ExclusivePokemon.unpack(buffer));
+    }
+    
+    public void storeExclusivePokemon() {
+        if (exclusivePokemon == null)
+            return;
+        
+        buffer.seek(exclusivePokemonOffset);
+        for (int i = 0 ; i < 12 ; i++)
+            buffer.writeBytes(ExclusivePokemon.pack(exclusivePokemon.get(i)));
+    }
+    
     public void loadMoneyFactors() {
         moneyfactors = new long[100];
         
         buffer.seek(moneyOffset);
         for (int i = 0 ; i < 100 ; i++)
-            moneyfactors[i] = buffer.readUInt();
+            moneyfactors[i] = buffer.readUnsignedInt();
     }
     
     public void storeMoneyFactors() {
@@ -291,7 +319,7 @@ public class RomFile {
         
         buffer.seek(moneyOffset);
         for (long moneyfactor : moneyfactors)
-            buffer.writeUInt(moneyfactor);
+            buffer.writeUnsignedInt(moneyfactor);
     }
     
     public void loadDungeons() {
@@ -326,11 +354,11 @@ public class RomFile {
             
             // Find the map points
             buffer.seek(dungeonMapOffset + i * 0x4);
-            dungeon.mapX = buffer.readUShort();
-            dungeon.mapY = buffer.readUShort();
+            dungeon.mapX = buffer.readUnsignedShort();
+            dungeon.mapY = buffer.readUnsignedShort();
             
             // Find the number of floors first
-            dungeon.floorsCount = buffer.readUByteAt(dungeonFloorsOffset + i);
+            dungeon.floorsCount = buffer.readUnsignedByteAt(dungeonFloorsOffset + i);
             
             // Load the actual floors
             buffer.seek(dungeonDataFloorsOffset + i * 0x4);
@@ -378,8 +406,8 @@ public class RomFile {
             // Write map coordinates for actual dungeons only
             if (i < 64) {
                 buffer.seek(dungeonMapOffset + i * 0x4);
-                buffer.writeUShort(dungeon.mapX);
-                buffer.writeUShort(dungeon.mapY);
+                buffer.writeUnsignedShort(dungeon.mapX);
+                buffer.writeUnsignedShort(dungeon.mapY);
             }
             
             // Write floor entries if available
@@ -413,8 +441,8 @@ public class RomFile {
         
         // Dungeon traps entries
         for (int i = 0 ; i < 148 ; i++) {
-            DungeonTraps traps = dungeonTraps.get(i);
-            buffer.writeBytesAt(traps.offset, DungeonTraps.pack(traps));
+            DungeonTraps duntraps = dungeonTraps.get(i);
+            buffer.writeBytesAt(duntraps.offset, DungeonTraps.pack(duntraps));
         }
     }
 }

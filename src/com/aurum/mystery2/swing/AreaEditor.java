@@ -47,11 +47,11 @@ public class AreaEditor extends AbstractEditor {
         
         // Add the components to the property panel
         properties.addCaption("Area settings");
-        properties.addComponent(lblName, txtName);
-        properties.addComponent(lblNamePointer, txtNamePointer);
-        properties.addComponent(lblCount, spnCount);
-        properties.addComponent(lblCondition, cmoCondition);
-        properties.addComponent(lblPrice, spnPrice);
+        properties.addLabeledComponent(lblName, txtName);
+        properties.addLabeledComponent(lblNamePointer, txtNamePointer);
+        properties.addLabeledComponent(lblCount, spnCount);
+        properties.addLabeledComponent(lblCondition, cmoCondition);
+        properties.addLabeledComponent(lblPrice, spnPrice);
         properties.addTerminator();
     }
 

@@ -132,48 +132,51 @@ public class DungeonEditor extends AbstractEditor {
         spnFloorItemsBuried.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             selectedFloor.itemsBuried = (int) spnFloorItemsBuried.getValue();
         });
+        
+        ImageIcon icnEditor = new ImageIcon(getClass().getResource("/res/tl_to-editor.png"));
+        
         btnFloorLayout = new JButton();
         btnFloorLayout.setPreferredSize(new Dimension(20, 20));
-        btnFloorLayout.setIcon(new ImageIcon(getClass().getResource("/res/to-editor.png")));
+        btnFloorLayout.setIcon(icnEditor);
         btnFloorLayout.addActionListener((java.awt.event.ActionEvent evt) -> {
             new DungeonLayoutEditor((int) spnFloorLayout.getValue()).setVisible(true);
         });
         btnFloorPokemon = new JButton();
         btnFloorPokemon.setPreferredSize(new Dimension(20, 20));
-        btnFloorPokemon.setIcon(new ImageIcon(getClass().getResource("/res/to-editor.png")));
+        btnFloorPokemon.setIcon(icnEditor);
         btnFloorPokemon.addActionListener((java.awt.event.ActionEvent evt) -> {
             new DungeonPokemonEditor((int) spnFloorPokemon.getValue()).setVisible(true);
         });
         btnFloorTraps = new JButton();
         btnFloorTraps.setPreferredSize(new Dimension(20, 20));
-        btnFloorTraps.setIcon(new ImageIcon(getClass().getResource("/res/to-editor.png")));
+        btnFloorTraps.setIcon(icnEditor);
         btnFloorTraps.addActionListener((java.awt.event.ActionEvent evt) -> {
             new DungeonTrapsEditor((int) spnFloorTraps.getValue()).setVisible(true);
         });
         btnFloorItems = new JButton();
         btnFloorItems.setPreferredSize(new Dimension(20, 20));
-        btnFloorItems.setIcon(new ImageIcon(getClass().getResource("/res/to-editor.png")));
+        btnFloorItems.setIcon(icnEditor);
         btnFloorItems.addActionListener((java.awt.event.ActionEvent evt) -> {
             JOptionPane.showMessageDialog(this, "Item editing is not supported.", Main.name, JOptionPane.PLAIN_MESSAGE, null);
             //new DungeonItemsEditor((int) spnFloorItems.getValue()).setVisible(true);
         });
         btnFloorItemsShop = new JButton();
         btnFloorItemsShop.setPreferredSize(new Dimension(20, 20));
-        btnFloorItemsShop.setIcon(new ImageIcon(getClass().getResource("/res/to-editor.png")));
+        btnFloorItemsShop.setIcon(icnEditor);
         btnFloorItemsShop.addActionListener((java.awt.event.ActionEvent evt) -> {
             JOptionPane.showMessageDialog(this, "Item editing is not supported.", Main.name, JOptionPane.PLAIN_MESSAGE, null);
             //new DungeonItemsEditor((int) spnFloorItemsShop.getValue()).setVisible(true);
         });
         btnFloorItemsMonster = new JButton();
         btnFloorItemsMonster.setPreferredSize(new Dimension(20, 20));
-        btnFloorItemsMonster.setIcon(new ImageIcon(getClass().getResource("/res/to-editor.png")));
+        btnFloorItemsMonster.setIcon(icnEditor);
         btnFloorItemsMonster.addActionListener((java.awt.event.ActionEvent evt) -> {
             JOptionPane.showMessageDialog(this, "Item editing is not supported.", Main.name, JOptionPane.PLAIN_MESSAGE, null);
             //new DungeonItemsEditor((int) spnFloorItemsMonster.getValue()).setVisible(true);
         });
         btnFloorItemsBuried = new JButton();
         btnFloorItemsBuried.setPreferredSize(new Dimension(20, 20));
-        btnFloorItemsBuried.setIcon(new ImageIcon(getClass().getResource("/res/to-editor.png")));
+        btnFloorItemsBuried.setIcon(icnEditor);
         btnFloorItemsBuried.addActionListener((java.awt.event.ActionEvent evt) -> {
             JOptionPane.showMessageDialog(this, "Item editing is not supported.", Main.name, JOptionPane.PLAIN_MESSAGE, null);
             //new DungeonItemsEditor((int) spnFloorItemsBuried.getValue()).setVisible(true);
@@ -184,7 +187,7 @@ public class DungeonEditor extends AbstractEditor {
         lblItemLimit = new JLabel("Item limit");
         lblPartyLimit = new JLabel("Party limit");
         cmoStair = new JComboBox();
-        cmoStair.setModel(new DefaultComboBoxModel(new String[] { "00: Down", "01: Up" }));
+        cmoStair.setModel(new DefaultComboBoxModel(new String[] { "Down", "Up" }));
         cmoStair.addActionListener((java.awt.event.ActionEvent evt) -> {
             if (selected == null)
                 return;
@@ -197,7 +200,7 @@ public class DungeonEditor extends AbstractEditor {
         spnItemLimit = new JSpinner();
         spnItemLimit.setModel(new SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)40), Short.valueOf((short)1)));
         spnPartyLimit = new JSpinner();
-        spnPartyLimit.setModel(new SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)40), Short.valueOf((short)1)));
+        spnPartyLimit.setModel(new SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)4), Short.valueOf((short)1)));
         chkCondLvl1 = new JCheckBox("Set level to 1");
         chkCondNoMoney = new JCheckBox("Set money to 0");
         chkCondSaveGame = new JCheckBox("Save game");
@@ -233,10 +236,10 @@ public class DungeonEditor extends AbstractEditor {
         properties.addEditor(lblFloorItemsBuried, spnFloorItemsBuried, btnFloorItemsBuried);
         properties.addSeparator();
         properties.addCaption("General");
-        properties.addComponent(lblStair, cmoStair);
-        properties.addComponent(lblTimer, spnTimer);
-        properties.addComponent(lblItemLimit, spnItemLimit);
-        properties.addComponent(lblPartyLimit, spnPartyLimit);
+        properties.addLabeledComponent(lblStair, cmoStair);
+        properties.addLabeledComponent(lblTimer, spnTimer);
+        properties.addLabeledComponent(lblItemLimit, spnItemLimit);
+        properties.addLabeledComponent(lblPartyLimit, spnPartyLimit);
         properties.addComponent(chkCondLvl1);
         properties.addComponent(chkCondNoMoney);
         properties.addComponent(chkCondSaveGame);
@@ -250,9 +253,9 @@ public class DungeonEditor extends AbstractEditor {
         properties.addComponent(chkWaterType);
         properties.addSeparator();
         properties.addCaption("Unknown");
-        properties.addComponent(lblUnk1, spnUnk1);
-        properties.addComponent(lblUnk3, spnUnk3);
-        properties.addComponent(lblUnkE, spnUnkE);
+        properties.addLabeledComponent(lblUnk1, spnUnk1);
+        properties.addLabeledComponent(lblUnk3, spnUnk3);
+        properties.addLabeledComponent(lblUnkE, spnUnkE);
         properties.addComponent(chkUnk8);
         properties.addComponent(chkUnk9);
         properties.addTerminator();

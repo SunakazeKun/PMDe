@@ -271,26 +271,26 @@ public class DungeonTrapsEditor extends AbstractEditor {
         });
         
         // Add the components to the property panel
-        properties.addComponent(lblTrip, spnTrip);
-        properties.addComponent(lblMud, spnMud);
-        properties.addComponent(lblSticky, spnSticky);
-        properties.addComponent(lblGrimy, spnGrimy);
-        properties.addComponent(lblSummon, spnSummon);
-        properties.addComponent(lblPitfall, spnPitfall);
-        properties.addComponent(lblWarp, spnWarp);
-        properties.addComponent(lblGust, spnGust);
-        properties.addComponent(lblSpin, spnSpin);
-        properties.addComponent(lblSlumber, spnSlumber);
-        properties.addComponent(lblSlow, spnSlow);
-        properties.addComponent(lblSeal, spnSeal);
-        properties.addComponent(lblPoison, spnPoison);
-        properties.addComponent(lblSelfdestruct, spnSelfdestruct);
-        properties.addComponent(lblExplosion, spnExplosion);
-        properties.addComponent(lblPPZero, spnPPZero);
-        properties.addComponent(lblChestnut, spnChestnut);
-        properties.addComponent(lblWonder, spnWonder);
-        properties.addComponent(lblPokemon, spnPokemon);
-        properties.addComponent(lblSpiked, spnSpiked);
+        properties.addLabeledComponent(lblTrip, spnTrip);
+        properties.addLabeledComponent(lblMud, spnMud);
+        properties.addLabeledComponent(lblSticky, spnSticky);
+        properties.addLabeledComponent(lblGrimy, spnGrimy);
+        properties.addLabeledComponent(lblSummon, spnSummon);
+        properties.addLabeledComponent(lblPitfall, spnPitfall);
+        properties.addLabeledComponent(lblWarp, spnWarp);
+        properties.addLabeledComponent(lblGust, spnGust);
+        properties.addLabeledComponent(lblSpin, spnSpin);
+        properties.addLabeledComponent(lblSlumber, spnSlumber);
+        properties.addLabeledComponent(lblSlow, spnSlow);
+        properties.addLabeledComponent(lblSeal, spnSeal);
+        properties.addLabeledComponent(lblPoison, spnPoison);
+        properties.addLabeledComponent(lblSelfdestruct, spnSelfdestruct);
+        properties.addLabeledComponent(lblExplosion, spnExplosion);
+        properties.addLabeledComponent(lblPPZero, spnPPZero);
+        properties.addLabeledComponent(lblChestnut, spnChestnut);
+        properties.addLabeledComponent(lblWonder, spnWonder);
+        properties.addLabeledComponent(lblPokemon, spnPokemon);
+        properties.addLabeledComponent(lblSpiked, spnSpiked);
         properties.addTerminator();
     }
 

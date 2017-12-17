@@ -89,7 +89,7 @@ public class ByteBuffer {
      * Returns the content of this buffer.
      * @return the content of this buffer.
      */
-    public byte[] getContent() {
+    public byte[] getBuffer() {
         return buffer;
     }
     
@@ -97,7 +97,7 @@ public class ByteBuffer {
      * Sets the content of this buffer.
      * @param bytes the new content
      */
-    public void setContent(byte[] bytes) {
+    public void setBuffer(byte[] bytes) {
         buffer = bytes;
         position = 0;
         marks.clear();
@@ -159,7 +159,7 @@ public class ByteBuffer {
      */
     public void seek(int newpos) {
         if (newpos < 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("new position " + newpos + " < 0");
         position = newpos;
     }
     
@@ -180,6 +180,12 @@ public class ByteBuffer {
         position += len;
     }
     
+    /**
+     * Returns the next index of the given byte.
+     * @param val the byte that is searched for
+     * @param off the offset from which the searching is started
+     * @return the index.
+     */
     public int indexOf(byte val, int off) {
         if (off < 0)
             throw new IllegalArgumentException("offset " + off + " is < than 0");
@@ -221,12 +227,7 @@ public class ByteBuffer {
         if (pos < 0)
             throw new IllegalArgumentException("position " + pos + " < 0");
         
-        if (marks.containsKey(name))
-            marks.replace(name, pos);
-        else
-            marks.put(name, pos);
-        
-        return pos;
+        return marks.containsKey(name) ? marks.replace(name, pos) : marks.put(name, pos);
     }
     
     /**
@@ -246,7 +247,7 @@ public class ByteBuffer {
     }
     
     /**
-     * Clears the buffer, the resets the position to 0 and removes all marks.
+     * Clears the buffer, resets the position to 0 and removes all marks.
      * The endianness remains untouched.
      * @param size the new size
      */
@@ -259,7 +260,7 @@ public class ByteBuffer {
     }
     
     /**
-     * Clears the buffer, the resets the position to 0 and removes all marks.
+     * Clears the buffer, resets the position to 0 and removes all marks.
      * The endianness remains untouched.
      */
     public void clear() {
@@ -364,7 +365,7 @@ public class ByteBuffer {
      * Reads the next unsigned byte from this buffer.
      * @return the unsigned 8-bit value.
      */
-    public short readUByte() {
+    public short readUnsignedByte() {
         return (short) (readByte() & 0xFF);
     }
     
@@ -373,9 +374,9 @@ public class ByteBuffer {
      * @param pos the position
      * @return the unsigned 8-bit value.
      */
-    public short readUByteAt(int pos) {
+    public short readUnsignedByteAt(int pos) {
         seek(pos);
-        return readUByte();
+        return readUnsignedByte();
     }
     
     /**
@@ -400,7 +401,7 @@ public class ByteBuffer {
      * Reads the next unsigned short value from this buffer.
      * @return the unsigned 16-bit value.
      */
-    public int readUShort() {
+    public int readUnsignedShort() {
         return (remaining() >= Short.BYTES) ? BitConverter.toUShort(readBytes(Short.BYTES), endianness, 0) : 0;
     }
     
@@ -409,9 +410,9 @@ public class ByteBuffer {
      * @param pos the position
      * @return the unsigned 16-bit value.
      */
-    public int readUShortAt(int pos) {
+    public int readUnsignedShortAt(int pos) {
         seek(pos);
-        return readUShort();
+        return readUnsignedShort();
     }
     
     /**
@@ -436,7 +437,7 @@ public class ByteBuffer {
      * Reads the next unsigned int value from this buffer.
      * @return the unsigned 32-bit value.
      */
-    public long readUInt() {
+    public long readUnsignedInt() {
         return (remaining() >= Integer.BYTES) ? BitConverter.toUInt(readBytes(Integer.BYTES), endianness, 0) : 0;
     }
     
@@ -445,9 +446,9 @@ public class ByteBuffer {
      * @param pos the position
      * @return the unsigned 32-bit value.
      */
-    public long readUIntAt(int pos) {
+    public long readUnsignedIntAt(int pos) {
         seek(pos);
-        return readUInt();
+        return readUnsignedInt();
     }
     
     /**
@@ -683,7 +684,7 @@ public class ByteBuffer {
      * Writes the specified unsigned byte to this buffer.
      * @param val the unsigned 8-bit integer value
      */
-    public void writeUByte(short val) {
+    public void writeUnsignedByte(short val) {
         writeByte((byte) val);
     }
     
@@ -692,9 +693,9 @@ public class ByteBuffer {
      * @param pos the position
      * @param val the unsigned 8-bit integer value
      */
-    public void writeUByteAt(int pos, short val) {
+    public void writeUnsignedByteAt(int pos, short val) {
         seek(pos);
-        writeUByte(val);
+        writeUnsignedByte(val);
     }
     
     /**
@@ -719,7 +720,7 @@ public class ByteBuffer {
      * Writes the specified unsigned short value to this buffer.
      * @param val the unsigned 16-bit integer value
      */
-    public void writeUShort(int val) {
+    public void writeUnsignedShort(int val) {
         writeShort((short) val);
     }
     
@@ -728,9 +729,9 @@ public class ByteBuffer {
      * @param pos the position
      * @param val the unsigned 16-bit integer value
      */
-    public void writeUShortAt(int pos, int val) {
+    public void writeUnsignedShortAt(int pos, int val) {
         seek(pos);
-        writeUShort(val);
+        writeUnsignedShort(val);
     }
     
     /**
@@ -755,7 +756,7 @@ public class ByteBuffer {
      * Writes the specified unsigned int value to this buffer.
      * @param val the unsigned 32-bit integer value
      */
-    public void writeUInt(long val) {
+    public void writeUnsignedInt(long val) {
         writeInt((int) val);
     }
     
@@ -764,9 +765,9 @@ public class ByteBuffer {
      * @param pos the position
      * @param val the unsigned 32-bit integer value
      */
-    public void writeUIntAt(int pos, long val) {
+    public void writeUnsignedIntAt(int pos, long val) {
         seek(pos);
-        writeUInt(val);
+        writeUnsignedInt(val);
     }
     
     /**

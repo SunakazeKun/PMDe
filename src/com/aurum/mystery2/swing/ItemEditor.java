@@ -91,7 +91,7 @@ public class ItemEditor extends AbstractEditor {
         lblIcon = new JLabel("Icon");
         lblPalette = new JLabel("Palette");
         cmoIcon = new JComboBox();
-        cmoIcon.setModel(new DefaultComboBoxModel(new String[] { "00: Spike", "01: Stone", "02: Berry", "03: Apple", "04: Ribbon", "05: Box", "06: Money", "07: Note", "08: TM", "09: Gear", "0A: Link Box", "0B: Chestnut", "0C: Healing item", "0D: Glasses", "0E: Seed", "0F: Orb", "10: Key", "11: Gummi", "12: Regi part", "13: Banana", "14: Scale", "15: Thrown spike", "16: Thrown spike (alt.)", "17: Flower" }));
+        cmoIcon.setModel(new DefaultComboBoxModel(new String[] { "Spike", "Stone", "Berry", "Apple", "Ribbon", "Box", "Coin", "Note", "TM", "Gear", "Link Box", "Chestnut", "Healing item", "Glasses", "Seed", "Orb", "Key", "Gummi", "Regi part", "Banana", "Scale", "Thrown spike", "Thrown spike (alt.)", "Flower" }));
         cmoIcon.addActionListener((java.awt.event.ActionEvent evt) -> {
             updateItemIcon();
         });
@@ -119,9 +119,9 @@ public class ItemEditor extends AbstractEditor {
         cmoMove = new JComboBox();
         cmoMove.setModel(new DefaultComboBoxModel(Lists.moves.toArray()));
         cmoType = new JComboBox();
-        cmoType.setModel(new DefaultComboBoxModel(new String[] { "00: Throwable", "01: Rock", "02: Berry / Seed", "03: Apple / Gummi", "04: Hold item", "05: TM", "06: Money", "07: Unused", "08: Misc.", "09: Orb", "0A: Link Box", "0B: Used TM" }));
+        cmoType.setModel(new DefaultComboBoxModel(new String[] { "Throwable", "Rock", "Berry / Seed", "Apple / Gummi", "Hold item", "TM", "Money", "Unused", "Misc.", "Orb", "Link Box", "Used TM" }));
         cmoSubtype = new JComboBox();
-        cmoSubtype.setModel(new DefaultComboBoxModel(new String[] { "00: Nothing", "01: Throwable", "02: Rocks", "03: Ribbons", "04: Food", "05: Healing items", "06: Chestnut", "07: Money / Wish Stone", "08: Misc.", "09: TMs", "0A: Link Box", "0B: Specs", "0C: Scarfs", "0D: Orbs" }));
+        cmoSubtype.setModel(new DefaultComboBoxModel(new String[] { "Nothing", "Throwable", "Rocks", "Ribbons", "Food", "Healing items", "Chestnut", "Money / Wish Stone", "Misc.", "TMs", "Link Box", "Specs", "Scarfs", "Orbs" }));
         
         lblUnkThrow1 = new JLabel("Unk. throwing factor 1");
         lblUnkThrow2 = new JLabel("Unk. throwing factor 2");
@@ -135,26 +135,26 @@ public class ItemEditor extends AbstractEditor {
         
         // Add the components to the property panel
         properties.addCaption("Text");
-        properties.addComponent(lblName, txtName);
-        properties.addComponent(lblNamePointer, txtNamePointer);
-        properties.addComponent(lblDesc, txtDesc);
-        properties.addComponent(lblDescPointer, txtDescPointer);
+        properties.addLabeledComponent(lblName, txtName);
+        properties.addLabeledComponent(lblNamePointer, txtNamePointer);
+        properties.addLabeledComponent(lblDesc, txtDesc);
+        properties.addLabeledComponent(lblDescPointer, txtDescPointer);
         properties.addSeparator();
         properties.addCaption("Sprite");
         properties.addComponent(lblPreview);
-        properties.addComponent(lblIcon, cmoIcon);
-        properties.addComponent(lblPalette, sdrPalette);
+        properties.addLabeledComponent(lblIcon, cmoIcon);
+        properties.addLabeledComponent(lblPalette, sdrPalette);
         properties.addSeparator();
         properties.addCaption("Misc.");
-        properties.addComponent(lblShopPrice, spnShopPrice);
-        properties.addComponent(lblSellPrice, spnSellPrice);
-        properties.addComponent(lblOrder, spnOrder);
-        properties.addComponent(lblMove, cmoMove);
-        properties.addComponent(lblType, cmoType);
-        properties.addComponent(lblSubtype, cmoSubtype);
+        properties.addLabeledComponent(lblShopPrice, spnShopPrice);
+        properties.addLabeledComponent(lblSellPrice, spnSellPrice);
+        properties.addLabeledComponent(lblOrder, spnOrder);
+        properties.addLabeledComponent(lblMove, cmoMove);
+        properties.addLabeledComponent(lblType, cmoType);
+        properties.addLabeledComponent(lblSubtype, cmoSubtype);
         properties.addSeparator();
-        properties.addComponent(lblUnkThrow1, spnUnkThrow1);
-        properties.addComponent(lblUnkThrow2, spnUnkThrow2);
+        properties.addLabeledComponent(lblUnkThrow1, spnUnkThrow1);
+        properties.addLabeledComponent(lblUnkThrow2, spnUnkThrow2);
         properties.addComponent(chkThrowingDamage);
         properties.addComponent(chkUnkFood1);
         properties.addComponent(chkUnkFood2);

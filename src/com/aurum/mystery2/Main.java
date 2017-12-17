@@ -32,10 +32,15 @@ import com.aurum.mystery2.game.RomFile;
 import com.aurum.mystery2.swing.*;
 
 public class Main extends javax.swing.JFrame {
-    public static String name = "PMDe v1.03 (Beta)";
+    public static String name = "PMDe v1.04";
     public static Image icon = Toolkit.getDefaultToolkit().createImage(Main.class.getResource("/res/icon.png"));
+    public static boolean debug = false;
     
     public static void main(String[] args) {
+        if (args.length > 0) {
+            debug = args[0] == "-d";
+        }
+        
         try {
             javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
@@ -59,14 +64,15 @@ public class Main extends javax.swing.JFrame {
         pnlGameInfo = new javax.swing.JPanel();
         lblGameTitle = new javax.swing.JLabel();
         lblGameInternal = new javax.swing.JLabel();
-        btnStarterEditor = new javax.swing.JButton();
         btnDungeonEditor = new javax.swing.JButton();
-        btnPokemonEditor = new javax.swing.JButton();
         btnMapEditor = new javax.swing.JButton();
-        btnMoneyEditor = new javax.swing.JButton();
+        btnPokemonEditor = new javax.swing.JButton();
         btnItemEditor = new javax.swing.JButton();
         btnMoveEditor = new javax.swing.JButton();
+        btnStarterEditor = new javax.swing.JButton();
         btnAreaEditor = new javax.swing.JButton();
+        btnExclusivePokemonEditor = new javax.swing.JButton();
+        btnMoneyEditor = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuFile = new javax.swing.JMenu();
         mnuOpen = new javax.swing.JMenuItem();
@@ -114,27 +120,11 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnStarterEditor.setText("Edit starters & partners");
-        btnStarterEditor.setEnabled(false);
-        btnStarterEditor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStarterEditorActionPerformed(evt);
-            }
-        });
-
         btnDungeonEditor.setText("Edit dungeon data");
         btnDungeonEditor.setEnabled(false);
         btnDungeonEditor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDungeonEditorActionPerformed(evt);
-            }
-        });
-
-        btnPokemonEditor.setText("Edit Pokémon data");
-        btnPokemonEditor.setEnabled(false);
-        btnPokemonEditor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPokemonEditorActionPerformed(evt);
             }
         });
 
@@ -146,11 +136,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnMoneyEditor.setText("Edit POKé factors");
-        btnMoneyEditor.setEnabled(false);
-        btnMoneyEditor.addActionListener(new java.awt.event.ActionListener() {
+        btnPokemonEditor.setText("Edit Pokémon data");
+        btnPokemonEditor.setEnabled(false);
+        btnPokemonEditor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoneyEditorActionPerformed(evt);
+                btnPokemonEditorActionPerformed(evt);
             }
         });
 
@@ -171,6 +161,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btnStarterEditor.setText("Edit starters & partners");
+        btnStarterEditor.setEnabled(false);
+        btnStarterEditor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStarterEditorActionPerformed(evt);
+            }
+        });
+
         btnAreaEditor.setText("Edit friend areas");
         btnAreaEditor.setEnabled(false);
         btnAreaEditor.addActionListener(new java.awt.event.ActionListener() {
@@ -179,11 +177,27 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btnExclusivePokemonEditor.setText("Edit exclusive Pokémon");
+        btnExclusivePokemonEditor.setEnabled(false);
+        btnExclusivePokemonEditor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExclusivePokemonEditorActionPerformed(evt);
+            }
+        });
+
+        btnMoneyEditor.setText("Edit POKé factors");
+        btnMoneyEditor.setEnabled(false);
+        btnMoneyEditor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoneyEditorActionPerformed(evt);
+            }
+        });
+
         mnuFile.setMnemonic('F');
         mnuFile.setText("File");
 
         mnuOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
-        mnuOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/open.png"))); // NOI18N
+        mnuOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/tl_open.png"))); // NOI18N
         mnuOpen.setMnemonic('O');
         mnuOpen.setText("Open");
         mnuOpen.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +208,7 @@ public class Main extends javax.swing.JFrame {
         mnuFile.add(mnuOpen);
 
         mnuSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        mnuSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/save.png"))); // NOI18N
+        mnuSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/tl_save.png"))); // NOI18N
         mnuSave.setMnemonic('S');
         mnuSave.setText("Save");
         mnuSave.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +219,7 @@ public class Main extends javax.swing.JFrame {
         mnuFile.add(mnuSave);
 
         mnuSaveAs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        mnuSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/save-as.png"))); // NOI18N
+        mnuSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/tl_save-as.png"))); // NOI18N
         mnuSaveAs.setMnemonic('A');
         mnuSaveAs.setText("Save as");
         mnuSaveAs.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +230,7 @@ public class Main extends javax.swing.JFrame {
         mnuFile.add(mnuSaveAs);
         mnuFile.add(sep1);
 
-        mnuClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/cancel.png"))); // NOI18N
+        mnuClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/tl_cancel.png"))); // NOI18N
         mnuClose.setMnemonic('C');
         mnuClose.setText("Exit");
         mnuClose.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +258,7 @@ public class Main extends javax.swing.JFrame {
         mnuHelp.setMnemonic('H');
         mnuHelp.setText("Help");
 
-        mnuAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/info.png"))); // NOI18N
+        mnuAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/tl_info.png"))); // NOI18N
         mnuAbout.setMnemonic('A');
         mnuAbout.setText("About");
         mnuAbout.addActionListener(new java.awt.event.ActionListener() {
@@ -266,22 +280,25 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlGameInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnDungeonEditor, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                            .addComponent(btnPokemonEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnMapEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnItemEditor, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnAreaEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMoveEditor, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                        .addComponent(btnAreaEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExclusivePokemonEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnMoveEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnStarterEditor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMoneyEditor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnStarterEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnPokemonEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnItemEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnMoneyEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDungeonEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMapEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -290,21 +307,23 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlGameInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDungeonEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDungeonEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMapEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnItemEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPokemonEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPokemonEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnItemEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMoveEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStarterEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMoneyEditor, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(btnAreaEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAreaEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExclusivePokemonEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMoneyEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -342,6 +361,7 @@ public class Main extends javax.swing.JFrame {
             btnMoveEditor.setEnabled(RomFile.current.isLoaded());
             btnMapEditor.setEnabled(RomFile.current.isLoaded());
             btnAreaEditor.setEnabled(RomFile.current.isLoaded());
+            btnExclusivePokemonEditor.setEnabled(RomFile.current.isLoaded());
             btnMoneyEditor.setEnabled(RomFile.current.isLoaded());
             
             lblGameTitle.setText(RomFile.current.getRomDescription());
@@ -452,9 +472,16 @@ public class Main extends javax.swing.JFrame {
         new AreaEditor().setVisible(true);
     }//GEN-LAST:event_btnAreaEditorActionPerformed
 
+    private void btnExclusivePokemonEditorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExclusivePokemonEditorActionPerformed
+        if (RomFile.current.exclusivePokemon == null)
+            RomFile.current.loadExclusivePokemon();
+        new ExclusivePokemonEditor().setVisible(true);
+    }//GEN-LAST:event_btnExclusivePokemonEditorActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAreaEditor;
     private javax.swing.JButton btnDungeonEditor;
+    private javax.swing.JButton btnExclusivePokemonEditor;
     private javax.swing.JButton btnItemEditor;
     private javax.swing.JButton btnMapEditor;
     private javax.swing.JButton btnMoneyEditor;

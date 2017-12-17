@@ -40,13 +40,13 @@ public class Floor implements Cloneable {
     public static Floor unpack(ByteBuffer buffer) {
         Floor floor = new Floor();
         
-        floor.layout = buffer.readUShort();
-        floor.pokemon = buffer.readUShort();
-        floor.traps = buffer.readUShort();
-        floor.items = buffer.readUShort();
-        floor.itemsShop = buffer.readUShort();
-        floor.itemsMonster = buffer.readUShort();
-        floor.itemsBuried = buffer.readUShort();
+        floor.layout = buffer.readUnsignedShort();
+        floor.pokemon = buffer.readUnsignedShort();
+        floor.traps = buffer.readUnsignedShort();
+        floor.items = buffer.readUnsignedShort();
+        floor.itemsShop = buffer.readUnsignedShort();
+        floor.itemsMonster = buffer.readUnsignedShort();
+        floor.itemsBuried = buffer.readUnsignedShort();
         buffer.skip(0x2);
         
         return floor;
@@ -55,15 +55,15 @@ public class Floor implements Cloneable {
     public static byte[] pack(Floor floor) {
         ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
         
-        buffer.writeUShort(floor.layout);
-        buffer.writeUShort(floor.pokemon);
-        buffer.writeUShort(floor.traps);
-        buffer.writeUShort(floor.items);
-        buffer.writeUShort(floor.itemsShop);
-        buffer.writeUShort(floor.itemsMonster);
-        buffer.writeUShort(floor.itemsBuried);
+        buffer.writeUnsignedShort(floor.layout);
+        buffer.writeUnsignedShort(floor.pokemon);
+        buffer.writeUnsignedShort(floor.traps);
+        buffer.writeUnsignedShort(floor.items);
+        buffer.writeUnsignedShort(floor.itemsShop);
+        buffer.writeUnsignedShort(floor.itemsMonster);
+        buffer.writeUnsignedShort(floor.itemsBuried);
         buffer.writeShort((short) 0x0);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

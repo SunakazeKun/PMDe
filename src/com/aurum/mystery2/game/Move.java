@@ -9,17 +9,22 @@ public class Move implements Cloneable {
     public String name, desc, log, japUnk1, japUnk2, japNext;
     public int namePointer, descPointer, logPointer, japUnk1Pointer, japUnk2Pointer, japNextPointer;
     public int type;
-    public short ap, range;
+    public short ap, usesPerRound, range;
     public byte accuracy1, accuracy2, critical;
     
     // Unknown fields
-    public byte unkD, unk10, unk11, unk12;
+    public byte unkD, unk10, unk12;
     public short unk4, unk8, unkA;
     public boolean unk14, unk15, unk16, unk17, unk18;
     
     // Static fields
     public static final int SIZE = 0x24;
     public static final int SIZE_JAP = 0x2C;
+    
+    @Override
+    public String toString() {
+        return name;
+    }
     
     @Override
     public Object clone() {
@@ -40,15 +45,15 @@ public class Move implements Cloneable {
         if (RomFile.current.isJapanese()) {
             move.namePointer = buffer.readInt();
             move.unk4 = buffer.readShort();
-            move.type = buffer.readUShort();
+            move.type = buffer.readUnsignedShort();
             move.unk8 = buffer.readShort();
             move.unkA = buffer.readShort();
-            move.ap = buffer.readUByte();
+            move.ap = buffer.readUnsignedByte();
             move.unkD = buffer.readByte();
             move.accuracy1 = buffer.readByte();
             move.accuracy2 = buffer.readByte();
             move.unk10 = buffer.readByte();
-            move.unk11 = buffer.readByte();
+            move.usesPerRound = buffer.readUnsignedByte();
             move.unk12 = buffer.readByte();
             move.critical = buffer.readByte();
             move.unk14 = buffer.readBoolean();
@@ -56,7 +61,7 @@ public class Move implements Cloneable {
             move.unk16 = buffer.readBoolean();
             move.unk17 = buffer.readBoolean();
             move.unk18 = buffer.readBoolean();
-            move.range = buffer.readUByte();
+            move.range = buffer.readUnsignedByte();
             buffer.skip(0x2);
             move.descPointer = buffer.readInt();
             move.japUnk1Pointer = buffer.readInt();
@@ -67,15 +72,15 @@ public class Move implements Cloneable {
         else {
             move.namePointer = buffer.readInt();
             move.unk4 = buffer.readShort();
-            move.type = buffer.readUShort();
+            move.type = buffer.readUnsignedShort();
             move.unk8 = buffer.readShort();
             move.unkA = buffer.readShort();
-            move.ap = buffer.readUByte();
+            move.ap = buffer.readUnsignedByte();
             move.unkD = buffer.readByte();
             move.accuracy1 = buffer.readByte();
             move.accuracy2 = buffer.readByte();
             move.unk10 = buffer.readByte();
-            move.unk11 = buffer.readByte();
+            move.usesPerRound = buffer.readUnsignedByte();
             move.unk12 = buffer.readByte();
             move.critical = buffer.readByte();
             move.unk14 = buffer.readBoolean();
@@ -83,7 +88,7 @@ public class Move implements Cloneable {
             move.unk16 = buffer.readBoolean();
             move.unk17 = buffer.readBoolean();
             move.unk18 = buffer.readBoolean();
-            move.range = buffer.readUByte();
+            move.range = buffer.readUnsignedByte();
             buffer.skip(0x2);
             move.descPointer = buffer.readInt();
             move.logPointer = buffer.readInt();
@@ -108,15 +113,15 @@ public class Move implements Cloneable {
         if (RomFile.current.isJapanese()) {
             buffer.writeInt(move.namePointer);
             buffer.writeShort(move.unk4);
-            buffer.writeUShort(move.type);
+            buffer.writeUnsignedShort(move.type);
             buffer.writeShort(move.unk8);
             buffer.writeShort(move.unkA);
-            buffer.writeUByte(move.ap);
+            buffer.writeUnsignedByte(move.ap);
             buffer.writeByte(move.unkD);
             buffer.writeByte(move.accuracy1);
             buffer.writeByte(move.accuracy2);
             buffer.writeByte(move.unk10);
-            buffer.writeByte(move.unk11);
+            buffer.writeUnsignedByte(move.usesPerRound);
             buffer.writeByte(move.unk12);
             buffer.writeByte(move.critical);
             buffer.writeBoolean(move.unk14);
@@ -124,7 +129,7 @@ public class Move implements Cloneable {
             buffer.writeBoolean(move.unk16);
             buffer.writeBoolean(move.unk17);
             buffer.writeBoolean(move.unk18);
-            buffer.writeUByte(move.range);
+            buffer.writeUnsignedByte(move.range);
             buffer.writeShort((short) 0);
             buffer.writeInt(move.descPointer);
             buffer.writeInt(move.japUnk1Pointer);
@@ -135,15 +140,15 @@ public class Move implements Cloneable {
         else {
             buffer.writeInt(move.namePointer);
             buffer.writeShort(move.unk4);
-            buffer.writeUShort(move.type);
+            buffer.writeUnsignedShort(move.type);
             buffer.writeShort(move.unk8);
             buffer.writeShort(move.unkA);
-            buffer.writeUByte(move.ap);
+            buffer.writeUnsignedByte(move.ap);
             buffer.writeByte(move.unkD);
             buffer.writeByte(move.accuracy1);
             buffer.writeByte(move.accuracy2);
             buffer.writeByte(move.unk10);
-            buffer.writeByte(move.unk11);
+            buffer.writeUnsignedByte(move.usesPerRound);
             buffer.writeByte(move.unk12);
             buffer.writeByte(move.critical);
             buffer.writeBoolean(move.unk14);
@@ -151,12 +156,12 @@ public class Move implements Cloneable {
             buffer.writeBoolean(move.unk16);
             buffer.writeBoolean(move.unk17);
             buffer.writeBoolean(move.unk18);
-            buffer.writeUByte(move.range);
+            buffer.writeUnsignedByte(move.range);
             buffer.writeShort((short) 0);
             buffer.writeInt(move.descPointer);
             buffer.writeInt(move.logPointer);
         }
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

@@ -41,8 +41,8 @@ public class MoveEditor extends AbstractEditor {
     private JComboBox<String> cmoType, cmoRange;
     private JSpinner spnAP, spnCriticalHit, spnAccuracy1, spnAccuracy2;
     
-    private JLabel lblUnk4, lblUnk8, lblUnkA, lblUnkD, lblUnk10, lblUnk11, lblUnk12;
-    private JSpinner spnUnk4, spnUnk8, spnUnkA, spnUnkD, spnUnk10, spnUnk11, spnUnk12;
+    private JLabel lblUnk4, lblUnk8, lblUnkA, lblUnkD, lblUnk10, lblUsesPerRound, lblUnk12;
+    private JSpinner spnUnk4, spnUnk8, spnUnkA, spnUnkD, spnUnk10, spnUsesPerRound, spnUnk12;
     private JCheckBox chkUnk14, chkUnk15, chkUnk16, chkUnk17, chkUnk18;
     
     public MoveEditor() {
@@ -98,21 +98,21 @@ public class MoveEditor extends AbstractEditor {
         
         lblType = new JLabel("Type");
         lblRange = new JLabel("Range");
-        lblUnk12 = new JLabel("Power");
         lblAP = new JLabel("Attack points");
         lblCriticalHit = new JLabel("Critical Hit chance");
+        lblUsesPerRound = new JLabel("Uses per round");
         lblAccuracy1 = new JLabel("Accuracy factor 1");
         lblAccuracy2 = new JLabel("Accuracy factor 2");
         cmoType = new JComboBox();
         cmoType.setModel(new DefaultComboBoxModel(Lists.types.toArray()));
         cmoRange = new JComboBox();
-        cmoRange.setModel(new DefaultComboBoxModel(new String[] { "00: None", "01: 3 tiles diagonally and in front", "02: Foes within 1-tile range", "03: Foe in front, cuts corners", "04: Partners on floor(?)", "05: Partners on floor(?)", "06: Pokémon on floor", "07: Foes on floor", "08: Unknown, unused", "09: Foe at side", "0A: Special", "0B: Foe in front", "0C: Pokémon at side", "0D: Foe up to 2 tiles ahead", "0E: Foes in line", "0F: Foes in room", "10: Allies in room", "11: Pokémon in room", "12: All except user", "13: User(?)", "14: User(?)", "15: User(?)", "16: Members in room", "17: Items", "18: Floor", "19: Wall", "1A: Pokémon within 1-tile range", "1B: Pokémon within 2-tiles range", "1C: User, cuts corners", "1D: Floor", "1E: Pokémon in front" }));
-        spnUnk12 = new JSpinner();
-        spnUnk12.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
+        cmoRange.setModel(new DefaultComboBoxModel(new String[] { "None", "3 tiles diagonally and in front", "Foes within 1-tile range", "Foe in front, cuts corners", "Partners on floor(?)", "Partners on floor(?)", "Pokémon on floor", "Foes on floor", "Unknown, unused", "Foe at side", "Special", "Foe in front", "Pokémon at side", "Foe up to 2 tiles ahead", "Foes in line", "Foes in room", "Allies in room", "Pokémon in room", "All except user", "User(?)", "User(?)", "User(?)", "Members in room", "Items", "Floor", "Wall", "Pokémon within 1-tile range", "Pokémon within 2-tiles range", "User, cuts corners", "Floor", "Pokémon in front" }));
         spnAP = new JSpinner();
         spnAP.setModel(new SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         spnCriticalHit = new JSpinner();
         spnCriticalHit.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
+        spnUsesPerRound = new JSpinner();
+        spnUsesPerRound.setModel(new SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         spnAccuracy1 = new JSpinner();
         spnAccuracy1.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
         spnAccuracy2 = new JSpinner();
@@ -123,7 +123,7 @@ public class MoveEditor extends AbstractEditor {
         lblUnkA = new JLabel("short (0xA)");
         lblUnkD = new JLabel("byte (0xD)");
         lblUnk10 = new JLabel("byte (0x10)");
-        lblUnk11 = new JLabel("byte (0x11)");
+        lblUnk12 = new JLabel("byte (0x12)");
         spnUnk4 = new JSpinner();
         spnUnk4.setModel(new SpinnerNumberModel((short)0, null, null, (short)1));
         spnUnk8 = new JSpinner();
@@ -134,8 +134,8 @@ public class MoveEditor extends AbstractEditor {
         spnUnkD.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
         spnUnk10 = new JSpinner();
         spnUnk10.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
-        spnUnk11 = new JSpinner();
-        spnUnk11.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
+        spnUnk12 = new JSpinner();
+        spnUnk12.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
         chkUnk14 = new JCheckBox("bool (0x14)");
         chkUnk15 = new JCheckBox("bool (0x15)");
         chkUnk16 = new JCheckBox("bool (0x16)");
@@ -144,37 +144,37 @@ public class MoveEditor extends AbstractEditor {
         
         // Add the components to the property panel
         properties.addCaption("Text");
-        properties.addComponent(lblName, txtName);
-        properties.addComponent(lblNamePointer, txtNamePointer);
-        properties.addComponent(lblDescription, txtDesc);
-        properties.addComponent(lblDescriptionPointer, txtDescPointer);
-        properties.addComponent(lblLog, txtLog);
-        properties.addComponent(lblLogPointer, txtLogPointer);
+        properties.addLabeledComponent(lblName, txtName);
+        properties.addLabeledComponent(lblNamePointer, txtNamePointer);
+        properties.addLabeledComponent(lblDescription, txtDesc);
+        properties.addLabeledComponent(lblDescriptionPointer, txtDescPointer);
+        properties.addLabeledComponent(lblLog, txtLog);
+        properties.addLabeledComponent(lblLogPointer, txtLogPointer);
         if (RomFile.current.isJapanese()) {
-            properties.addComponent(lblJapUnk1, txtJapUnk1);
-            properties.addComponent(lblJapUnk1Pointer, txtJapUnk1Pointer);
-            properties.addComponent(lblJapUnk2, txtJapUnk2);
-            properties.addComponent(lblJapUnk2Pointer, txtJapUnk2Pointer);
-            properties.addComponent(lblJapNext, txtJapNext);
-            properties.addComponent(lblJapNextPointer, txtJapNextPointer);
+            properties.addLabeledComponent(lblJapUnk1, txtJapUnk1);
+            properties.addLabeledComponent(lblJapUnk1Pointer, txtJapUnk1Pointer);
+            properties.addLabeledComponent(lblJapUnk2, txtJapUnk2);
+            properties.addLabeledComponent(lblJapUnk2Pointer, txtJapUnk2Pointer);
+            properties.addLabeledComponent(lblJapNext, txtJapNext);
+            properties.addLabeledComponent(lblJapNextPointer, txtJapNextPointer);
         }
         properties.addSeparator();
         properties.addCaption("Misc.");
-        properties.addComponent(lblType, cmoType);
-        properties.addComponent(lblRange, cmoRange);
-        properties.addComponent(lblUnk12, spnUnk12);
-        properties.addComponent(lblAP, spnAP);
-        properties.addComponent(lblCriticalHit, spnCriticalHit);
-        properties.addComponent(lblAccuracy1, spnAccuracy1);
-        properties.addComponent(lblAccuracy2, spnAccuracy2);
+        properties.addLabeledComponent(lblType, cmoType);
+        properties.addLabeledComponent(lblRange, cmoRange);
+        properties.addLabeledComponent(lblAP, spnAP);
+        properties.addLabeledComponent(lblCriticalHit, spnCriticalHit);
+        properties.addLabeledComponent(lblUsesPerRound, spnUsesPerRound);
+        properties.addLabeledComponent(lblAccuracy1, spnAccuracy1);
+        properties.addLabeledComponent(lblAccuracy2, spnAccuracy2);
         properties.addSeparator();
         properties.addCaption("Unknown");
-        properties.addComponent(lblUnk4, spnUnk4);
-        properties.addComponent(lblUnk8, spnUnk8);
-        properties.addComponent(lblUnkA, spnUnkA);
-        properties.addComponent(lblUnkD, spnUnkD);
-        properties.addComponent(lblUnk10, spnUnk10);
-        properties.addComponent(lblUnk11, spnUnk11);
+        properties.addLabeledComponent(lblUnk4, spnUnk4);
+        properties.addLabeledComponent(lblUnk8, spnUnk8);
+        properties.addLabeledComponent(lblUnkA, spnUnkA);
+        properties.addLabeledComponent(lblUnkD, spnUnkD);
+        properties.addLabeledComponent(lblUnk10, spnUnk10);
+        properties.addLabeledComponent(lblUnk12, spnUnk12);
         properties.addComponent(chkUnk14);
         properties.addComponent(chkUnk15);
         properties.addComponent(chkUnk16);
@@ -204,6 +204,7 @@ public class MoveEditor extends AbstractEditor {
         cmoRange.setSelectedIndex(selected.range);
         spnAP.setValue(selected.ap);
         spnCriticalHit.setValue(selected.critical);
+        spnUsesPerRound.setValue(selected.usesPerRound);
         spnAccuracy1.setValue(selected.accuracy1);
         spnAccuracy2.setValue(selected.accuracy2);
         
@@ -212,7 +213,6 @@ public class MoveEditor extends AbstractEditor {
         spnUnkA.setValue(selected.unkA);
         spnUnkD.setValue(selected.unkD);
         spnUnk10.setValue(selected.unk10);
-        spnUnk11.setValue(selected.unk11);
         spnUnk12.setValue(selected.unk12);
         chkUnk14.setSelected(selected.unk14);
         chkUnk15.setSelected(selected.unk15);
@@ -242,6 +242,7 @@ public class MoveEditor extends AbstractEditor {
         selected.range = (short) cmoRange.getSelectedIndex();
         selected.ap = (short) spnAP.getValue();
         selected.critical = (byte) spnCriticalHit.getValue();
+        selected.usesPerRound = (short) spnUsesPerRound.getValue();
         selected.accuracy1 = (byte) spnAccuracy1.getValue();
         selected.accuracy2 = (byte) spnAccuracy2.getValue();
         
@@ -250,7 +251,6 @@ public class MoveEditor extends AbstractEditor {
         selected.unkA = (short) spnUnkA.getValue();
         selected.unkD = (byte) spnUnkD.getValue();
         selected.unk10 = (byte) spnUnk10.getValue();
-        selected.unk11 = (byte) spnUnk11.getValue();
         selected.unk12 = (byte) spnUnk12.getValue();
         selected.unk14 = chkUnk14.isSelected();
         selected.unk15 = chkUnk15.isSelected();

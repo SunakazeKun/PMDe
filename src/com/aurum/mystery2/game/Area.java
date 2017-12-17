@@ -33,6 +33,11 @@ public class Area implements Cloneable {
     public static final int SIZE = 0x8;
     
     @Override
+    public String toString() {
+        return name;
+    }
+    
+    @Override
     public Object clone() {
         try {
             return super.clone();
@@ -45,9 +50,9 @@ public class Area implements Cloneable {
     public static Area unpack(ByteBuffer buffer) {
         Area area = new Area();
         
-        area.count = buffer.readUShort();
-        area.condition = buffer.readUShort();
-        area.price = buffer.readUInt();
+        area.count = buffer.readUnsignedShort();
+        area.condition = buffer.readUnsignedShort();
+        area.price = buffer.readUnsignedInt();
         
         return area;
     }
@@ -55,10 +60,10 @@ public class Area implements Cloneable {
     public static byte[] pack(Area area) {
         ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
         
-        buffer.writeUShort(area.count);
-        buffer.writeUShort(area.condition);
-        buffer.writeUInt(area.price);
+        buffer.writeUnsignedShort(area.count);
+        buffer.writeUnsignedShort(area.condition);
+        buffer.writeUnsignedInt(area.price);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

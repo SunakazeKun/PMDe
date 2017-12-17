@@ -37,6 +37,11 @@ public class Item implements Cloneable {
     public static final int SIZE = 0x20;
     
     @Override
+    public String toString() {
+        return name;
+    }
+    
+    @Override
     public Object clone() {
         try {
             return super.clone();
@@ -53,10 +58,10 @@ public class Item implements Cloneable {
         
         // Fields
         item.namePointer = buffer.readInt();
-        item.buyPrice = buffer.readUInt();
-        item.sellPrice = buffer.readUInt();
-        item.type = buffer.readUByte();
-        item.icon = buffer.readUByte();
+        item.buyPrice = buffer.readUnsignedInt();
+        item.sellPrice = buffer.readUnsignedInt();
+        item.type = buffer.readUnsignedByte();
+        item.icon = buffer.readUnsignedByte();
         buffer.skip(0x2);
         item.descPointer = buffer.readInt();
         item.unkFood1 = buffer.readBoolean();
@@ -64,11 +69,11 @@ public class Item implements Cloneable {
         item.throwDamage = buffer.readBoolean();
         buffer.skip(0x1);
         item.move = buffer.readShort();
-        item.order = buffer.readUByte();
-        item.unkThrow1B = buffer.readUByte();
-        item.unkThrow1C = buffer.readUByte();
-        item.palette = buffer.readUByte();
-        item.subtype = buffer.readUByte();
+        item.order = buffer.readUnsignedByte();
+        item.unkThrow1B = buffer.readUnsignedByte();
+        item.unkThrow1C = buffer.readUnsignedByte();
+        item.palette = buffer.readUnsignedByte();
+        item.subtype = buffer.readUnsignedByte();
         buffer.skip(0x1);
         
         // Strings
@@ -84,10 +89,10 @@ public class Item implements Cloneable {
         ByteBuffer buffer = new ByteBuffer(0x20, ByteOrder.LITTLE_ENDIAN);
         
         buffer.writeInt(item.namePointer);
-        buffer.writeUInt(item.buyPrice);
-        buffer.writeUInt(item.sellPrice);
-        buffer.writeUByte(item.type);
-        buffer.writeUByte(item.icon);
+        buffer.writeUnsignedInt(item.buyPrice);
+        buffer.writeUnsignedInt(item.sellPrice);
+        buffer.writeUnsignedByte(item.type);
+        buffer.writeUnsignedByte(item.icon);
         buffer.writeShort((short) 0);
         buffer.writeInt(item.descPointer);
         buffer.writeBoolean(item.unkFood1);
@@ -95,13 +100,13 @@ public class Item implements Cloneable {
         buffer.writeBoolean(item.throwDamage);
         buffer.writeByte((byte) 0);
         buffer.writeShort(item.move);
-        buffer.writeUByte(item.order);
-        buffer.writeUByte(item.unkThrow1B);
-        buffer.writeUByte(item.unkThrow1C);
-        buffer.writeUByte(item.palette);
-        buffer.writeUByte(item.subtype);
+        buffer.writeUnsignedByte(item.order);
+        buffer.writeUnsignedByte(item.unkThrow1B);
+        buffer.writeUnsignedByte(item.unkThrow1C);
+        buffer.writeUnsignedByte(item.palette);
+        buffer.writeUnsignedByte(item.subtype);
         buffer.writeByte((byte) 0);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

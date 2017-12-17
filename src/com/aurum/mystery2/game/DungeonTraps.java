@@ -57,7 +57,7 @@ public class DungeonTraps implements Cloneable {
         trapentry.traps = new int[20];
         int diff = 0;
         for (int i = 0 ; i < 20 ; i++) {
-            int mval = buffer.readUShort();
+            int mval = buffer.readUnsignedShort();
             int val = mval;
             if (mval != 0) {
                 val -= diff;
@@ -74,8 +74,8 @@ public class DungeonTraps implements Cloneable {
         
         int sum = 0;
         for (int trap : trapentry.traps)
-            buffer.writeUShort(sum < 10000 ? ((trap > 0) ? sum += trap : 0) : 0);
+            buffer.writeUnsignedShort(sum < 10000 ? ((trap > 0) ? sum += trap : 0) : 0);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

@@ -16,7 +16,7 @@
                   <KeyStroke key="Ctrl+O"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/res/open.png"/>
+                  <Image iconType="3" name="/res/tl_open.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="79"/>
                 <Property name="text" type="java.lang.String" value="Open"/>
@@ -31,7 +31,7 @@
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/res/save.png"/>
+                  <Image iconType="3" name="/res/tl_save.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Save"/>
@@ -46,7 +46,7 @@
                   <KeyStroke key="Ctrl+Alt+S"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/res/save-as.png"/>
+                  <Image iconType="3" name="/res/tl_save-as.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="65"/>
                 <Property name="text" type="java.lang.String" value="Save as"/>
@@ -60,7 +60,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnuClose">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/res/cancel.png"/>
+                  <Image iconType="3" name="/res/tl_cancel.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="67"/>
                 <Property name="text" type="java.lang.String" value="Exit"/>
@@ -96,7 +96,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnuAbout">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/res/info.png"/>
+                  <Image iconType="3" name="/res/tl_info.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="65"/>
                 <Property name="text" type="java.lang.String" value="About"/>
@@ -144,27 +144,29 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnlGameInfo" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnDungeonEditor" pref="205" max="32767" attributes="0"/>
-                          <Component id="btnPokemonEditor" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnMapEditor" max="32767" attributes="0"/>
-                          <Component id="btnItemEditor" pref="205" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnAreaEditor" min="-2" pref="205" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnExclusivePokemonEditor" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnAreaEditor" max="32767" attributes="0"/>
-                          <Component id="btnMoveEditor" pref="205" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnMoveEditor" min="-2" pref="205" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnStarterEditor" alignment="1" min="-2" pref="205" max="-2" attributes="0"/>
-                          <Component id="btnMoneyEditor" alignment="1" min="-2" pref="205" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnStarterEditor" min="-2" pref="205" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnPokemonEditor" min="-2" pref="205" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnItemEditor" min="-2" pref="205" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="btnMoneyEditor" min="-2" pref="205" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnDungeonEditor" min="-2" pref="205" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnMapEditor" min="-2" pref="205" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -177,14 +179,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlGameInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnDungeonEditor" max="32767" attributes="0"/>
-                  <Component id="btnMapEditor" min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnDungeonEditor" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btnMapEditor" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnItemEditor" max="32767" attributes="0"/>
-                  <Component id="btnPokemonEditor" min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnPokemonEditor" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btnItemEditor" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -192,10 +194,12 @@
                   <Component id="btnStarterEditor" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnMoneyEditor" pref="33" max="32767" attributes="0"/>
-                  <Component id="btnAreaEditor" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAreaEditor" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btnExclusivePokemonEditor" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnMoneyEditor" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -256,15 +260,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnStarterEditor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edit starters &amp; partners"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStarterEditorActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnDungeonEditor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit dungeon data"/>
@@ -272,15 +267,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDungeonEditorActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPokemonEditor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Pok&#xe9;mon data"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPokemonEditorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnMapEditor">
@@ -292,13 +278,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMapEditorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnMoneyEditor">
+    <Component class="javax.swing.JButton" name="btnPokemonEditor">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit POK&#xe9; factors"/>
+        <Property name="text" type="java.lang.String" value="Edit Pok&#xe9;mon data"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoneyEditorActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPokemonEditorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnItemEditor">
@@ -320,6 +306,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoveEditorActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JButton" name="btnStarterEditor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edit starters &amp; partners"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStarterEditorActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="btnAreaEditor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit friend areas"/>
@@ -327,6 +322,24 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAreaEditorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnExclusivePokemonEditor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edit exclusive Pok&#xe9;mon"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExclusivePokemonEditorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMoneyEditor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edit POK&#xe9; factors"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoneyEditorActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

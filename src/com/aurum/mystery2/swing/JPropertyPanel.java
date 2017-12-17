@@ -62,7 +62,7 @@ public class JPropertyPanel extends JPanel {
         add(c, new GridBagConstraints(0, index++, 3, 1, 0.4f, 0f, CENTER, HORIZONTAL, new Insets(1, 1, 1, 1), 0, 0));
     }
     
-    public void addComponent(JLabel l, Component c) {
+    public void addLabeledComponent(JLabel l, Component c) {
         prepareComponent(c);
         
         add(l, new GridBagConstraints(0, index, 1, 1, 0.5f, 0f, LINE_START, NONE, new Insets(1, 1, 1, 1), 0, 0));

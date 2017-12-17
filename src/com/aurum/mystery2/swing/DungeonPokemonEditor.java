@@ -112,9 +112,9 @@ public class DungeonPokemonEditor extends AbstractEditor {
         properties.addComponent(scroll);
         properties.addSeparator();
         properties.addCaption("Entry settings");
-        properties.addComponent(lblPokemon, cmoPokemon);
-        properties.addComponent(lblLevel, spnLevel);
-        properties.addComponent(lblProbability, spnProbability);
+        properties.addLabeledComponent(lblPokemon, cmoPokemon);
+        properties.addLabeledComponent(lblLevel, spnLevel);
+        properties.addLabeledComponent(lblProbability, spnProbability);
         properties.addTerminator();
     }
 

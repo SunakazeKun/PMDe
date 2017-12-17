@@ -17,29 +17,24 @@
 
 package com.aurum.mystery2.game;
 
-import java.util.List;
 import com.aurum.mystery2.ByteBuffer;
 import com.aurum.mystery2.ByteOrder;
+import com.aurum.mystery2.Lists;
 
-public class DungeonItems implements Cloneable {
+public class ExclusivePokemon implements Cloneable {
     // Entry fields
-    public List<Entry> entries;
-    
-    // Other fields
-    public int offset;
+    public int species;
+    public boolean red, blue;
     
     // Static fields
+    public static int SIZE = 0x4;
     
-    public static class Entry implements Cloneable {
-        @Override
-        public Object clone() {
-            try {
-                return super.clone();
-            }
-            catch (CloneNotSupportedException ex) {
-                return null;
-            }
-        }
+    @Override
+    public String toString() {
+        return Lists.pokemon.get(species) + ((red && blue) ? " (R & B)"
+                : (red ? " (R)"
+                : (blue ? " (B)"
+                : "")));
     }
     
     @Override
@@ -52,16 +47,23 @@ public class DungeonItems implements Cloneable {
         }
     }
     
-    public static DungeonItems unpack(ByteBuffer buffer) {
-        DungeonItems items = new DungeonItems();
+    public static ExclusivePokemon unpack(ByteBuffer buffer) {
+        ExclusivePokemon exclusive = new ExclusivePokemon();
         
-        items.offset = buffer.position();
+        exclusive.species = buffer.readUnsignedShort();
+        exclusive.red = buffer.readBoolean();
+        exclusive.blue = buffer.readBoolean();
         
-        return items;
+        return exclusive;
     }
     
-    public static byte[] pack(DungeonItems pokemon) {
-        ByteBuffer buffer = new ByteBuffer(-1, ByteOrder.LITTLE_ENDIAN);
+    public static byte[] pack(ExclusivePokemon exc) {
+        ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
+        
+        buffer.writeUnsignedShort(exc.species);
+        buffer.writeBoolean(exc.red);
+        buffer.writeBoolean(exc.blue);
+        
         return buffer.getBuffer();
     }
 }

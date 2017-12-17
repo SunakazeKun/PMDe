@@ -48,8 +48,8 @@ public class DungeonLayoutEditor extends AbstractEditor {
     private JLabel lblPokemon, lblItems, lblTraps, lblMoney, lblDensityMonsters, lblDensityShops;
     private JSpinner spnPokemon, spnItems, spnTraps, spnMoney, spnDensityMonsters, spnDensityShops;
     
-    private JLabel lblUnk5, lblUnkA, lblUnk18;
-    private JSpinner spnUnk5, spnUnkA, spnUnk18;
+    private JLabel lblUnk5, lblStickyChance, lblUnk18;
+    private JSpinner spnUnk5, spnStickyChance, spnUnk18;
     
     private static final List<String> tilesetProperties = new ArrayList() {{
         add("Attack down,Surf,Water");
@@ -72,9 +72,9 @@ public class DungeonLayoutEditor extends AbstractEditor {
         add("Cringing,Shadow Ball,Rock");
         add("Cringing,Shadow Ball,Ice");
         add("Cringing,Shadow Ball,Ice");
-        add("null,null,null");
+        add("Poison,Stun Spore,Grass");
         add("Accuracy down,Earthquake,Ground");
-        add("null,null,null");
+        add("Confusion,Rock Slide,Rock");
         add("Paralysis,Swift,Normal");
         add("Confusion,Rock Slide,Ice");
         add("Poison,Stun Spore,Grass");
@@ -155,14 +155,14 @@ public class DungeonLayoutEditor extends AbstractEditor {
         spnLayoutNo = new JSpinner();
         spnLayoutNo.setModel(new SpinnerNumberModel(Short.valueOf((short)1), Short.valueOf((short)1), Short.valueOf((short)99), Short.valueOf((short)1)));
         cmoMusic = new JComboBox();
-        cmoMusic.setModel(new DefaultComboBoxModel(new String[] { "00: No music", "01: Tiny Woods", "02: Thunderwave Cave", "03: Mt. Steel", "04: Sinister Woods", "05: Silent Chasm", "06: Mt. Thunder", "07: Great Canyon", "08: Lapis Cave", "09: Mt. Blaze", "0A: Frosty Forest", "0B: Mt. Freeze", "0C: Magma Cavern", "0D: Sky Tower", "0E: Tiny Woods", "0F: Tiny Woods", "10: Tiny Woods", "11: Tiny Woods", "12: Buried Relic", "13: Stormy Sea", "14: Sinister Woods", "15: Mt. Thunder Peak", "16: Mt. Blaze Peak", "17: Frosty Grotto", "18: Mt. Freeze Peak", "19: Magma Cavern Pit", "1A: Sky Tower Summit", "1B: Tiny Woods", "1C:Tiny Woods", "1D: Tiny Woods", "1E: Tiny Woods", "1F: Tiny Woods", "20: Tiny Woods", "21: Tiny Woods", "22: Tiny Woods", "23: Tiny Woods", "24: Tiny Woods", "25: Great Canyon", "26: Tiny Woods", "27: Tiny Woods", "28: Ambience", "29: Makuhita Dojo", "2A: Makuhita Dojo", "2B: Tiny Woods", "2C: Tiny Woods", "2D: Tiny Woods", "2E: Tiny Woods", "2F: Tiny Woods", "30: Tiny Woods", "31: Tiny Woods", "32: Tiny Woods", "33: Tiny Woods", "34: Tiny Woods", "35: Tiny Woods", "36: Tiny Woods", "37: Tiny Woods", "38: Tiny Woods", "39: Tiny Woods", "3A: Tiny Woods", "3B: Tiny Woods", "3C: Tiny Woods", "3D: Tiny Woods", "3E: Tiny Woods", "3F: Tiny Woods", "40: Tiny Woods", "41: Ambience", "42: Beach Ambience", "43: Mt. Thunder Peak Ambience", "44: Mt. Blaze Peak Ambience", "45: Frosty Grotto Ambience", "46: Tiny Woods", "47: Tiny Woods", "48: Tiny Woods", "49: Silver Trench Ambience", "4A: Stormy Sea Ambience" }));
+        cmoMusic.setModel(new DefaultComboBoxModel(new String[] { "No music", "Tiny Woods", "Thunderwave Cave", "Mt. Steel", "Sinister Woods", "Silent Chasm", "Mt. Thunder", "Great Canyon", "Lapis Cave", "Mt. Blaze", "Frosty Forest", "Mt. Freeze", "Magma Cavern", "Sky Tower", "Tiny Woods (0E)", "Tiny Woods (0F)", "Tiny Woods (10)", "Tiny Woods (11)", "Buried Relic", "Stormy Sea", "Sinister Woods", "Mt. Thunder Peak", "Mt. Blaze Peak", "Frosty Grotto", "Mt. Freeze Peak", "Magma Cavern Pit", "Sky Tower Summit", "Tiny Woods (1B)", "Tiny Woods (1C)", "Tiny Woods (1D)", "Tiny Woods (1E)", "Tiny Woods (1F)", "Tiny Woods (20)", "Tiny Woods (21)", "Tiny Woods (22)", "Tiny Woods (23)", "Tiny Woods (24)", "Great Canyon (25)", "Tiny Woods (26)", "Tiny Woods (27)", "Ambience", "Makuhita Dojo", "Makuhita Dojo (2A)", "Tiny Woods (2B)", "Tiny Woods (2C)", "Tiny Woods (2D)", "Tiny Woods (2E)", "Tiny Woods (2F)", "Tiny Woods (30)", "Tiny Woods (31)", "Tiny Woods (32)", "Tiny Woods (33)", "Tiny Woods (34)", "Tiny Woods (35)", "Tiny Woods (36)", "Tiny Woods (37)", "Tiny Woods (38)", "Tiny Woods (39)", "Tiny Woods (3A)", "Tiny Woods (3B)", "Tiny Woods (3C)", "Tiny Woods (3D)", "Tiny Woods (3E)", "Tiny Woods (3F)", "Tiny Woods (40)", "Ambience (41)", "Beach Ambience", "Mt. Thunder Peak Ambience", "Mt. Blaze Peak Ambience", "Frosty Grotto Ambience", "Tiny Woods (46)", "Tiny Woods (47)", "Tiny Woods (48)", "Silver Trench Ambience", "Stormy Sea Ambience" }));
         cmoWeather = new JComboBox();
-        cmoWeather.setModel(new DefaultComboBoxModel(new String[] { "00: Clear", "01: Sunny", "02: Sandstorm", "03: Cloudy", "04: Rain", "05: Hail", "06: Fog", "07: Snow", "08: Random" }));
+        cmoWeather.setModel(new DefaultComboBoxModel(new String[] { "Clear", "Sunny", "Sandstorm", "Cloudy", "Rain", "Hail", "Fog", "Snow", "Random" }));
         cmoVisibility = new JComboBox();
-        cmoVisibility.setModel(new DefaultComboBoxModel(new String[] { "00: Normal", "01: 1 tile", "02: 2 tiles" }));
+        cmoVisibility.setModel(new DefaultComboBoxModel(new String[] { "Normal", "1 tile", "2 tiles" }));
         cmoEvent = new JComboBox();
-        cmoEvent.setModel(new DefaultComboBoxModel(new String[] { "00: Nothing", "01: Boss: Mt. Steel", "02: Boss: Sinister Forest", "03: Boss: Mt. Thunder", "04: Boss: Mt. Blaze", "05: Boss: Frost Grotto", "06: Boss: Mt. Freeze", "07: Boss: Magma Cavern", "08: Boss: Sky Tower", "09: Boss: Meteor Cave", "0A: Boss: Wish Cave", "0B: Boss: Uproar Forest", "0C: Boss: Fiery Field", "0D: Boss: Lightning Field", "0E: Boss: Northwind Field", "0F: Boss: Mt. Faraway", "10: Boss: Northern Range", "11: Boss: Buried Relic 1", "12: Boss: Buried Relic 2", "13: Boss: Buried Relic 3", "14: Special: Magma Cavern Pit", "15: Boss: Silver Trench", "16: Boss: Stormy Sea", "17: Boss: Meteor Cave", "18: Special: Howling Forest", "19: Special: Purity Forest", "1A: Special: Wish Cave", "1B: Boss: Normal Maze", "1C: Boss: Fire Maze", "1D: Boss: Water Maze", "1E: Boss: Grass Maze", "1F: Boss: Electric Maze", "20: Boss: Ice Maze", "21: Boss: Fighting Maze", "22: Boss: Ground Maze", "23: Boss: Flying Maze", "24: Boss: Psychic Maze", "25: Boss: Poison Maze", "26: Boss: Bug Maze", "27: Boss: Rock Maze", "28: Boss: Ghost Maze", "29: Boss: Dragon Maze", "2A: Boss: Dark Maze", "2B: Boss: Steel Maze", "2C: Boss: Team Shifty", "2D: Boss: Team Constrictor", "2E: Boss: Team Hydro", "2F: Boss: Team Rublerock", "30: Boss: Rescue Team 2", "31: Boss: Rescue Team Maze", "32: Item: HM Fly", "33: Item: HM Dive", "34: Item: HM Waterfall", "35: Item: HM Surf", "36: Item: TM Wide Slash", "37: Item: TM Vacuum-Cut", "38: Item: Friend Bow", "39: Item: Sun Ribbon", "3A: Item: Lunar Ribbon", "3B: Item: Beauty Scarf", "3C: Item: HM Cut", "3D: Item: HM Strength", "3E: Item: HM Flash", "3F: Item: HM Rock Smash", "40: Item: Deepseatooth", "41: Item: Wish Stone", "42: Item: Deepseascale" }));
-        
+        cmoEvent.setModel(new DefaultComboBoxModel(new String[] { "Nothing", "Boss: Mt. Steel", "Boss: Sinister Forest", "Boss: Mt. Thunder", "Boss: Mt. Blaze", "Boss: Frost Grotto", "Boss: Mt. Freeze", "Boss: Magma Cavern", "Boss: Sky Tower", "Boss: Meteor Cave", "Boss: Wish Cave", "Boss: Uproar Forest", "Boss: Fiery Field", "Boss: Lightning Field", "Boss: Northwind Field", "Boss: Mt. Faraway", "Boss: Northern Range", "Boss: Buried Relic 1", "Boss: Buried Relic 2", "Boss: Buried Relic 3", "Special: Magma Cavern Pit", "Boss: Silver Trench", "Boss: Stormy Sea", "Boss: Meteor Cave", "Special: Howling Forest", "Special: Purity Forest", "Special: Wish Cave", "Boss: Normal Maze", "Boss: Fire Maze", "Boss: Water Maze", "Boss: Grass Maze", "Boss: Electric Maze", "Boss: Ice Maze", "Boss: Fighting Maze", "Boss: Ground Maze", "Boss: Flying Maze", "Boss: Psychic Maze", "Boss: Poison Maze", "Boss: Bug Maze", "Boss: Rock Maze", "Boss: Ghost Maze", "Boss: Dragon Maze", "Boss: Dark Maze", "Boss: Steel Maze", "Boss: Team Shifty", "Boss: Team Constrictor", "Boss: Team Hydro", "Boss: Team Rublerock", "Boss: Rescue Team 2", "Boss: Rescue Team Maze", "Item: HM Fly", "Item: HM Dive", "Item: HM Waterfall", "Item: HM Surf", "Item: TM Wide Slash", "Item: TM Vacuum-Cut", "Item: Friend Bow", "Item: Sun Ribbon", "Item: Lunar Ribbon", "Item: Beauty Scarf", "Item: HM Cut", "Item: HM Strength", "Item: HM Flash", "Item: HM Rock Smash", "Item: Deepseatooth", "Item: Wish Stone", "Item: Deepseascale" }));
+                
         lblPreview = new JLabel();
         lblPreview.setSize(72, 120);
         lblSecretPower = new JLabel("Secret Power");
@@ -200,13 +200,11 @@ public class DungeonLayoutEditor extends AbstractEditor {
         spnTiles.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         chkTerrainTile = new JCheckBox("Has terrain tiles");
         chkTerrainPond = new JCheckBox("Has terrain pond");
-        chkUnk9 = new JCheckBox("bool (0x9)");
-        chkUnkB = new JCheckBox("bool (0xB)");
-        chkUnkE = new JCheckBox("bool (0xE)");
         
         lblPokemon = new JLabel("Pokémon");
         lblItems = new JLabel("Items");
         lblTraps = new JLabel("Traps");
+        lblStickyChance = new JLabel("Sticky chance");
         lblMoney = new JLabel("Max. POKé factor");
         lblDensityMonsters = new JLabel("Monster Rooms");
         lblDensityShops = new JLabel("Kecelon Shops");
@@ -216,6 +214,8 @@ public class DungeonLayoutEditor extends AbstractEditor {
         spnItems.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         spnTraps = new JSpinner();
         spnTraps.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
+        spnStickyChance = new JSpinner();
+        spnStickyChance.setModel(new SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         spnMoney = new JSpinner();
         spnMoney.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         spnDensityMonsters = new JSpinner();
@@ -224,52 +224,52 @@ public class DungeonLayoutEditor extends AbstractEditor {
         spnDensityShops.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)255), Short.valueOf((short)1)));
         
         lblUnk5 = new JLabel("byte (0x5)");
-        lblUnkA = new JLabel("byte (0xA)");
         lblUnk18 = new JLabel("int (0x18)");
         spnUnk5 = new JSpinner();
         spnUnk5.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
-        spnUnkA = new JSpinner();
-        spnUnkA.setModel(new SpinnerNumberModel((byte)0, null, null, (byte)1));
         spnUnk18 = new JSpinner();
         spnUnk18.setModel(new SpinnerNumberModel());
+        chkUnk9 = new JCheckBox("bool (0x9)");
+        chkUnkB = new JCheckBox("bool (0xB)");
+        chkUnkE = new JCheckBox("bool (0xE)");
         
         // Add the components to the property panel
         properties.addCaption("General");
-        properties.addComponent(lblLayoutNo, spnLayoutNo);
-        properties.addComponent(lblMusic, cmoMusic);
-        properties.addComponent(lblWeather, cmoWeather);
-        properties.addComponent(lblVisibility, cmoVisibility);
-        properties.addComponent(lblEvent, cmoEvent);
+        properties.addLabeledComponent(lblLayoutNo, spnLayoutNo);
+        properties.addLabeledComponent(lblMusic, cmoMusic);
+        properties.addLabeledComponent(lblWeather, cmoWeather);
+        properties.addLabeledComponent(lblVisibility, cmoVisibility);
+        properties.addLabeledComponent(lblEvent, cmoEvent);
         properties.addSeparator();
         properties.addCaption("Tileset");
         properties.addComponent(lblPreview);
-        properties.addComponent(lblSecretPower, txtSecretPower);
-        properties.addComponent(lblNaturalPower, txtNaturalPower);
-        properties.addComponent(lblCamouflage, txtCamouflage);
-        properties.addComponent(lblTileset, spnTileset);
+        properties.addLabeledComponent(lblSecretPower, txtSecretPower);
+        properties.addLabeledComponent(lblNaturalPower, txtNaturalPower);
+        properties.addLabeledComponent(lblCamouflage, txtCamouflage);
+        properties.addLabeledComponent(lblTileset, spnTileset);
         properties.addSeparator();
-        properties.addCaption("Generator factors");
-        properties.addComponent(lblLayout1, spnLayout1);
-        properties.addComponent(lblLayout2, spnLayout2);
-        properties.addComponent(lblTerrain, spnTiles);
+        properties.addCaption("Generator settings");
+        properties.addLabeledComponent(lblLayout1, spnLayout1);
+        properties.addLabeledComponent(lblLayout2, spnLayout2);
+        properties.addLabeledComponent(lblTerrain, spnTiles);
         properties.addComponent(chkTerrainTile);
         properties.addComponent(chkTerrainPond);
+        properties.addSeparator();
+        properties.addCaption("Object parameters");
+        properties.addLabeledComponent(lblPokemon, spnPokemon);
+        properties.addLabeledComponent(lblItems, spnItems);
+        properties.addLabeledComponent(lblTraps, spnTraps);
+        properties.addLabeledComponent(lblStickyChance, spnStickyChance);
+        properties.addLabeledComponent(lblMoney, spnMoney);
+        properties.addLabeledComponent(lblDensityMonsters, spnDensityMonsters);
+        properties.addLabeledComponent(lblDensityShops, spnDensityShops);
+        properties.addSeparator();
+        properties.addCaption("Unknown");
+        properties.addLabeledComponent(lblUnk5, spnUnk5);
+        properties.addLabeledComponent(lblUnk18, spnUnk18);
         properties.addComponent(chkUnk9);
         properties.addComponent(chkUnkB);
         properties.addComponent(chkUnkE);
-        properties.addSeparator();
-        properties.addCaption("Object factors");
-        properties.addComponent(lblPokemon, spnPokemon);
-        properties.addComponent(lblItems, spnItems);
-        properties.addComponent(lblTraps, spnTraps);
-        properties.addComponent(lblMoney, spnMoney);
-        properties.addComponent(lblDensityMonsters, spnDensityMonsters);
-        properties.addComponent(lblDensityShops, spnDensityShops);
-        properties.addSeparator();
-        properties.addCaption("Unknown");
-        properties.addComponent(lblUnk5, spnUnk5);
-        properties.addComponent(lblUnkA, spnUnkA);
-        properties.addComponent(lblUnk18, spnUnk18);
         properties.addTerminator();
     }
 
@@ -293,20 +293,20 @@ public class DungeonLayoutEditor extends AbstractEditor {
         spnTiles.setValue(selected.terrainDensity);
         chkTerrainTile.setSelected(selected.hasTerrainTiles);
         chkTerrainPond.setSelected(selected.hasTerrainPond);
-        chkUnk9.setSelected(selected.hasTerrainUnk9);
-        chkUnkB.setSelected(selected.hasTerrainUnkB);
-        chkUnkE.setSelected(selected.hasTerrainUnkE);
         
         spnPokemon.setValue(selected.pokemonDensity);
         spnItems.setValue(selected.itemDensity);
         spnTraps.setValue(selected.trapDensity);
+        spnStickyChance.setValue(selected.stickyChance);
         spnMoney.setValue(selected.moneyFactor);
         spnDensityMonsters.setValue(selected.monstersFactor);
         spnDensityShops.setValue(selected.shopsFactor);
         
         spnUnk5.setValue(selected.unk5);
-        spnUnkA.setValue(selected.unkA);
         spnUnk18.setValue(selected.unk18);
+        chkUnk9.setSelected(selected.unk9);
+        chkUnkB.setSelected(selected.unkB);
+        chkUnkE.setSelected(selected.unkE);
     }
 
     @Override
@@ -327,20 +327,20 @@ public class DungeonLayoutEditor extends AbstractEditor {
         selected.terrainDensity = (short) spnTiles.getValue();
         selected.hasTerrainTiles = chkTerrainTile.isSelected();
         selected.hasTerrainPond = chkTerrainPond.isSelected();
-        selected.hasTerrainUnk9 = chkUnk9.isSelected();
-        selected.hasTerrainUnkB = chkUnkB.isSelected();
-        selected.hasTerrainUnkE = chkUnkE.isSelected();
         
         selected.pokemonDensity = (short) spnPokemon.getValue();
         selected.itemDensity = (short) spnItems.getValue();
         selected.trapDensity = (short) spnTraps.getValue();
+        selected.stickyChance = (short) spnStickyChance.getValue();
         selected.moneyFactor = (short) spnMoney.getValue();
         selected.monstersFactor = (short) spnDensityMonsters.getValue();
         selected.shopsFactor = (short) spnDensityShops.getValue();
         
         selected.unk5 = (byte) spnUnk5.getValue();
-        selected.unkA = (byte) spnUnkA.getValue();
         selected.unk18 = (int) spnUnk18.getValue();
+        selected.unk9 = chkUnk9.isSelected();
+        selected.unkB = chkUnkB.isSelected();
+        selected.unkE = chkUnkE.isSelected();
         
         RomFile.current.dungeonLayouts.set(list.getSelectedIndex(), selected);
     }

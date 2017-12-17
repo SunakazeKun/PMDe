@@ -41,6 +41,11 @@ public class Pokemon implements Cloneable {
     public static final int SIZE = 0x48;
     
     @Override
+    public String toString() {
+        return species;
+    }
+    
+    @Override
     public Object clone() {
         try {
             return super.clone();
@@ -58,45 +63,45 @@ public class Pokemon implements Cloneable {
         // Fields
         mon.speciesPointer = buffer.readInt();
         mon.categoryPointer = buffer.readInt();
-        mon.palette = buffer.readUByte();
-        mon.size = buffer.readUByte();
+        mon.palette = buffer.readUnsignedByte();
+        mon.size = buffer.readUnsignedByte();
         buffer.skip(0x2);
         mon.speed = buffer.readInt();
         mon.faces = buffer.readShort();
         buffer.skip(0x1);
-        mon.type1 = buffer.readUByte();
-        mon.type2 = buffer.readUByte();
-        mon.walkable = buffer.readUByte();
-        mon.area = buffer.readUByte();
-        mon.ability1 = buffer.readUByte();
-        mon.ability2 = buffer.readUByte();
-        mon.shadow = buffer.readUByte();
+        mon.type1 = buffer.readUnsignedByte();
+        mon.type2 = buffer.readUnsignedByte();
+        mon.walkable = buffer.readUnsignedByte();
+        mon.area = buffer.readUnsignedByte();
+        mon.ability1 = buffer.readUnsignedByte();
+        mon.ability2 = buffer.readUnsignedByte();
+        mon.shadow = buffer.readUnsignedByte();
         mon.unk1A = buffer.readByte();
         mon.unk1B = buffer.readByte();
         mon.isMoving = buffer.readBoolean();
         mon.unk1D = buffer.readByte();
-        mon.hp = buffer.readUShort();
-        mon.basexp = buffer.readUShort();
-        mon.unk22 = buffer.readUShort();
-        mon.atk = buffer.readUShort();
-        mon.spatk = buffer.readUShort();
-        mon.def = buffer.readUShort();
-        mon.spdef = buffer.readUShort();
-        mon.lowKick = buffer.readUShort();
-        mon.sizeBust = buffer.readUShort();
+        mon.hp = buffer.readUnsignedShort();
+        mon.basexp = buffer.readUnsignedShort();
+        mon.unk22 = buffer.readUnsignedShort();
+        mon.atk = buffer.readUnsignedShort();
+        mon.spatk = buffer.readUnsignedShort();
+        mon.def = buffer.readUnsignedShort();
+        mon.spdef = buffer.readUnsignedShort();
+        mon.lowKick = buffer.readUnsignedShort();
+        mon.sizeBust = buffer.readUnsignedShort();
         mon.unk30 = buffer.readByte();
         mon.unk31 = buffer.readByte();
         mon.unk32 = buffer.readByte();
         mon.unk33 = buffer.readBoolean();
-        mon.evolveFrom = buffer.readUShort();
-        mon.evolveType = buffer.readUShort();
-        mon.evolveParam = buffer.readUShort();
-        mon.evolveAddition = buffer.readUShort();
-        mon.dexNo = buffer.readUShort();
-        mon.internalNo = buffer.readUShort();
+        mon.evolveFrom = buffer.readUnsignedShort();
+        mon.evolveType = buffer.readUnsignedShort();
+        mon.evolveParam = buffer.readUnsignedShort();
+        mon.evolveAddition = buffer.readUnsignedShort();
+        mon.dexNo = buffer.readUnsignedShort();
+        mon.internalNo = buffer.readUnsignedShort();
         mon.recruit = buffer.readShort();
-        mon.alphabetNo = buffer.readUShort();
-        mon.parentNo = buffer.readUShort();
+        mon.alphabetNo = buffer.readUnsignedShort();
+        mon.parentNo = buffer.readUnsignedShort();
         
         // Strings
         if (mon.speciesPointer != 0x00000000) mon.species = buffer.readStringAt(BitConverter.pointerToOffset(mon.speciesPointer));
@@ -112,46 +117,46 @@ public class Pokemon implements Cloneable {
         
         buffer.writeInt(pokemon.speciesPointer);
         buffer.writeInt(pokemon.categoryPointer);
-        buffer.writeUByte(pokemon.palette);
-        buffer.writeUByte(pokemon.size);
+        buffer.writeUnsignedByte(pokemon.palette);
+        buffer.writeUnsignedByte(pokemon.size);
         buffer.writeShort((short) 0);
         buffer.writeInt(pokemon.speed);
         buffer.writeShort(pokemon.faces);
         buffer.writeByte((byte) 0);
-        buffer.writeUByte(pokemon.type1);
-        buffer.writeUByte(pokemon.type2);
-        buffer.writeUByte(pokemon.walkable);
-        buffer.writeUByte(pokemon.area);
-        buffer.writeUByte(pokemon.ability1);
-        buffer.writeUByte(pokemon.ability2);
-        buffer.writeUByte(pokemon.shadow);
+        buffer.writeUnsignedByte(pokemon.type1);
+        buffer.writeUnsignedByte(pokemon.type2);
+        buffer.writeUnsignedByte(pokemon.walkable);
+        buffer.writeUnsignedByte(pokemon.area);
+        buffer.writeUnsignedByte(pokemon.ability1);
+        buffer.writeUnsignedByte(pokemon.ability2);
+        buffer.writeUnsignedByte(pokemon.shadow);
         buffer.writeByte(pokemon.unk1A);
         buffer.writeByte(pokemon.unk1B);
         buffer.writeBoolean(pokemon.isMoving);
         buffer.writeByte(pokemon.unk1D);
-        buffer.writeUShort(pokemon.hp);
-        buffer.writeUShort(pokemon.basexp);
-        buffer.writeUShort(pokemon.unk22);
-        buffer.writeUShort(pokemon.atk);
-        buffer.writeUShort(pokemon.spatk);
-        buffer.writeUShort(pokemon.def);
-        buffer.writeUShort(pokemon.spdef);
-        buffer.writeUShort(pokemon.lowKick);
-        buffer.writeUShort(pokemon.sizeBust);
+        buffer.writeUnsignedShort(pokemon.hp);
+        buffer.writeUnsignedShort(pokemon.basexp);
+        buffer.writeUnsignedShort(pokemon.unk22);
+        buffer.writeUnsignedShort(pokemon.atk);
+        buffer.writeUnsignedShort(pokemon.spatk);
+        buffer.writeUnsignedShort(pokemon.def);
+        buffer.writeUnsignedShort(pokemon.spdef);
+        buffer.writeUnsignedShort(pokemon.lowKick);
+        buffer.writeUnsignedShort(pokemon.sizeBust);
         buffer.writeByte(pokemon.unk30);
         buffer.writeByte(pokemon.unk31);
         buffer.writeByte(pokemon.unk32);
         buffer.writeBoolean(pokemon.unk33);
-        buffer.writeUShort(pokemon.evolveFrom);
-        buffer.writeUShort(pokemon.evolveType);
-        buffer.writeUShort(pokemon.evolveParam);
-        buffer.writeUShort(pokemon.evolveAddition);
-        buffer.writeUShort(pokemon.dexNo);
-        buffer.writeUShort(pokemon.internalNo);
+        buffer.writeUnsignedShort(pokemon.evolveFrom);
+        buffer.writeUnsignedShort(pokemon.evolveType);
+        buffer.writeUnsignedShort(pokemon.evolveParam);
+        buffer.writeUnsignedShort(pokemon.evolveAddition);
+        buffer.writeUnsignedShort(pokemon.dexNo);
+        buffer.writeUnsignedShort(pokemon.internalNo);
         buffer.writeShort(pokemon.recruit);
-        buffer.writeUShort(pokemon.alphabetNo);
-        buffer.writeUShort(pokemon.parentNo);
+        buffer.writeUnsignedShort(pokemon.alphabetNo);
+        buffer.writeUnsignedShort(pokemon.parentNo);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

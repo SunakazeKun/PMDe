@@ -60,26 +60,26 @@ public class Dungeon implements Cloneable {
     public static Dungeon unpack(ByteBuffer buffer) {
         Dungeon dungeon = new Dungeon();
         
-        dungeon.stair = buffer.readUByte();
+        dungeon.stair = buffer.readUnsignedByte();
         dungeon.unk1 = buffer.readByte();
         dungeon.setRecruitable = buffer.readBoolean();
-        dungeon.unk3 = buffer.readUByte();
-        dungeon.itemLimit = buffer.readUByte();
-        dungeon.partyLimit = buffer.readUByte();
+        dungeon.unk3 = buffer.readUnsignedByte();
+        dungeon.itemLimit = buffer.readUnsignedByte();
+        dungeon.partyLimit = buffer.readUnsignedByte();
         dungeon.setLvl1 = buffer.readBoolean();
         dungeon.setNoMoney = !buffer.readBoolean();
         dungeon.unk8 = buffer.readBoolean();
         dungeon.unk9 = buffer.readBoolean();
         dungeon.setSaveGame = !buffer.readBoolean();
         
-        int condmask = buffer.readUByte();
+        int condmask = buffer.readUnsignedByte();
         dungeon.hmFly = (condmask & 1) != 0;
         dungeon.hmDive = (condmask & 2) != 0;
         dungeon.hmWaterfall = (condmask & 4) != 0;
         dungeon.hmSurf = (condmask & 8) != 0;
         dungeon.typeWater = (condmask & 16) != 0;
         
-        dungeon.timer = buffer.readUShort();
+        dungeon.timer = buffer.readUnsignedShort();
         dungeon.unkE = buffer.readShort();
         
         return dungeon;
@@ -88,12 +88,12 @@ public class Dungeon implements Cloneable {
     public static byte[] pack(Dungeon dungeon) {
         ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
         
-        buffer.writeUByte(dungeon.stair);
+        buffer.writeUnsignedByte(dungeon.stair);
         buffer.writeByte(dungeon.unk1);
         buffer.writeBoolean(dungeon.setRecruitable);
-        buffer.writeUByte(dungeon.unk3);
-        buffer.writeUByte(dungeon.itemLimit);
-        buffer.writeUByte(dungeon.partyLimit);
+        buffer.writeUnsignedByte(dungeon.unk3);
+        buffer.writeUnsignedByte(dungeon.itemLimit);
+        buffer.writeUnsignedByte(dungeon.partyLimit);
         buffer.writeBoolean(dungeon.setLvl1);
         buffer.writeBoolean(!dungeon.setNoMoney);
         buffer.writeBoolean(dungeon.unk8);
@@ -108,9 +108,9 @@ public class Dungeon implements Cloneable {
         condmask ^= dungeon.typeWater ? 16 : 0;
         buffer.writeByte((byte) condmask);
         
-        buffer.writeUShort(dungeon.timer);
+        buffer.writeUnsignedShort(dungeon.timer);
         buffer.writeShort(dungeon.unkE);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

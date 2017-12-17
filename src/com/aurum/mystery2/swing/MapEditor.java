@@ -64,8 +64,8 @@ public class MapEditor extends AbstractEditor {
         
         // Add the components to the property panel
         properties.addComponent(map);
-        properties.addComponent(lblX, spnX);
-        properties.addComponent(lblY, spnY);
+        properties.addLabeledComponent(lblX, spnX);
+        properties.addLabeledComponent(lblY, spnY);
         properties.addTerminator();
         
         // Add map points
@@ -114,7 +114,7 @@ public class MapEditor extends AbstractEditor {
     protected void warningLabel() {}
     
     private static class JMapPanel extends JPanel {
-        private final Image background = Toolkit.getDefaultToolkit().createImage(Main.class.getResource("/res/map/bg.png"));
+        private final Image background = Toolkit.getDefaultToolkit().createImage(Main.class.getResource("/res/map.png"));
         private List<JMapPoint> points;
         private JMapPoint selectedPoint;
 
@@ -170,8 +170,8 @@ public class MapEditor extends AbstractEditor {
         private boolean selected;
         private int x, y;
         private final int index;
-        private final Icon mapIcon = new ImageIcon(getClass().getResource("/res/map/point.png"));
-        private final Icon mapIconSelected = new ImageIcon(getClass().getResource("/res/map/pointSelected.png"));
+        private final Icon mapIcon = new ImageIcon(getClass().getResource("/res/mapPoint.png"));
+        private final Icon mapIconSelected = new ImageIcon(getClass().getResource("/res/mapPointSelected.png"));
 
         public JMapPoint(int index, int x, int y) {
             this.index = index;

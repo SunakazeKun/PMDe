@@ -23,14 +23,15 @@ import com.aurum.mystery2.ByteOrder;
 public class DungeonLayout implements Cloneable {
     // Entry fields
     public int layout1, layout2;
-    public boolean hasTerrainUnk9, hasTerrainUnkB, hasTerrainTiles, hasTerrainPond, hasTerrainUnkE;
+    public boolean hasTerrainTiles, hasTerrainPond;
     public short no, tileset, music, weather, visibility, event;
-    public short pokemonDensity, itemDensity, trapDensity, terrainDensity;
+    public short pokemonDensity, itemDensity, trapDensity, terrainDensity, stickyChance;
     public short moneyFactor, shopsFactor, monstersFactor;
     
     // Unknown fields
-    public byte unk5, unkA;
+    public byte unk5;
     public int unk18;
+    public boolean unk9, unkB, unkE;
     
     // Static fields
     public static final int SIZE = 0x1C;
@@ -48,28 +49,28 @@ public class DungeonLayout implements Cloneable {
     public static DungeonLayout unpack(ByteBuffer buffer) {
         DungeonLayout layout = new DungeonLayout();
         
-        layout.layout1 = buffer.readUShort();
-        layout.tileset = buffer.readUByte();
-        layout.music = buffer.readUByte();
-        layout.weather = buffer.readUByte();
+        layout.layout1 = buffer.readUnsignedShort();
+        layout.tileset = buffer.readUnsignedByte();
+        layout.music = buffer.readUnsignedByte();
+        layout.weather = buffer.readUnsignedByte();
         layout.unk5 = buffer.readByte();
-        layout.pokemonDensity = buffer.readUByte();
-        layout.shopsFactor = buffer.readUByte();
-        layout.monstersFactor = buffer.readUByte();
-        layout.hasTerrainUnk9 = buffer.readBoolean();
-        layout.unkA = buffer.readByte();
-        layout.hasTerrainUnkB = buffer.readBoolean();
+        layout.pokemonDensity = buffer.readUnsignedByte();
+        layout.shopsFactor = buffer.readUnsignedByte();
+        layout.monstersFactor = buffer.readUnsignedByte();
+        layout.unk9 = buffer.readBoolean();
+        layout.stickyChance = buffer.readUnsignedByte();
+        layout.unkB = buffer.readBoolean();
         layout.hasTerrainPond = buffer.readBoolean();
         layout.hasTerrainTiles = buffer.readBoolean();
-        layout.hasTerrainUnkE = buffer.readBoolean();
-        layout.itemDensity = buffer.readUByte();
-        layout.trapDensity = buffer.readUByte();
-        layout.no = buffer.readUByte();
-        layout.event = buffer.readUByte();
-        layout.layout2 = buffer.readUShort();
-        layout.terrainDensity = buffer.readUByte();
-        layout.visibility = buffer.readUByte();
-        layout.moneyFactor = buffer.readUByte();
+        layout.unkE = buffer.readBoolean();
+        layout.itemDensity = buffer.readUnsignedByte();
+        layout.trapDensity = buffer.readUnsignedByte();
+        layout.no = buffer.readUnsignedByte();
+        layout.event = buffer.readUnsignedByte();
+        layout.layout2 = buffer.readUnsignedShort();
+        layout.terrainDensity = buffer.readUnsignedByte();
+        layout.visibility = buffer.readUnsignedByte();
+        layout.moneyFactor = buffer.readUnsignedByte();
         layout.unk18 = buffer.readInt();
         
         return layout;
@@ -78,30 +79,30 @@ public class DungeonLayout implements Cloneable {
     public static byte[] pack(DungeonLayout layout) {
         ByteBuffer buffer = new ByteBuffer(SIZE, ByteOrder.LITTLE_ENDIAN);
         
-        buffer.writeUShort(layout.layout1);
-        buffer.writeUByte(layout.tileset);
-        buffer.writeUByte(layout.music);
-        buffer.writeUByte(layout.weather);
+        buffer.writeUnsignedShort(layout.layout1);
+        buffer.writeUnsignedByte(layout.tileset);
+        buffer.writeUnsignedByte(layout.music);
+        buffer.writeUnsignedByte(layout.weather);
         buffer.writeByte(layout.unk5);
-        buffer.writeUByte(layout.pokemonDensity);
-        buffer.writeUByte(layout.shopsFactor);
-        buffer.writeUByte(layout.monstersFactor);
-        buffer.writeBoolean(layout.hasTerrainUnk9);
-        buffer.writeByte(layout.unkA);
-        buffer.writeBoolean(layout.hasTerrainUnkB);
+        buffer.writeUnsignedByte(layout.pokemonDensity);
+        buffer.writeUnsignedByte(layout.shopsFactor);
+        buffer.writeUnsignedByte(layout.monstersFactor);
+        buffer.writeBoolean(layout.unk9);
+        buffer.writeUnsignedByte(layout.stickyChance);
+        buffer.writeBoolean(layout.unkB);
         buffer.writeBoolean(layout.hasTerrainPond);
         buffer.writeBoolean(layout.hasTerrainTiles);
-        buffer.writeBoolean(layout.hasTerrainUnkE);
-        buffer.writeUByte(layout.itemDensity);
-        buffer.writeUByte(layout.trapDensity);
-        buffer.writeUByte(layout.no);
-        buffer.writeUByte(layout.event);
-        buffer.writeUShort(layout.layout2);
-        buffer.writeUByte(layout.terrainDensity);
-        buffer.writeUByte(layout.visibility);
-        buffer.writeUByte(layout.moneyFactor);
+        buffer.writeBoolean(layout.unkE);
+        buffer.writeUnsignedByte(layout.itemDensity);
+        buffer.writeUnsignedByte(layout.trapDensity);
+        buffer.writeUnsignedByte(layout.no);
+        buffer.writeUnsignedByte(layout.event);
+        buffer.writeUnsignedShort(layout.layout2);
+        buffer.writeUnsignedByte(layout.terrainDensity);
+        buffer.writeUnsignedByte(layout.visibility);
+        buffer.writeUnsignedByte(layout.moneyFactor);
         buffer.writeInt(layout.unk18);
         
-        return buffer.getContent();
+        return buffer.getBuffer();
     }
 }

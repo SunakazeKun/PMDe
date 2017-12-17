@@ -30,10 +30,9 @@ public class Lists {
         
         String line;
         int index = 0;
-        
         try {
             while ((line = reader.readLine()) != null)
-                list.add(String.format("%0" + padlength + "X", index++) + ": " + line.trim());
+                list.add(Main.debug ? String.format("%0" + padlength + "X", index++) + ": " + line.trim() : line.trim());
         }
         catch (IOException ex) {
             System.out.println(ex);
